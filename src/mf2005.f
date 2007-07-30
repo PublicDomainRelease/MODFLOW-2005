@@ -21,7 +21,7 @@ C
 C-------ASSIGN VERSION NUMBER AND DATE
       CHARACTER*40 VERSION
       CHARACTER*10 MFVNAM
-      PARAMETER (VERSION='1.2.01 10/24/2006')
+      PARAMETER (VERSION='1.3.00 8/1/2007')
       PARAMETER (MFVNAM='-2005')
 C
       CHARACTER*80 HEADNG(2)
@@ -36,7 +36,7 @@ C
      &           '    ', '    ', 'ZONE', 'MULT', 'DROB', 'RVOB', 'GBOB',  ! 35
      &           '    ', 'HUF2', 'CHOB', 'ETS ', 'DRT ', '    ', 'GMG ',  ! 42
      &           'hyd ', 'SFR ', '    ', 'GAGE', 'LVDA', '    ', 'lmt6',  ! 49
-     &           'MNW1', '    ', '    ', 'KDEP', 'SUB ', 'UZF ', '    ',  ! 56
+     &           'MNW1', '    ', '    ', 'KDEP', 'SUB ', 'UZF ', 'gwm ',  ! 56
      &           44*'    '/
 C     ------------------------------------------------------------------
 C
@@ -85,9 +85,9 @@ C6------ALLOCATE AND READ (AR) PROCEDURE
       IF(IUNIT(20).GT.0) CALL GWF2CHD7AR(IUNIT(20),IGRID)
       IF(IUNIT(21).GT.0) CALL GWF2HFB7AR(IUNIT(21),IGRID)
       IF(IUNIT(44).GT.0) CALL GWF2SFR7AR(IUNIT(44),IUNIT(1),IUNIT(23),
-     1                                     IUNIT(15),NSOL,IOUTS,IGRID)
+     1                           IUNIT(37),IUNIT(15),NSOL,IOUTS,IGRID)
       IF(IUNIT(55).GT.0) CALL GWF2UZF1AR(IUNIT(55),IUNIT(1),
-     1                                   IUNIT(23),IGRID)
+     1                                   IUNIT(23),IUNIT(37),IGRID)
       IF(IUNIT(22).GT.0 .OR. IUNIT(44).GT.0) CALL GWF2LAK7AR(
      1             IUNIT(22),IUNIT(44),IUNIT(15),IUNIT(55),NSOL,IGRID)
       IF(IUNIT(46).GT.0) CALL GWF2GAG7AR(IUNIT(46),IUNIT(44),
@@ -259,13 +259,6 @@ C
 C7C3----DETERMINE WHICH OUTPUT IS NEEDED.
           CALL GWF2BAS7OC(KKSTP,KKPER,ICNVG,IUNIT(12),IGRID)
 C
-C  Observation simulated equivalents
-          CALL OBS2BAS7SE(IUNIT(28),IGRID)
-          IF(IUNIT(33).GT.0) CALL OBS2DRN7SE(IGRID)
-          IF(IUNIT(34).GT.0) CALL OBS2RIV7SE(IGRID)
-          IF(IUNIT(35).GT.0) CALL OBS2GHB7SE(IGRID)
-          IF(IUNIT(38).GT.0) CALL OBS2CHD7SE(KKPER,IGRID)
-C
 C7C4----CALCULATE BUDGET TERMS. SAVE CELL-BY-CELL FLOW TERMS.
           MSUM = 1
           IF (IUNIT(1).GT.0) THEN
@@ -348,6 +341,13 @@ C7C4----CALCULATE BUDGET TERMS. SAVE CELL-BY-CELL FLOW TERMS.
           IF(IUNIT(50).GT.0) CALL GWF2MNW7BD(NSTP(KPER),KKSTP,KKPER,
      1                      IGRID)
           IF(IUNIT(54).GT.0) CALL GWF2SUB7BD(KKSTP,KKPER,IGRID)
+C
+C  Observation simulated equivalents
+          CALL OBS2BAS7SE(IUNIT(28),IGRID)
+          IF(IUNIT(33).GT.0) CALL OBS2DRN7SE(IGRID)
+          IF(IUNIT(34).GT.0) CALL OBS2RIV7SE(IGRID)
+          IF(IUNIT(35).GT.0) CALL OBS2GHB7SE(IGRID)
+          IF(IUNIT(38).GT.0) CALL OBS2CHD7SE(KKPER,IGRID)
 C
 C7C5---PRINT AND/OR SAVE DATA.
           CALL GWF2BAS7OT(KKSTP,KKPER,ICNVG,1,IGRID)

@@ -1,4 +1,4 @@
-C $Id: gwf2gag7.f 1477 2005-12-16 04:57:05Z rniswon $      
+C $Id: gwf2gag7.f 3234 2007-03-24 01:44:52Z deprudic $      
       MODULE GWFGAGMODULE
         INTEGER,SAVE,POINTER  ::NUMGAGE
         INTEGER,SAVE,  DIMENSION(:,:),  POINTER :: IGGLST
@@ -158,8 +158,11 @@ C     ******************************************************************
       USE GWFLAKMODULE, ONLY:NLAKES,STAGES,VOL,CLAKE
       USE GWFSFRMODULE, ONLY:NSTRM,ISTRM,IDIVAR
 C     ------------------------------------------------------------------
-C     LOACL VARIABLES
+C     LOCAL VARIABLES
 C     ------------------------------------------------------------------
+      INTEGER*4 NSOL,IGRID,IUNITLAK,IOG,IG,IG2,IG3,IRCH,II,IUNITGWT
+      INTEGER*4  IUNITUZF,LK,DFLAG,ISOL
+      REAL*4 DUM,DUMMY
       CHARACTER*1 A
       CHARACTER*2 B
       CHARACTER*7 CONCNAME
@@ -425,89 +428,89 @@ C16-----FORMATS.
  202  FORMAT (/2X,'*** WARNING ***  GAGE ',I3,' ON STREAM SEGMENT ',I3,
      *   ' REACH NO. ',I3,' IS NOT LOCATED ON FIRST REACH OF A',
      *   ' DIVERSION',/10X,' RESETTING OUTTYPE FROM 5 TO 0')
- 203  FORMAT (/2X,'STREAM SEGMENT ',I3,' IS DIVERTED FROM SEGMENT ',I3,
-     *        ' DIVERSION TYPE IS IPRIOR OF ',I3)
+ 203  FORMAT (1X,'"STREAM SEGMENT ',I3,' IS DIVERTED FROM SEGMENT ',I3,
+     *        ' DIVERSION TYPE IS IPRIOR OF ',I3,' "')
  210  FORMAT (1X,'"GAGE No.',I3,':  Lake No. = ',I3,' "')
  240  FORMAT (/2X,'*** ERROR ***   NSOL NEEDED BUT NOT DEFINED IN ',
      *   'GAGE PACKAGE.  PROGRAM TERMINATING.')
 C     minor format adjustments below by LFK, July 2006
- 250  FORMAT (1X,'"DATA:   Time',7X,'Stage',8X,'Flow"')
- 255  FORMAT (1X,'"DATA:   Time',7X,'Stage',8X,'Flow',
-     *           8X,'Depth',8X,'Width',7X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',10X,'Runoff"')
- 256  FORMAT (1X,'"DATA:   Time',7X,'Stage',8X,'Flow',
-     *           8X,'Depth',8X,'Width',7X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',7X,'SFR-Runoff',3X,
+ 250  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow"')
+ 255  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',8X,'M-P Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff"')
+ 256  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',6X,'SFR-Runoff',6X,
      +           'UZF-Runoff"')
- 260  FORMAT (1X,'"DATA:   Time',7X,'Stage',8X,'Flow',
-     *           8X,'Cond.',7X,'HeadDiff',5X,'Hyd.Grad."')
- 265  FORMAT (1X,'"DATA:   Time',8X,'Stage',8X,'Flow',
-     *           9X,'Depth',8X,'Width',8X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',10X,'Runoff',7X,'Cond.',
-     *           6X,'HeadDiff',5X,'Hyd.Grad."')
- 266  FORMAT (1X,'"DATA:   Time',8X,'Stage',8X,'Flow',
-     *           9X,'Depth',8X,'Width',8X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',7X,'SFR-Runoff',3X,
-     +           'UZF-Runoff',6X,'Cond.',6X,'HeadDiff',
-     *           5X,'Hyd.Grad."')
- 267  FORMAT (1X,'"DATA:   Time',7X,'Stage',6X,
-     *           'Max. Rate',7X,'Rate Diverted',3X,
-     *           'Upstream Flow"')
+ 260  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Cond.',8X,'HeadDiff',7X,'Hyd.Grad."')
+ 265  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff',11X,'Cond.',
+     *           8X,'HeadDiff',7X,'Hyd.Grad."')
+ 266  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',6X,'SFR-Runoff',6X,
+     +           'UZF-Runoff',11X,'Cond.',8X,'HeadDiff',
+     *           7X,'Hyd.Grad. "')
+ 267  FORMAT (5X,'"DATA:   Time',11X,'Stage',7X,
+     *           'Max.-Rate',3X,'Rate-Diverted',3X,
+     *           'Upstream-Flow "')
 Cdep---added option for printing unsaturated flow beneath streams
- 268  FORMAT (1X,'"DATA:   Time',6X,'Stage',8X,'Depth',7X,
-     *           'GW Head',6X,'M-P Flow',3X,'Stream Loss',4X,
-     *           'GW Rech.',5X,'Chnge UZ Stor.',3X,
-     *           'Vol. UZ Stor."')
+ 268  FORMAT (5X,'"DATA:   Time',11X,'Stage',11X,'Depth',9X,
+     *           'GW-Head',9X,'MP-Flow',5X,'Stream-Loss',8X,
+     *           'GW-Rech.',2X,'Chnge-UZ-Stor.',3X,
+     *           'Vol.-UZ-Stor."')
 Cdep---added option for printing water content in unsaturated zone
- 269  FORMAT (1X,'"DATA:  Time',8X,'Depth',6X,
-     *           'Width Ave. Water Content',4X,
-     *           'Cell 1 Water Content"')
+ 269  FORMAT (5X,'"DATA:   Time',11X,'Depth',7X,
+     *           'Width-Ave.-Water-Content',5X,
+     *           'Cell-1-Water-Content"')
 C     following formats modified by LFK, July 2006:
- 270  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
+ 270  FORMAT (5X,'"DATA:   Time',10X,'Stage',11X,'Flow',
      *           '    Concentration"')
- 272  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           '     Concentration ',
+ 272  FORMAT (5X,'"DATA:   Time',10X,'Stage',11X,'Flow',
+     *           '    Concentration ',
      *           'of ',I3,' Solutes "')
- 275  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Depth',7X,'Width',5X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',11X,'Runoff',
-     *           '  Concentration"')
- 277  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Depth',7X,'Width',5X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',10X,'Runoff',
-     *           '  Concentration ',
+ 275  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff',
+     *           '     Concentration"')
+ 277  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff',
+     *           '    Concentration ',
      *           'of ',I3,' Solutes "')
- 280  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Cond.',5X,'HeadDiff',4X,'Hyd.Grad.',
-     *           '  Concentration"')
- 281  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           '    Concentration    Load"')
- 282  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Cond.',5X,'HeadDiff',4X,'Hyd.Grad.',
-     *           '  Concentration ',
+ 280  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Cond.',8X,'HeadDiff',7X,'Hyd.Grad.',
+     *           '    Concentration"')
+ 281  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           '      Concentration    Load"')
+ 282  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Cond.',8X,'HeadDiff',7X,'Hyd.Grad.',
+     *           '    Concentration ',
      *           'of ',I3,' Solutes "')
- 284  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
+ 284  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
      *           '    Concentration  & Load ',
      *           'of ',I3,' Solutes "')
- 285  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Depth',7X,'Width',5X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',10X,'Runoff',7X,'Cond.',
-     *           5X,'HeadDiff',3X,'Hyd.Grad.',
-     *           '  Concentration   Load"')
- 287  FORMAT (1X,'"DATA:   Time',6X,'Stage',7X,'Flow',
-     *           8X,'Depth',7X,'Width',5X,'M-P Flow',6X,
-     +           'Precip',9X,'ET',11X,'Runoff',6X,'Cond.',
-     *           5X,'HeadDiff',3X,'Hyd.Grad.',
+ 285  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff',11X,'Cond.',
+     *           8X,'HeadDiff',7X,'Hyd.Grad.',
+     *           '    Concentration  &  Load"')
+ 287  FORMAT (5X,'"DATA:   Time',11X,'Stage',12X,'Flow',
+     *           11X,'Depth',11X,'Width',9X,'MP-Flow',9X,
+     +           'Precip.',14X,'ET',10X,'Runoff',11X,'Cond.',
+     *           8X,'HeadDiff',7X,'Hyd.Grad.',
      *           '   Concentration  &  Load ',
      *           'of ',I3,' Solutes "')
- 290  FORMAT (1X,'"DATA:   Time',6X,'Stage',5X,
-     *           'Max. Rate',2X,'Rate Diverted',1X,
-     *           'Upstream Flow Concentration',3X,
+ 290  FORMAT (5X,'"DATA:   Time',11X,'Stage',7X,
+     *           'Max.-Rate',3X,'Rate-Diverted',5X,
+     *           'Upstream-Flow-Concentration',7X,
      *           'Load"')
- 292  FORMAT (1X,'"DATA:   Time',6X,'Stage',5X,
-     *           'Max. Rate',2X,'Rate Diverted',1X,
-     *           'Upstream Flow Concentration & ',
-     *           'Load of ',I3,' Solutes "')
+ 292  FORMAT (5X,'"DATA:   Time',11X,'Stage',7X,
+     *           'Max.-Rate',3X,'Rate-Diverted',5X,
+     *           'Upstream-Flow-Concentration & ',
+     *           'Load-of ',I3,' Solutes "')
 C  LFK
  294  FORMAT (1X,'"****Warning: Gage ',I5,' was specified with an ',
      *        'unsaturated flow option beneath stream.'/1x,
@@ -516,59 +519,61 @@ C  LFK
  296  FORMAT (1X,'*****WARNING  UZF PACKAGE ACTIVE WITH TRANSPORT ',/1X,
      +        'GWT PROCESS DOES NOT SUPPORT THE UZF PACKAGE',/1X,
      +        'RUNOFF FROM UZF TO GAGED STREAM WILL NOT BE PRINTED')
- 305  FORMAT (1X,'"DATA:   Time',6X,'Stage(H)',5X,'Volume "')
- 306  FORMAT (1X,'"DATA:   Time',6X,'Stage(H)',4X,'Volume',6X,'Precip.',
-     1 6x,'Evap.',6x,'Runoff',5x,'GW-Inflw',4x,'GW-Outflw',3x,'SW-Inflw'
-     2 ,4x,'SW-Outflw',2x,'Withdrawal',2x,'Lake-Inflx',2x,'Total-Cond "'
-     &   )
- 307  FORMAT (1X,'"DATA:   Time',6X,'Stage(H)',4X,'Volume',
-     * 6x,'Del-H-TS',4x,'Del-V-TS',3x,'Del-H-Cum',3x,'Del-V-Cum "')
- 308  FORMAT (1X,'"DATA:   Time',6X,'Stage(H)',4X,'Volume',6X,'Precip.',
-     1 6x,'Evap.',7x,'Runoff',4x,'GW-Inflw',4x,'GW-Outflw',3x,'SW-Inflw'
-     2 ,4x,'SW-Outflw',2x,'Withdrawal',2x,'Lake-Inflx',2x,'Total-Cond ',
-     * 3x,'Del-H-TS',4x,'Del-V-TS',3x,'Del-H-Cum',3x,'Del-V-Cum "')
- 309  FORMAT (2X,'"DATA:   Time',4X,'Stage(H)',6X,'Volume',6X,'Precip.',
-     1 6x,'Evap.',3x,'LAK-Runoff',2x,'UZF-Runoff',4x,
-     2 'GW-Inflw',3x,'GW-Outflw',4x,'SW-Inflw',3x,'SW-Outflw',2x,
-     * 'Withdrawal',2x,'Lake-Inflx',2x,'Total-Cond "')
- 310  FORMAT (2X,'"DATA:   Time',4X,'Stage(H)',6X,'Volume',6X,'Precip.',
-     1 6x,'Evap.',3x,'LAK-Runoff',2x,'UZF-Runoff',4x,
-     2 'GW-Inflw',3x,'GW-Outflw',4x,'SW-Inflw',3x,'SW-Outflw',2x,
-     * 'Withdrawal',2x,'Lake-Inflx',2x,'Total-Cond',4x,'Del-H-TS',
-     * 4x,'Del-V-TS',3x,'Del-H-Cum',3x,'Del-V-Cum "')
- 315  FORMAT ('( 1X,''"DATA:   Time'',6X,''Stage(H)'',4X,''Volume'',2X,'
+ 305  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume "')
+ 306  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.',
+     1 10x,'Evap.',9x,'Runoff',7x,'GW-Inflw',6x,'GW-Outflw',7x,
+     2 'SW-Inflw',6x,'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',5x,
+     & 'Total-Cond "')
+ 307  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume',
+     * 7x,'Del-H-TS',7x,'Del-V-TS',6x,'Del-H-Cum',6x,'Del-V-Cum "')
+ 308  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.',
+     1 10x,'Evap.',9x,'Runoff',7x,'GW-Inflw',6x,'GW-Outflw',7x,
+     2 'SW-Inflw',6x,'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',5x,
+     * 'Total-Cond',7x,'Del-H-TS',7x,'Del-V-TS',6x,'Del-H-Cum',6x,
+     + 'Del-V-Cum "')
+ 309  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.',
+     1 10x,'Evap.',5x,'LAK-Runoff',5x,'UZF-Runoff',7x,
+     2 'GW-Inflw',6x,'GW-Outflw',7x,'SW-Inflw',6x,'SW-Outflw',5x,
+     * 'Withdrawal',5x,'Lake-Inflx',5x,'Total-Cond "')
+ 310  FORMAT (5X,'"DATA:   Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.',
+     1 10x,'Evap.',5x,'LAK-Runoff',5x,'UZF-Runoff',7x,
+     2 'GW-Inflw',6x,'GW-Outflw',7x,'SW-Inflw',6x,'SW-Outflw',5x,
+     * 'Withdrawal',5x,'Lake-Inflx',5x,'Total-Cond',7x,'Del-H-TS',
+     * 7x,'Del-V-TS',6x,'Del-H-Cum',6x,'Del-V-Cum "')
+ 315  FORMAT ('( 3X,''"DATA:   Time'',9X,''Stage(H)'',9X,''Volume'',2X,'
      *,I2,'A12, '' "'')')
- 316  FORMAT ('( 1X,''"DATA:  Time'',7X,''Stage(H)'',4X,''Volume'',2X,'
-     *,I2,'A12,6X,''Precip'',7x,''Evap.'',6x,''Runoff'',5x,''GW-Inflw'',
-     *4x,''GW-Outflw'',3x,''SW-Inflw'',4x,''SW-Outflw'',2x,''Withdrawal'
-     *',2x,''Lake-Inflx'',2x,''Total-Cond "'')')
- 317  FORMAT ('( 1X,''"DATA:   Time'',6X,''Stage(H)'',4X,''Volume'',2X,'
-     *,I2,'A12,5x,''Del-H-TS'',5x,''Del-V-TS  '', ',I2,'A12,4x,
-     *''Del-H-Cum'',4x,''Del-V-Cum '', ',I2,'A12,'' "'')')
- 318  FORMAT ('( 1X,''"DATA:   Time'',6X,''Stage(H)'',4X,''Volume'',2X,'
-     *,I2,'A12,6X,''Precip'',7x,''Evap.'',7x,''Runoff'',5x,''GW-Inflw'',
-     *3x,''GW-Outflw'',3x,''SW-Inflw'',4x,''SW-Outflw'',2x,''Withdrawal'
-     *',2x,''Lake-Inflx'',2x,''Total-Cond'',4x,''Del-H-TS'',5x,
-     *''Del-V-TS '', ',I2,'A12,4x,
-     *''Del-H-Cum'',4x,''Del-V-Cum '', ',I2,'A12,'' "'')')
+ 316  FORMAT ('( 3X,''"DATA:  Time'',9X,''Stage(H)'',9X,''Volume'',2X,'
+     *,I2,'A12,8X,''Precip'',10x,''Evap.'',9x,''Runoff'',7x,''GW-Inflw''
+     *,6x,''GW-Outflw'',7x,''SW-Inflw'',6x,''SW-Outflw'',5x,''Withdrawal
+     *'',5x,''Lake-Inflx'',5x,''Total-Cond "'')')
+ 317  FORMAT ('( 3X,''"DATA:   Time'',9X,''Stage(H)'',9X,''Volume'',2X,'
+     *,I2,'A12,7x,''Del-H-TS'',7x,''Del-V-TS  '', ',I2,'A12,6x,
+     *''Del-H-Cum'',6x,''Del-V-Cum '', ',I2,'A12,'' "'')')
+ 318  FORMAT ('( 3X,''"DATA:   Time'',9X,''Stage(H)'',9X,''Volume'',2X,'
+     *,I2,'A12,8X,''Precip'',10x,''Evap.'',9x,''Runoff'',7x,''GW-Inflw''
+     *,6x,''GW-Outflw'',7x,''SW-Inflw'',6x,''SW-Outflw'',5x,''Withdrawal
+     *'',5x,''Lake-Inflx'',5x,''Total-Cond'',7x,''Del-H-TS'',7x,''Del-V-
+     *TS'', ',I2,'A12,6x,''Del-H-Cum'',6x,''Del-V-Cum '', ',I2,
+     *'A12,'' "'')')
  320  FORMAT (1X,'*****WARNING  UZF PACKAGE ACTIVE WITH TRANSPORT ',/1X,
      +        'GWT PROCESS DOES NOT SUPPORT THE UZF PACKAGE',/1X,
      +        'RUNOFF FROM UZF TO GAGED LAKE WILL NOT BE PRINTED')
- 400  FORMAT (4X,1PE12.5,0PF12.5,1X,1PE12.5)
- 401  FORMAT (4X,1PE12.5,0PF12.5,1X,1P11E12.5)
- 402  FORMAT (4X,1PE12.5,0PF12.5,1X,1P5E12.5)
- 403  FORMAT (4X,1PE12.5,0PF12.5,1X,1P15E12.5)
- 404  FORMAT (4X,1PE12.5,0PF12.5,1X,1P12E12.5)
- 405  FORMAT (4X,1PE12.5,0PF12.5,1X,1P16E12.5)
- 425  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X))')
- 426  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *10E12.5)')
- 427  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *E12.5,X,E12.5,X,',I3,'(E12.5,1X),E12.5,X,E12.5,X,
-     *',I3,'(E12.5,1X))')
- 428  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *10E12.5,E12.5,X,E12.5,X,',I3,'(E12.5,1X),E12.5,X,E12.5,X,
-     *',I3,'(E12.5,1X))')
+ 400  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,1PE14.7)
+ 401  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,11(1PE14.7,1X))
+ 402  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,5(1PE14.7,1X))
+ 403  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,15(1PE14.7,1X))
+ 404  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,12(1PE14.7,1X))
+ 405  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,16(1PE14.7,1X))
+ 425  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,
+     +'(1PE14.7,1X))')
+ 426  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,'1X,'
+     *'(1PE14.7,1X),10(1PE14.7,1X)')
+ 427  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X),
+     *1PE14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X),1PE14.7,1X,1PE14.7,1X,',
+     *I3,'(1PE14.7,1X))')
+ 428  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X),
+     *10(1PE14.7,1X),1PE14.7,1X,1PE14.7,1X,',I3,'1X,(E14.7,1X),1PE14.7,
+     *1X,1PE14.7,1X,',I3,'(1PE14.7,1X))')
 C
 C17-----RELEASE MEMORY.
       DEALLOCATE(CONCNAME,DCTSNAME,DCCMNAME)
@@ -705,21 +710,22 @@ C
 C7------FORMATS
 C
 Clfk  change formats in following for consistency with p/o for initial conds.
- 300  FORMAT (4X,1PE12.5,0PF12.5,1X,1PE12.5)
- 401  FORMAT (4X,1PE12.5,0PF12.5,1X,1P11E12.5)
- 402  FORMAT (4X,1PE12.5,0PF12.5,1X,1P5E12.5)
- 403  FORMAT (4X,1PE12.5,0PF12.5,1X,1P15E12.5)
- 404  FORMAT (4X,1PE12.5,0PF12.5,1X,1P12E12.5)
- 405  FORMAT (4X,1PE12.5,0PF12.5,1X,1P16E12.5) 
- 425  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X))')
- 426  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *10E12.5)')
- 427  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *E12.5,X,E12.5,X,',I3,'(E12.5,1X),E12.5,X,E12.5,X,
-     *',I3,'(E12.5,1X))')
- 428  FORMAT ('(4X,1PE12.5,0PF12.5,1X,1PE12.5,1X,',I3,'(E12.5,1X),
-     *10E12.5,E12.5,X,E12.5,X,',I3,'(E12.5,1X),E12.5,X,E12.5,X,
-     *',I3,'(E12.5,1X))')
+ 300  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,1PE14.7)
+ 401  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,11(1PE14.7,1X))
+ 402  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,5(1PE14.7,1X))
+ 403  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,15(1PE14.7,1X))
+ 404  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,12(1PE14.7,1X))
+ 405  FORMAT (4X,1PE14.7,1X,0PF14.7,1X,16(1PE14.7,1X)) 
+ 425  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,
+     +'(1PE14.7,1X))')
+ 426  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X),
+     *10(1X,1PE14.7)')
+ 427  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,
+     *'(1PE14.7,1X),1PE14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X),1PE14.7,
+     *1X,1PE14.7,1X,',I3,'(1PE14.7,1X))')
+ 428  FORMAT ('(4X,1PE14.7,1X,0PF14.7,1X,1PE14.7,1X,',I3,'1X,
+     *(1PE14.7,1X),10(1X,1PE14.7),1X,1PE14.7,1X,E14.7,1X,',I3,
+     *'(1PE14.7,1X),1PE14.7,1X,1PE14.7,1X,',I3,'(1PE14.7,1X))')
 C
 C8------RELEASE MEMORY.
       DEALLOCATE(DELCTS,DELCCUM)
@@ -739,6 +745,7 @@ C     ******************************************************************
       USE GWFSFRMODULE, ONLY:NSTRM,NUMAVE,IDIVAR,STRM,ISEG,SEG,SGOTFLW,
      1                       AVWAT,WAT1,AVDPT
 C     ------------------------------------------------------------------
+
       CHARACTER*50  LFRMAT
       REAL SFRQ(5,NSTRM)
       DIMENSION COUT(NSTRM,NSOL)
@@ -889,22 +896,22 @@ C11-----OUTTYPE 5 IS USED TO PRINT TIME SERIES FOR A DIVERSION.
 C
 C12-----FORMATS.
 C
- 250  FORMAT (4X,1PE11.4,2X,2(E11.4,2X))
- 255  FORMAT (4X,1PE11.4,2X,8(E11.4,2X))
- 256  FORMAT (4X,1PE11.4,2X,9(E11.4,2X))
- 260  FORMAT (4X,1PE11.4,2X,5(E11.4,2X))
- 265  FORMAT (4X,1PE11.4,3X,4(E11.4,2X),2X,7(E11.4,2X))
- 266  FORMAT (4X,1PE11.4,3X,4(E11.4,2X),2X,8(E11.4,2X))
- 270  FORMAT (4X,1PE11.4,2X,2(E11.4,3X),4X,2(E11.4,4X))
- 275  FORMAT (4X,1PE11.4,2X,5(E11.4,2X),3(E11.4,5X))
- 280  FORMAT (4X,1PE11.4)
- 285  FORMAT (16X,1PE11.3,8X,E12.4,15X,E12.4)
- 450  FORMAT ('(4X,1PE11.4,1X,2(E11.4,1X),',I3,'E11.3,1X))')
- 452  FORMAT ('(4X,1PE11.4,1X,2(E11.4,1X),',I3,'(2(E11.3,1X)))')
- 455  FORMAT ('(4X,1PE11.4,1X,8(E11.4,1X),',I3,'(E11.3,1X))')
- 460  FORMAT ('(4X,1PE11.4,1X,5(E11.4,1X),',I3,'(E11.3,1X))')
- 465  FORMAT ('(4X,1PE11.4,1X,11(E11.4,1X),',I3,'(2(E11.3,1X)))')
- 470  FORMAT ('(4X,1PE11.4,1X,4(E11.4,2X),',I3,'(2(E11.3,1X)))')
+ 250  FORMAT (4X,1PE14.7,2X,2(1PE14.7,2X))
+ 255  FORMAT (4X,1PE14.7,2X,8(1PE14.7,2X))
+ 256  FORMAT (4X,1PE14.7,2X,9(1PE14.7,2X))
+ 260  FORMAT (4X,1PE14.7,2X,5(1PE14.7,2X))
+ 265  FORMAT (4X,1PE14.7,2X,4(1PE14.7,2X),7(1PE14.7,2X))
+ 266  FORMAT (4X,1PE14.7,2X,4(1PE14.7,2X),8(1PE14.7,2X))
+ 270  FORMAT (4X,1PE14.7,2X,2(1PE14.7,2X),2(1PE14.7,2X))
+ 275  FORMAT (4X,1PE14.7,2X,5(1PE14.7,2X),3(1PE14.7,2X))
+ 280  FORMAT (4X,1PE14.7)
+ 285  FORMAT (20X,1PE14.7,17X,1PE14.7,11X,1PE14.7)
+ 450  FORMAT ('(4X,1PE14.7,1X,2(1PE14.7,1X),',I3,'1PE14.7,1X))')
+ 452  FORMAT ('(4X,1PE14.7,1X,2(1PE14.7,1X),',I3,'(2(1PE14.7,1X)))')
+ 455  FORMAT ('(4X,1PE14.7,1X,8(1PE14.7,1X),',I3,'(1PE14.7,1X))')
+ 460  FORMAT ('(4X,1PE14.7,1X,5(1PE14.7,1X),',I3,'(1PE14.7,1X))')
+ 465  FORMAT ('(4X,1PE14.7,1X,11(1PE14.7,1X),',I3,'(2(1PE14.7,1X)))')
+ 470  FORMAT ('(4X,1PE14.7,1X,4(1PE14.7,2X),',I3,'(2(1E14.7,1X)))')
 C
 C13-----RELEASE MEMORY.
       DEALLOCATE(CLOAD)
@@ -917,6 +924,7 @@ C-------SUBROUTINE GWF2GAG7DA
       SUBROUTINE GWF2GAG7DA(IGRID)
 C  Deallocate GAG data for a grid.
       USE GWFGAGMODULE
+      INTEGER*4 IGRID
 C
       DEALLOCATE (GWFGAGDAT(IGRID)%NUMGAGE)
       DEALLOCATE (GWFGAGDAT(IGRID)%IGGLST)
@@ -927,6 +935,7 @@ C-------SUBROUTINE SGWF2GAG7PNT
       SUBROUTINE SGWF2GAG7PNT(IGRID)
 C  Change GAG data to a different grid.
       USE GWFGAGMODULE
+      INTEGER*4 IGRID
 C
       NUMGAGE=>GWFGAGDAT(IGRID)%NUMGAGE
       IGGLST=>GWFGAGDAT(IGRID)%IGGLST

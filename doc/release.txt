@@ -11,6 +11,26 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.3
+   GWF2GAG7 -- Removed duplicate reference to RNF in USE statement in
+       subroutine SGWF2GAG7LO.  Modifications to format statements.
+   GWF2UZF1 -- Fixed memory allocation problem when using UZF to simulate
+       discharge to land surface while not simulating unsaturated flow.
+       The calculation was changed for simulating head-dependent recharge
+       and discharge when the ground-water head is near or above land
+       surface.
+   GWF2SFR7 -- Fixed logic for reading mixed parameter and nonparameter
+       input data.
+   GWF2SFR7 -- Fixed problem where FLOWC was uninitialized when ICALC=0.
+       Added ability for SFR to be used with HUF.
+   GWF2RCH7, GWF2EVT7, GWF2ETS7 -- Added a check to not use the layer
+       indicator value if the indicator value is 0.
+   OBS2BAS7 -- Changed format for saving observations in a disk file to
+       write less digits..
+   OBS2BAS7 -- Fixed problem with head-change observations at cells that
+       have an initally dry simulated value, but values at later time are
+       wet.  The later values were being computed based on the dry value,
+       and now all of the values at later times will be dry.
 
 o Version 1.2.01  10/24/2006
    GWF2SFR7 -- A bug was discovered in SFR7 when NSTRM is postive or when

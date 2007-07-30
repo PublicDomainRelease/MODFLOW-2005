@@ -203,6 +203,7 @@ C     ------------------------------------------------------------------
       USE OBSGHBMODULE
       DOUBLE PRECISION HHNEW, C, HB , RBOT
 C     ------------------------------------------------------------------
+      CALL SGWF2GHB7PNT(IGRID)
       CALL SOBS2GHB7PNT(IGRID)
 C
 C-------INITIALIZE VARIABLES

@@ -1,7 +1,7 @@
 README.TXT
 
 
-                  MODFLOW-2005 - Version: 1.2.01 10/24/2006
+                       MODFLOW-2005 - Version: 1.3
          Three-dimensional finite-difference ground-water flow model
 
 
@@ -19,12 +19,12 @@ a description and references for this software.
 
 The following tar file is provided for Unix computers:
 
-         mf2005v1_2_01.tar.Z
+         mf2005v1_3.tar.Z
 
 The distribution file can be used through the following commands:
 
-    uncompress mf2005v1_2_01.tar
-    tar -xvf mf2005v1_2_01.tar
+    uncompress mf2005v1_3.tar
+    tar -xvf mf2005v1_3.tar
 
 The gunzip program can be used in place of uncompress if desired.
 The tar command will create numerous individual files.  Source files will

@@ -204,6 +204,7 @@ C     ------------------------------------------------------------------
       USE OBSDRNMODULE
       DOUBLE PRECISION HHNEW, HB, C
 C     ------------------------------------------------------------------
+      CALL SGWF2DRN7PNT(IGRID)
       CALL SOBS2DRN7PNT(IGRID)
 C
 C-------INITIALIZE VARIABLES

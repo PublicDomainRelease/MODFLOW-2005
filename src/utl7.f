@@ -187,7 +187,6 @@ C2------If the line does not start with "#", return.
 C
 C3------Find the last non-blank character.
       L=LEN(LINE)
-      IF(L.GT.79) L=79
       DO 20 I=L,1,-1
       IF(LINE(I:I).NE.' ') GO TO 30
    20 CONTINUE
@@ -1542,7 +1541,7 @@ C     ******************************************************************
 C
 C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
-      CHARACTER*16 TEXT,AUXTXT(5)
+      CHARACTER*16 TEXT,AUXTXT(20)
       DIMENSION IBOUND(NCOL,NROW,NLAY)
 C     ------------------------------------------------------------------
 C

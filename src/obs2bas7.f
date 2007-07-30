@@ -505,8 +505,13 @@ C12-----INTERPOLATE OVER TIME AND COMPUTE DRAWDOWN IF INDICATED.
         IF (NDER(4,N).EQ.ITS-1 .AND. TOFF(N).GT.ZERO)
      &      H(N) = H(N) + TOFF(N)*(V-H(N))
         IF (N1.GT.0 .AND. ((NDER(4,N).EQ.ITS.AND.TOFF(N).EQ.ZERO).OR.
-     &      (NDER(4,N).EQ.ITS-1.AND.TOFF(N).GT.ZERO)))
-     &       H(N) = H(N) - H(N1)
+     &      (NDER(4,N).EQ.ITS-1.AND.TOFF(N).GT.ZERO))) THEN
+          IF(IHOBWET(N1).LT.0) THEN
+            IHOBWET(N)=-1
+          ELSE
+            H(N) = H(N) - H(N1)
+          END IF
+        END IF
    60 CONTINUE
 C
 C13------RETURN.
@@ -895,7 +900,7 @@ C
 C2------WRITE OBSERVATIONS
         DO 100 N=1,NOBS
           WRITE(IUOBSSV,28) H(N),HOBS(N),OBSNAM(N)
-   28     FORMAT(1P,G22.15,3X,G22.15,A)
+   28     FORMAT(1P,1P,E15.6,3X,E15.6,2X,A)
   100   CONTINUE
       END IF
 C

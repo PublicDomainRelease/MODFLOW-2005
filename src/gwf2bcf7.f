@@ -140,7 +140,7 @@ C5A-----SET GLOBAL HEAD-DEPENDENT THICKNESS FLAGS.
       ELSEIF (L.EQ.2) THEN
         LAYHDT(I)=0
         LAYHDS(I)=1
-      ELSEIF (L.EQ.1 .OR. L.EQ.3) THEN
+      ELSE
         LAYHDT(I)=1
         LAYHDS(I)=1
       ENDIF
