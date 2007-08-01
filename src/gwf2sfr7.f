@@ -387,10 +387,10 @@ C11-----READ AND WRITE DATA FOR EACH REACH ON BASIS OF ISFROPT.
       nseg = 0
       nreach = 0
       IF ( Iunithuf.GT.0 ) THEN
-        IF ( ISFROPT.NE.3 .AND. ISFROPT.NE.5 ) THEN
+        IF ( ISFROPT.GT.1 ) THEN
           WRITE (IOUT, 9034)
  9034     FORMAT (//, ' ***ERROR***  HUF PACKAGE IS ACTIVE ', 
-     +          'AND ISFROPT NOT 3 or 5 ',/, 
+     +          'AND ISFROPT IS GREATER THAN 1 ',/, 
      +          ' PROGRAM IS STOPPING')
           CALL USTOP(' ')
         END IF

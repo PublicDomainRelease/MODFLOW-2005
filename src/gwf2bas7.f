@@ -58,7 +58,7 @@
 C  Data definitions for Named Parameters
 C  Explicitly declare all variables to enable subroutines that include
 C  this file to use the IMPLICIT NONE statement.
-        PARAMETER (MXPAR=500,MXCLST=1000,MXINST=1000)
+        PARAMETER (MXPAR=999,MXCLST=1000,MXINST=1000)
         INTEGER,SAVE,POINTER ::ICLSUM,IPSUM,INAMLOC,NMLTAR,NZONAR,NPVAL
         REAL,          SAVE,    DIMENSION(:),    POINTER ::B
         INTEGER,       SAVE,    DIMENSION(:),    POINTER ::IACTIVE

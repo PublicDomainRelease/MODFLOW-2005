@@ -87,6 +87,7 @@ C     ******************************************************************
       USE GLOBAL,       ONLY: ITMUNI,LENUNI
       USE GWFLPFMODULE, ONLY: SCLPF=>SC2, LAYTYP
       USE GWFBCFMODULE, ONLY: SC1, SC2, LAYCON
+!      USE GWFHUFMODULE, ONLY: SCHUF=>SC1
 
       IMPLICIT NONE
 C     ------------------------------------------------------------------
@@ -189,16 +190,25 @@ C3------CHECK FOR ERRORS.
      +          ' RESETTING THE NUMBER OF WAVE SETS TO BE 20'///)
         NSETS = 20
       END IF
-      IF ( ABS(IUZFOPT).EQ.2 .AND. Iunithuf.GT.0 ) THEN
-        WRITE (IOUT, 9008) IUZFOPT
- 9008   FORMAT (//' VERTICAL FLOW IN VADOSE ZONE IS ', 
-     +          'ACTIVE, HUF PACKAGE IS ACTIVE AND IUZFOPT = ', I5, 
-     +          ' -- '//' ABSOLUTE VALUE OF IUZFOPT MUST EQUAL 1 ', 
-     +          'FOR HUF  --  SETTING UZF PACKAGE TO INACTIVE'///)
+!      IF ( ABS(IUZFOPT).EQ.2 .AND. Iunithuf.GT.0 ) THEN
+!        WRITE (IOUT, 9008) IUZFOPT
+! 9008   FORMAT (//' VERTICAL FLOW IN VADOSE ZONE IS ', 
+!     +          'ACTIVE, HUF PACKAGE IS ACTIVE AND IUZFOPT = ', I5, 
+!     +          ' -- '//' ABSOLUTE VALUE OF IUZFOPT MUST EQUAL 1 ', 
+!     +          'FOR HUF  --  SETTING UZF PACKAGE TO INACTIVE'///)
+!        In = 0
+!        RETURN
+!      END IF
+C Inactivate UZF if HUF is active.
+      IF ( Iunithuf.GT.0 ) THEN
+        WRITE (IOUT, 9008)
+ 9008   FORMAT (//' THE UZF PACKAGE IS ', 
+     +          'ACTIVE. UZF DOES NOT WORK WITH HUF ',
+     +          ' -- '//' PLEASE CHANGE INPUT ', 
+     +          ' --  SETTING UZF PACKAGE TO INACTIVE'///)
         In = 0
         RETURN
       END IF
-C
 C4------ALLOCATE SPACE FOR UNSATURATED FLOW.
       IUZM = 1
       NWAV = 1
@@ -447,7 +457,7 @@ C       YIELD OF UPPERMOST ACTIVE LAYER.
 C
 C19-----SPECIFIC YIELD IS STORAGE CAPACITY DIVIDED BY AREA OF MODEL CELL.
                 IF ( ibndflg.GT.0 ) THEN                        
-                  IF ( Iunitbcf.LE.0 ) THEN
+                  IF ( Iunitlpf.GT.0 ) THEN
                     IF ( LAYTYP(nlth).GT.0 ) THEN
 C use LPF SC2, Iunitlpf>0
                       sy = SCLPF(ncth, nrth, nlth)/
@@ -462,12 +472,16 @@ C use LPF SC2, Iunitlpf>0
      +                       , 'CELL LAYER,ROW,COLUMN: ',3I5) 
                      CALL USTOP(' ')
                     END IF                    
-                  ELSE IF ( LAYCON(nlth).EQ.1 ) THEN
+                  ELSE IF ( Iunitbcf.GT.0 ) THEN
+                    IF ( LAYCON(nlth).EQ.1 ) THEN
 C use BCF SC1 always
-                    sy = SC1(ncth, nrth, nlth)/(DELR(ncth)*DELC(nrth))
-                  ELSE
+                      sy = SC1(ncth, nrth, nlth)/(DELR(ncth)*DELC(nrth))
+                    ELSE
 C use BCF SC2, Iunitbcf>0
-                    sy = SC2(ncth, nrth, nlth)/(DELR(ncth)*DELC(nrth))
+                      sy = SC2(ncth, nrth, nlth)/(DELR(ncth)*DELC(nrth))
+                    END IF
+!                  ELSE IF ( Iunithuf.GT.0 ) THEN
+!                   sy = SCHUF(ncth, nrth, nlth)/(DELR(ncth)*DELC(nrth))
                   END IF
                   IF ( sy.GT.0 ) THEN
                     isyflg = 1
@@ -1654,7 +1668,7 @@ C       ACCUMULATORS (RATIN AND RATOUT).
         idelt = 1
       END IF
       iss = ISSFLG(Kkper)
-C Remove print option until GSFLWO release. 6/26/07
+C Remove print option until GSFLOW release. 6/26/07
 C      IF ( IUZFCB1.NE.0 ) ibd = ICBCFL
 C      IF ( IUZFCB2.NE.0 ) ibduzf = ICBCFL
       IF ( IUZFCB1.GT.0 ) THEN

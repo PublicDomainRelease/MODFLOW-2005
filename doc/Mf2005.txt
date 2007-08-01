@@ -60,6 +60,10 @@ METHOD
 
 HISTORY
 
+      MODFLOW-2005 Version 1.3.01 8/2/2007 - Checks added to prevent
+         using HUF with UZF Package or the unsaturated flow part of
+         SFR Package.
+
       MODFLOW-2005 Version 1.3 8/1/2007 - Fixed several minor problems
          (see release.txt file).
 
