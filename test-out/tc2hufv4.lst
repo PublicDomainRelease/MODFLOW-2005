@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.3.01 8/2/2007
+                            VERSION 1.4.00 11/2/2007
 
  LIST FILE: tc2hufv4.lst
                          UNIT    2
@@ -1104,8 +1104,8 @@ HGU5           0     0     0     0     0
  SOLVING FOR HEAD 
 
 
-    34 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    1
-   256 TOTAL ITERATIONS
+    36 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    1
+   270 TOTAL ITERATIONS
 
  OUTPUT CONTROL FOR STRESS PERIOD    1   TIME STEP   1
     PRINT HEAD FOR ALL LAYERS
@@ -1306,28 +1306,28 @@ HGU5           0     0     0     0     0
            IN:                                      IN:
            ---                                      ---
              STORAGE =           0.0000               STORAGE =           0.0000
-       CONSTANT HEAD =   500442528.0000         CONSTANT HEAD =        5792.1592
+       CONSTANT HEAD =   500443360.0000         CONSTANT HEAD =        5792.1685
                WELLS =           0.0000                 WELLS =           0.0000
               DRAINS =           0.0000                DRAINS =           0.0000
                   ET =           0.0000                    ET =           0.0000
      HEAD DEP BOUNDS =           0.0000       HEAD DEP BOUNDS =           0.0000
             RECHARGE =  1145016064.0000              RECHARGE =       13252.5000
 
-            TOTAL IN =  1645458560.0000              TOTAL IN =       19044.6602
+            TOTAL IN =  1645459456.0000              TOTAL IN =       19044.6680
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =   367719648.0000         CONSTANT HEAD =        4256.0146
                WELLS =    38880000.0000                 WELLS =         450.0000
-              DRAINS =   131848360.0000                DRAINS =        1526.0227
+              DRAINS =   131848360.0000                DRAINS =        1526.0226
                   ET =   878410880.0000                    ET =       10166.7930
-     HEAD DEP BOUNDS =   228600448.0000       HEAD DEP BOUNDS =        2645.8386
+     HEAD DEP BOUNDS =   228600448.0000       HEAD DEP BOUNDS =        2645.8384
             RECHARGE =           0.0000              RECHARGE =           0.0000
 
            TOTAL OUT =  1645459328.0000             TOTAL OUT =       19044.6680
 
-            IN - OUT =        -768.0000              IN - OUT =      -7.8125E-03
+            IN - OUT =         128.0000              IN - OUT =           0.0000
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -1661,6 +1661,6 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/08/01 15:36:54
- Elapsed run time:  0.297 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/10/25 12:54:54
+ Elapsed run time:  0.313 Seconds
 

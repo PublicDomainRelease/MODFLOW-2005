@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.3.01 8/2/2007
+                            VERSION 1.4.00 11/2/2007
 
  LIST FILE: UZFtest2.lst
                          UNIT    9
@@ -993,13 +993,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    1 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =    10303219.2455                UZF ET =         124.5658
-        UZF RECHARGE =    23074548.9397          UZF RECHARGE =           9.6992
+        UZF RECHARGE =    23074548.9392          UZF RECHARGE =           9.6992
 
-            IN - OUT =    -5497522.5692              IN - OUT =         -66.4650
+            IN - OUT =    -5497522.5686              IN - OUT =         -66.4650
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =    -5496407.6055        STORAGE CHANGE =         -66.4515
+      STORAGE CHANGE =    -5496407.6049        STORAGE CHANGE =         -66.4515
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -1167,13 +1167,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    2 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =    21635534.6367                UZF ET =         124.5523
-        UZF RECHARGE =    23949082.3166          UZF RECHARGE =           9.6119
+        UZF RECHARGE =    23949082.3160          UZF RECHARGE =           9.6119
 
-            IN - OUT =   -11535630.3044              IN - OUT =         -66.3642
+            IN - OUT =   -11535630.3039              IN - OUT =         -66.3642
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =   -11533216.7463        STORAGE CHANGE =         -66.3499
+      STORAGE CHANGE =   -11533216.7457        STORAGE CHANGE =         -66.3499
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -1343,13 +1343,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    3 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =    34099653.0157                UZF ET =         124.5380
-        UZF RECHARGE =    24898692.7789          UZF RECHARGE =           9.4882
+        UZF RECHARGE =    24898692.7783          UZF RECHARGE =           9.4882
 
-            IN - OUT =   -18163744.0628              IN - OUT =         -66.2263
+            IN - OUT =   -18163744.0622              IN - OUT =         -66.2263
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =   -18159835.7403        STORAGE CHANGE =         -66.2114
+      STORAGE CHANGE =   -18159835.7397        STORAGE CHANGE =         -66.2114
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -1538,13 +1538,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    4 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =    47808538.8947                UZF ET =         124.5231
-        UZF RECHARGE =    25933553.4863          UZF RECHARGE =           9.4000
+        UZF RECHARGE =    25933553.4857          UZF RECHARGE =           9.4000
 
-            IN - OUT =   -25443314.1107              IN - OUT =         -66.1231
+            IN - OUT =   -25443314.1102              IN - OUT =         -66.1231
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =   -25437663.8730        STORAGE CHANGE =         -66.1073
+      STORAGE CHANGE =   -25437663.8724        STORAGE CHANGE =         -66.1073
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -1704,13 +1704,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =    62886397.1575                UZF ET =         124.5073
-        UZF RECHARGE =    27054606.5608          UZF RECHARGE =           9.2572
+        UZF RECHARGE =    27054606.5602          UZF RECHARGE =           9.2572
 
-            IN - OUT =   -33431631.3088              IN - OUT =         -65.9645
+            IN - OUT =   -33431631.3082              IN - OUT =         -65.9645
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =   -33423991.9319        STORAGE CHANGE =         -65.9481
+      STORAGE CHANGE =   -33423991.9313        STORAGE CHANGE =         -65.9481
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -1932,13 +1932,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   164098138.0256                UZF ET =         124.4178
-        UZF RECHARGE =    34386869.7214          UZF RECHARGE =           9.0149
+        UZF RECHARGE =    34386869.7208          UZF RECHARGE =           9.0149
 
-            IN - OUT =   -86836484.4805              IN - OUT =         -65.6327
+            IN - OUT =   -86836484.4800              IN - OUT =         -65.6327
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =   -86813671.6018        STORAGE CHANGE =         -65.6126
+      STORAGE CHANGE =   -86813671.6012        STORAGE CHANGE =         -65.6126
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -2158,13 +2158,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   326963641.8738                UZF ET =         124.3049
-        UZF RECHARGE =    46551744.6097          UZF RECHARGE =           9.0485
+        UZF RECHARGE =    46551744.6091          UZF RECHARGE =           9.0485
 
-            IN - OUT =  -173064704.7474              IN - OUT =         -65.5534
+            IN - OUT =  -173064704.7468              IN - OUT =         -65.5534
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -173018943.7089        STORAGE CHANGE =         -65.5315
+      STORAGE CHANGE =  -173018943.7083        STORAGE CHANGE =         -65.5315
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -2407,13 +2407,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    1 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   337243356.3696                UZF ET =         124.2816
-        UZF RECHARGE =    47457786.4583          UZF RECHARGE =          10.9540
+        UZF RECHARGE =    47457786.4577          UZF RECHARGE =          10.9540
 
-            IN - OUT =  -177240528.3776              IN - OUT =         -50.4857
+            IN - OUT =  -177240528.3770              IN - OUT =         -50.4857
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -177194285.7488        STORAGE CHANGE =         -50.4798
+      STORAGE CHANGE =  -177194285.7482        STORAGE CHANGE =         -50.4798
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -2621,13 +2621,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   389713323.4204                UZF ET =         124.2438
-        UZF RECHARGE =    52625498.6491          UZF RECHARGE =          12.7465
+        UZF RECHARGE =    52625498.6485          UZF RECHARGE =          12.7465
 
-            IN - OUT =  -199091798.3937              IN - OUT =         -52.2403
+            IN - OUT =  -199091798.3931              IN - OUT =         -52.2403
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -199040432.6211        STORAGE CHANGE =         -52.2250
+      STORAGE CHANGE =  -199040432.6205        STORAGE CHANGE =         -52.2250
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -2853,13 +2853,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   490703584.1323                UZF ET =         124.1310
-        UZF RECHARGE =    64356336.1151          UZF RECHARGE =          15.4853
+        UZF RECHARGE =    64356336.1145          UZF RECHARGE =          15.4853
 
-            IN - OUT =  -242888956.5874              IN - OUT =         -54.8663
+            IN - OUT =  -242888956.5868              IN - OUT =         -54.8663
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -242823408.2351        STORAGE CHANGE =         -54.8632
+      STORAGE CHANGE =  -242823408.2345        STORAGE CHANGE =         -54.8632
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -3095,13 +3095,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   640655617.3185                UZF ET =         108.5683
-        UZF RECHARGE =    85556269.5520          UZF RECHARGE =          15.9790
+        UZF RECHARGE =    85556269.5514          UZF RECHARGE =          15.9790
 
-            IN - OUT =  -303038222.8477              IN - OUT =         -39.7973
+            IN - OUT =  -303038222.8471              IN - OUT =         -39.7973
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -302941927.7592        STORAGE CHANGE =         -39.7626
+      STORAGE CHANGE =  -302941927.7586        STORAGE CHANGE =         -39.7626
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -3410,13 +3410,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   693348039.0765                UZF ET =         104.4099
-        UZF RECHARGE =    93958462.2092          UZF RECHARGE =          18.1304
+        UZF RECHARGE =    93958462.2086          UZF RECHARGE =          18.1304
 
-            IN - OUT =  -278540153.3837              IN - OUT =          46.9596
+            IN - OUT =  -278540153.3831              IN - OUT =          46.9596
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -278434815.9224        STORAGE CHANGE =          46.9826
+      STORAGE CHANGE =  -278434815.9218        STORAGE CHANGE =          46.9826
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -3650,13 +3650,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   778327079.4448                UZF ET =         104.4960
-        UZF RECHARGE =   114510175.0478          UZF RECHARGE =          27.4949
+        UZF RECHARGE =   114510175.0472          UZF RECHARGE =          27.4949
 
-            IN - OUT =  -246223026.6221              IN - OUT =          37.5092
+            IN - OUT =  -246223026.6216              IN - OUT =          37.5092
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -246077062.5051        STORAGE CHANGE =          37.5658
+      STORAGE CHANGE =  -246077062.5045        STORAGE CHANGE =          37.5658
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -3894,13 +3894,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   897568010.6003                UZF ET =          91.5088
-        UZF RECHARGE =   149024153.4887          UZF RECHARGE =          25.7672
+        UZF RECHARGE =   149024153.4881          UZF RECHARGE =          25.7672
 
-            IN - OUT =  -177972535.4930              IN - OUT =          52.2240
+            IN - OUT =  -177972535.4924              IN - OUT =          52.2240
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -177775331.8932        STORAGE CHANGE =          52.2340
+      STORAGE CHANGE =  -177775331.8926        STORAGE CHANGE =          52.2340
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -4217,13 +4217,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   943268275.6265                UZF ET =          81.1204
-        UZF RECHARGE =   159976244.5651          UZF RECHARGE =          16.8588
+        UZF RECHARGE =   159976244.5645          UZF RECHARGE =          16.8588
 
-            IN - OUT =  -213226720.6257              IN - OUT =         -55.6042
+            IN - OUT =  -213226720.6252              IN - OUT =         -55.6042
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -213022831.4095        STORAGE CHANGE =         -55.5969
+      STORAGE CHANGE =  -213022831.4090        STORAGE CHANGE =         -55.5969
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -4451,13 +4451,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =   997061102.7991                UZF ET =          67.5644
-        UZF RECHARGE =   168523792.4186          UZF RECHARGE =           9.4580
+        UZF RECHARGE =   168523792.4180          UZF RECHARGE =           9.4580
 
-            IN - OUT =  -241105125.6597              IN - OUT =         -34.6474
+            IN - OUT =  -241105125.6591              IN - OUT =         -34.6474
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -240900388.3284        STORAGE CHANGE =         -34.6463
+      STORAGE CHANGE =  -240900388.3278        STORAGE CHANGE =         -34.6463
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -4683,13 +4683,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1085791465.3398                UZF ET =          61.0510
-        UZF RECHARGE =   179375731.7557          UZF RECHARGE =           7.9709
+        UZF RECHARGE =   179375731.7551          UZF RECHARGE =           7.9709
 
-            IN - OUT =  -285186077.3561              IN - OUT =         -26.6469
+            IN - OUT =  -285186077.3556              IN - OUT =         -26.6469
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -284980111.0257        STORAGE CHANGE =         -26.6465
+      STORAGE CHANGE =  -284980111.0252        STORAGE CHANGE =         -26.6465
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -4950,13 +4950,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1117397117.0615                UZF ET =          63.2763
-        UZF RECHARGE =   183520166.0205          UZF RECHARGE =           8.3599
+        UZF RECHARGE =   183520166.0199          UZF RECHARGE =           8.3599
 
-            IN - OUT =  -278139821.4029              IN - OUT =          13.1138
+            IN - OUT =  -278139821.4024              IN - OUT =          13.1138
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -277933855.0725        STORAGE CHANGE =          13.1138
+      STORAGE CHANGE =  -277933855.0720        STORAGE CHANGE =          13.1138
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -5170,13 +5170,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1169944184.3249                UZF ET =          65.3732
-        UZF RECHARGE =   192158062.9925          UZF RECHARGE =          12.9923
+        UZF RECHARGE =   192158062.9919          UZF RECHARGE =          12.9923
 
-            IN - OUT =  -270400845.6542              IN - OUT =           6.3845
+            IN - OUT =  -270400845.6536              IN - OUT =           6.3845
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -270226759.3212        STORAGE CHANGE =           6.3085
+      STORAGE CHANGE =  -270226759.3206        STORAGE CHANGE =           6.3085
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -5394,13 +5394,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1257441189.3602                UZF ET =          67.6010
-        UZF RECHARGE =   214623363.8898          UZF RECHARGE =          18.8406
+        UZF RECHARGE =   214623363.8892          UZF RECHARGE =          18.8406
 
-            IN - OUT =  -269360451.2240              IN - OUT =          -1.6916
+            IN - OUT =  -269360451.2234              IN - OUT =          -1.6916
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -269175729.4652        STORAGE CHANGE =          -1.6604
+      STORAGE CHANGE =  -269175729.4647        STORAGE CHANGE =          -1.6604
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -5711,13 +5711,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1291837691.5300                UZF ET =          68.3459
-        UZF RECHARGE =   223375029.7663          UZF RECHARGE =          16.9804
+        UZF RECHARGE =   223375029.7657          UZF RECHARGE =          16.9804
 
-            IN - OUT =  -299669716.8045              IN - OUT =         -59.9013
+            IN - OUT =  -299669716.8039              IN - OUT =         -59.9013
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -299483856.5106        STORAGE CHANGE =         -59.8965
+      STORAGE CHANGE =  -299483856.5100        STORAGE CHANGE =         -59.8965
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -5945,13 +5945,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1347796967.5194                UZF ET =          69.0802
-        UZF RECHARGE =   235301085.0153          UZF RECHARGE =          12.4883
+        UZF RECHARGE =   235301085.0147          UZF RECHARGE =          12.4883
 
-            IN - OUT =  -346877866.2345              IN - OUT =         -56.1435
+            IN - OUT =  -346877866.2339              IN - OUT =         -56.1435
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -346688592.1358        STORAGE CHANGE =         -56.1426
+      STORAGE CHANGE =  -346688592.1353        STORAGE CHANGE =         -56.1426
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -6179,13 +6179,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1438463875.6810                UZF ET =          69.1042
-        UZF RECHARGE =   248540944.5478          UZF RECHARGE =           9.2085
+        UZF RECHARGE =   248540944.5473          UZF RECHARGE =           9.2085
 
-            IN - OUT =  -417483824.1208              IN - OUT =         -52.8877
+            IN - OUT =  -417483824.1202              IN - OUT =         -52.8877
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -417283317.1901        STORAGE CHANGE =         -52.8763
+      STORAGE CHANGE =  -417283317.1896        STORAGE CHANGE =         -52.8763
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -6469,13 +6469,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1473203954.3142                UZF ET =          68.6435
-        UZF RECHARGE =   254036348.1692          UZF RECHARGE =          11.9924
+        UZF RECHARGE =   254036348.1686          UZF RECHARGE =          11.9924
 
-            IN - OUT =  -436321135.4055              IN - OUT =         -38.2609
+            IN - OUT =  -436321135.4049              IN - OUT =         -38.2609
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -436120583.8043        STORAGE CHANGE =         -38.2608
+      STORAGE CHANGE =  -436120583.8038        STORAGE CHANGE =         -38.2608
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -6689,13 +6689,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1528854588.4719                UZF ET =          68.2913
-        UZF RECHARGE =   263481043.5161          UZF RECHARGE =          11.4570
+        UZF RECHARGE =   263481043.5155          UZF RECHARGE =          11.4570
 
-            IN - OUT =  -466954494.9181              IN - OUT =         -37.3733
+            IN - OUT =  -466954494.9175              IN - OUT =         -37.3733
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -466753993.1122        STORAGE CHANGE =         -37.3748
+      STORAGE CHANGE =  -466753993.1116        STORAGE CHANGE =         -37.3748
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -6911,13 +6911,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1616974781.8714                UZF ET =          66.7390
-        UZF RECHARGE =   278042086.3922          UZF RECHARGE =          10.9583
+        UZF RECHARGE =   278042086.3916          UZF RECHARGE =          10.9583
 
-            IN - OUT =  -514134381.0122              IN - OUT =         -35.3223
+            IN - OUT =  -514134381.0117              IN - OUT =         -35.3223
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -513931214.3949        STORAGE CHANGE =         -35.3203
+      STORAGE CHANGE =  -513931214.3943        STORAGE CHANGE =         -35.3203
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -7224,13 +7224,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1650705470.8783                UZF ET =          66.8210
-        UZF RECHARGE =   282887108.6571          UZF RECHARGE =          10.3362
+        UZF RECHARGE =   282887108.6565          UZF RECHARGE =          10.3362
 
-            IN - OUT =  -539871189.8182              IN - OUT =         -51.7321
+            IN - OUT =  -539871189.8176              IN - OUT =         -51.7321
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -539667810.5941        STORAGE CHANGE =         -51.7307
+      STORAGE CHANGE =  -539667810.5935        STORAGE CHANGE =         -51.7307
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -7456,13 +7456,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1704779144.0339                UZF ET =          65.9281
-        UZF RECHARGE =   291766557.8999          UZF RECHARGE =          10.5597
+        UZF RECHARGE =   291766557.8993          UZF RECHARGE =          10.5597
 
-            IN - OUT =  -582147130.4082              IN - OUT =         -51.0628
+            IN - OUT =  -582147130.4077              IN - OUT =         -51.0628
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -581941713.7674        STORAGE CHANGE =         -51.0607
+      STORAGE CHANGE =  -581941713.7669        STORAGE CHANGE =         -51.0607
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -7690,13 +7690,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD    
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1783850097.7544                UZF ET =          57.7655
-        UZF RECHARGE =   305440272.9702          UZF RECHARGE =          11.1510
+        UZF RECHARGE =   305440272.9696          UZF RECHARGE =          11.1510
 
-            IN - OUT =  -641590989.3912              IN - OUT =         -43.4915
+            IN - OUT =  -641590989.3906              IN - OUT =         -43.4915
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -641390020.2211        STORAGE CHANGE =         -43.4891
+      STORAGE CHANGE =  -641390020.2205        STORAGE CHANGE =         -43.4891
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -7980,13 +7980,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1812866887.0089                UZF ET =          57.2844
-        UZF RECHARGE =   311813965.9137          UZF RECHARGE =          12.3935
+        UZF RECHARGE =   311813965.9131          UZF RECHARGE =          12.3935
 
-            IN - OUT =  -668422203.3768              IN - OUT =         -52.7279
+            IN - OUT =  -668422203.3762              IN - OUT =         -52.7279
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -668221441.2084        STORAGE CHANGE =         -52.7279
+      STORAGE CHANGE =  -668221441.2078        STORAGE CHANGE =         -52.7279
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -8200,13 +8200,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1859070132.0983                UZF ET =          56.5424
-        UZF RECHARGE =   321410202.5837          UZF RECHARGE =          11.3771
+        UZF RECHARGE =   321410202.5831          UZF RECHARGE =          11.3771
 
-            IN - OUT =  -710436897.4219              IN - OUT =         -50.9695
+            IN - OUT =  -710436897.4214              IN - OUT =         -50.9695
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -710233936.8630        STORAGE CHANGE =         -50.9683
+      STORAGE CHANGE =  -710233936.8625        STORAGE CHANGE =         -50.9683
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -8422,13 +8422,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1930730850.4499                UZF ET =          52.0328
-        UZF RECHARGE =   336959984.1089          UZF RECHARGE =          12.1145
+        UZF RECHARGE =   336959984.1083          UZF RECHARGE =          12.1145
 
-            IN - OUT =  -775446857.6813              IN - OUT =         -47.1973
+            IN - OUT =  -775446857.6808              IN - OUT =         -47.1973
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -775233950.5249        STORAGE CHANGE =         -47.1801
+      STORAGE CHANGE =  -775233950.5243        STORAGE CHANGE =         -47.1801
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -8737,13 +8737,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  1955840910.2042                UZF ET =          48.6333
-        UZF RECHARGE =   341850722.8619          UZF RECHARGE =           9.5378
+        UZF RECHARGE =   341850722.8613          UZF RECHARGE =           9.5378
 
-            IN - OUT =  -801168022.0824              IN - OUT =         -49.6961
+            IN - OUT =  -801168022.0818              IN - OUT =         -49.6961
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -800955278.2939        STORAGE CHANGE =         -49.6961
+      STORAGE CHANGE =  -800955278.2934        STORAGE CHANGE =         -49.6961
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -8968,14 +8968,14 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD   1
 
           OUT:                                     OUT:
           ----                                     ----
-              UZF ET =  1992266219.4281                UZF ET =          42.0448
-        UZF RECHARGE =   349258931.7779          UZF RECHARGE =           9.0372
+              UZF ET =  1992266219.4282                UZF ET =          42.0448
+        UZF RECHARGE =   349258931.7773          UZF RECHARGE =           9.0372
 
-            IN - OUT =  -838109146.3652              IN - OUT =         -42.6071
+            IN - OUT =  -838109146.3647              IN - OUT =         -42.6071
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -837901612.0851        STORAGE CHANGE =         -42.6359
+      STORAGE CHANGE =  -837901612.0845        STORAGE CHANGE =         -42.6359
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -9203,13 +9203,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  2043545946.0720                UZF ET =          37.3083
-        UZF RECHARGE =   361727202.7876          UZF RECHARGE =           9.3037
+        UZF RECHARGE =   361727202.7871          UZF RECHARGE =           9.3037
 
-            IN - OUT =  -890756874.2101              IN - OUT =         -38.1370
+            IN - OUT =  -890756874.2095              IN - OUT =         -38.1370
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -890549094.8877        STORAGE CHANGE =         -38.1368
+      STORAGE CHANGE =  -890549094.8872        STORAGE CHANGE =         -38.1368
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -9493,13 +9493,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP    5 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  2061851762.0132                UZF ET =          35.8966
-        UZF RECHARGE =   366287021.3022          UZF RECHARGE =           8.8280
+        UZF RECHARGE =   366287021.3016          UZF RECHARGE =           8.8280
 
-            IN - OUT =  -909342874.5596              IN - OUT =         -36.2496
+            IN - OUT =  -909342874.5590              IN - OUT =         -36.2496
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -909135094.7265        STORAGE CHANGE =         -36.2496
+      STORAGE CHANGE =  -909135094.7259        STORAGE CHANGE =         -36.2496
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -9713,13 +9713,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   10 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  2090340209.0265                UZF ET =          34.1096
-        UZF RECHARGE =   373885661.4349          UZF RECHARGE =           9.3023
+        UZF RECHARGE =   373885661.4343          UZF RECHARGE =           9.3023
 
-            IN - OUT =  -938537567.8485              IN - OUT =         -34.9369
+            IN - OUT =  -938537567.8479              IN - OUT =         -34.9369
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -938329409.9254        STORAGE CHANGE =         -34.9351
+      STORAGE CHANGE =  -938329409.9249        STORAGE CHANGE =         -34.9351
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -9935,13 +9935,13 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
           OUT:                                     OUT:
           ----                                     ----
               UZF ET =  2130532688.3670                UZF ET =          29.5398
-        UZF RECHARGE =   386676578.0195          UZF RECHARGE =          11.2482
+        UZF RECHARGE =   386676578.0189          UZF RECHARGE =          11.2482
 
-            IN - OUT =  -980420693.9649              IN - OUT =         -32.3130
+            IN - OUT =  -980420693.9644              IN - OUT =         -32.3130
 
           STORAGE:                                 STORAGE:
           --------                                 --------
-      STORAGE CHANGE =  -980293673.3468        STORAGE CHANGE =         -32.4109
+      STORAGE CHANGE =  -980293673.3463        STORAGE CHANGE =         -32.4109
 
  PERCENT DISCREPANCY IS DIFFERENCE BETWEEN IN-OUT MINUS CHANGE IN STORAGE
  DIVIDED BY THE AVERAGE OF IN AND OUT TIMES 100
@@ -10073,6 +10073,6 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
          TOTAL TIME 3.15360E+07 5.25600E+05  8760.0      365.00     0.99932    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/08/01 15:38:14
- Elapsed run time: 12.564 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/10/25 12:56:22
+ Elapsed run time: 15.047 Seconds
 

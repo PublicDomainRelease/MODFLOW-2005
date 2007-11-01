@@ -21,7 +21,7 @@ C
 C-------ASSIGN VERSION NUMBER AND DATE
       CHARACTER*40 VERSION
       CHARACTER*10 MFVNAM
-      PARAMETER (VERSION='1.3.01 8/2/2007')
+      PARAMETER (VERSION='1.4.00 11/2/2007')
       PARAMETER (MFVNAM='-2005')
 C
       CHARACTER*80 HEADNG(2)
@@ -37,7 +37,8 @@ C
      &           '    ', 'HUF2', 'CHOB', 'ETS ', 'DRT ', '    ', 'GMG ',  ! 42
      &           'hyd ', 'SFR ', '    ', 'GAGE', 'LVDA', '    ', 'lmt6',  ! 49
      &           'MNW1', '    ', '    ', 'KDEP', 'SUB ', 'UZF ', 'gwm ',  ! 56
-     &           44*'    '/
+     &           'SWT ', '    ', '    ', '    ', '    ', '    ', '    ',  ! 63
+     &           37*'    '/
 C     ------------------------------------------------------------------
 C
 C2------WRITE BANNER TO SCREEN AND DEFINE CONSTANTS.
@@ -102,6 +103,7 @@ C6------ALLOCATE AND READ (AR) PROCEDURE
       IF(IUNIT(50).GT.0) CALL GWF2MNW7AR(IUNIT(50),IUNIT(9),
      1                     IUNIT(10),0,IUNIT(13),
      2                     0,IUNIT(42),FNAME,IGRID)
+      IF(IUNIT(57).GT.0) CALL GWF2SWT7AR(IUNIT(57),IGRID)
 C
 C  Observation allocate and read
       CALL OBS2BAS7AR(IUNIT(28),IGRID)
@@ -116,6 +118,7 @@ C7------SIMULATE EACH STRESS PERIOD.
         CALL GWF2BAS7ST(KKPER,IGRID)
         IF(IUNIT(19).GT.0) CALL GWF2IBS7ST(KKPER,IGRID)
         IF(IUNIT(54).GT.0) CALL GWF2SUB7ST(KKPER,IGRID)
+        IF(IUNIT(57).GT.0) CALL GWF2SWT7ST(KKPER,IGRID)
 C
 C7B-----READ AND PREPARE INFORMATION FOR STRESS PERIOD.
 C----------READ USING PACKAGE READ AND PREPARE MODULES.
@@ -214,6 +217,7 @@ C7C2A---FORMULATE THE FINITE DIFFERENCE EQUATIONS.
      1                               IUNIT(23),IUNIT(37),IGRID)
             IF(IUNIT(54).GT.0) CALL GWF2SUB7FM(KKPER,KKITER,IUNIT(9),
      1                                         IGRID)
+            IF(IUNIT(57).GT.0) CALL GWF2SWT7FM(KKPER,IGRID)
 C
 C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
             IF (IUNIT(9).GT.0) THEN
@@ -245,8 +249,11 @@ C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
                    CALL GMG7PNT(IGRID)
                    CALL GMG7AP(HNEW,RHS,CR,CC,CV,HCOF,HNOFLO,IBOUND,
      1                         IITER,MXITER,RCLOSEGMG,HCLOSEGMG,
-     2                         KKITER,KKSTP,KKPER,ICNVG,SITER,TSITER,
-     3                         DAMPGMG,IADAMPGMG,IOUTGMG,IOUT,GMGID)
+     2                         KKITER,KKSTP,KKPER,NCOL,NROW,NLAY,ICNVG,
+     3                         SITER,TSITER,DAMPGMG,IADAMPGMG,IOUTGMG,
+     4                         IOUT,GMGID,
+     5                         IUNITMHC,DUP,DLOW,CHGLIMIT,
+     6                         BIGHEADCHG,HNEWLAST)
             ENDIF
 C
 C7C2C---IF CONVERGENCE CRITERION HAS BEEN MET STOP ITERATING.
@@ -341,6 +348,7 @@ C7C4----CALCULATE BUDGET TERMS. SAVE CELL-BY-CELL FLOW TERMS.
           IF(IUNIT(50).GT.0) CALL GWF2MNW7BD(NSTP(KPER),KKSTP,KKPER,
      1                      IGRID)
           IF(IUNIT(54).GT.0) CALL GWF2SUB7BD(KKSTP,KKPER,IGRID)
+          IF(IUNIT(57).GT.0) CALL GWF2SWT7BD(KKSTP,KKPER,IGRID)
 C
 C  Observation simulated equivalents
           CALL OBS2BAS7SE(IUNIT(28),IGRID)
@@ -359,6 +367,7 @@ C7C5---PRINT AND/OR SAVE DATA.
           ENDIF
           IF(IUNIT(54).GT.0) CALL GWF2SUB7OT(KKSTP,KKPER,IUNIT(54),
      1                                       IGRID)
+          IF(IUNIT(57).GT.0) CALL GWF2SWT7OT(KKSTP,KKPER,IGRID)
 C
 C7C6---JUMP TO END OF PROGRAM IF CONVERGENCE WAS NOT ACHIEVED.
           IF(ICNVG.EQ.0) GO TO 110
@@ -413,6 +422,7 @@ C9------LAST BECAUSE IT DEALLOCATES IUNIT.
       IF(IUNIT(50).GT.0) CALL GWF2MNW7DA(IGRID)
       IF(IUNIT(54).GT.0) CALL GWF2SUB7DA(IGRID)
       IF(IUNIT(55).GT.0) CALL GWF2UZF1DA(IGRID)
+      IF(IUNIT(57).GT.0) CALL GWF2SWT7DA(IGRID)
       CALL OBS2BAS7DA(IUNIT(28),IGRID)
       IF(IUNIT(33).GT.0) CALL OBS2DRN7DA(IGRID)
       IF(IUNIT(34).GT.0) CALL OBS2RIV7DA(IGRID)

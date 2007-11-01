@@ -60,6 +60,10 @@ METHOD
 
 HISTORY
 
+      MODFLOW-2005 Version 1.4 11/2/2007 - Added SWT Package, added
+         adaptive damping to GMG, and fixed minor problems (see
+         release.txt file).
+
       MODFLOW-2005 Version 1.3.01 8/2/2007 - Checks added to prevent
          using HUF with UZF Package or the unsaturated flow part of
          SFR Package.
@@ -132,6 +136,7 @@ FUNTIONALITY
          LAK -- Lake Package
          UZF -- Unsaturated Zone Package
          GAG -- Gage Package
+         SWT -- Subsidence and Aquifer-System Compaction Package
 
 DOCUMENTATION
 
@@ -252,7 +257,12 @@ Investigations Report 00-4167, 146 p.
   The GAG Package is documented as part of the above SFR and LAK
   documentation.
 
-
+  The SWT Package is documented in:
+  
+Leake, S.A. and Galloway, D.L., 2007, MODFLOW ground-water model -- User
+guide to the Subsidence and Aquifer-System Compaction Package (SUB-WT) for
+water-table aquifers: U.S. Geological Survey Techniques and Methods 6-A23,
+42 p.
 
 CONTACTS
     U.S. Geological Survey

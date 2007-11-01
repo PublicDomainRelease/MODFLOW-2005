@@ -1095,7 +1095,7 @@ c Local Variables
       REAL :: dummy(5), qsing
       INTEGER :: ibd, igrp1, igrp2, iin, imult, iobynd, ioc
       INTEGER :: ioch, ioqsum, m, m2, n, naux, ne, nwelvl, k, i, j
-      CHARACTER(LEN=16) :: text, auxtxt(5)
+      CHARACTER(LEN=16) :: text, auxtxt(20)
 c     ------------------------------------------------------------------
 c-----SET POINTERS FOR THE CURRENT GRID.
       CALL SGWF2MNW7PNT(Igrid)

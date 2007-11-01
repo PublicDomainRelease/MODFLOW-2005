@@ -233,6 +233,15 @@ as a common filename base.
   Solver: SIP
   Types of parameters defined / package: none
 
+19.  Test case swtex4:
+
+  This is the example documented in Leake and Galloway (2007)
+  
+  Grid dimensions 4 Layers, 20 Rows, 15 Columns
+  Stress Periods: 1 steady and 2 transient
+  Flow Package: LPF
+  Stress Packages: WEL, SWT
+  Solver: SIP
  
 
 REFERENCES
@@ -266,6 +275,11 @@ Hoffmann, J., Leake, S.A., Galloway, D.L., and Wilson, A.M., 2003,
 MODFLOW-2000 Ground-Water Model--User Guide to the Subsidence and
 Aquifer-System Compaction (SUB) Package: U.S. Geological Survey Open-File
 Report 03-233, 44 p.
+
+Leake, S.A. and Galloway, D.L., 2007, MODFLOW ground-water model -- User
+guide to the Subsidence and Aquifer-System Compaction Package (SUB-WT) for
+water-table aquifers: U.S. Geological Survey Techniques and Methods 6-A23,
+42 p.
 
 Leake, S.A., and Lilly, M.R., 1997, Documentation of a computer program
 (FHB1) for assignment of transient specified-flow and specified-head

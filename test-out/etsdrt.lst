@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.3.01 8/2/2007
+                            VERSION 1.4.00 11/2/2007
 
  LIST FILE: etsdrt.lst
                          UNIT   12
@@ -369,6 +369,6 @@
          TOTAL TIME  0.0000      0.0000      0.0000      0.0000      0.0000    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/08/01 15:36:51
- Elapsed run time:  0.063 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/10/25 12:54:50
+ Elapsed run time:  0.062 Seconds
 
