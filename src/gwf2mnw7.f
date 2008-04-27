@@ -1,9 +1,10 @@
-C Time of File Save by ERB: 4/6/2005 2:28PM
 C                  KJH  20030327      -- Patched Hyd.K term in LPF option -- cel2wel function
 C                  KJH  20030717      -- Patched budget output switch -- subroutine GWF1MNW1bd
 c                                        Cleaned output so outrageous pointers are not printed
 c                  GZH  20050405      -- Converted calculations to use double precision
 c                  KJH  20050419      -- Array WELL2 dimensioned to 18 to store well id
+C                  AWH  20080411      -- Retrieve HDRY from GWFBASMODULE rather than from
+C                                        LPF, BCF, or HUF
 c
       MODULE GWFMNWMODULE
         DOUBLE PRECISION, PARAMETER :: TWOPI=2.0D0*3.1415926535897932D0
@@ -12,7 +13,6 @@ c
         CHARACTER(LEN=200),SAVE,POINTER:: MNWNAME
         INTEGER,          SAVE,POINTER :: NWELL2, MXWEL2, IWL2CB, KSPREF
         INTEGER,          SAVE,POINTER :: IWELPT, NOMOITER
-        REAL,             SAVE,POINTER :: HDRY
         DOUBLE PRECISION, SAVE,POINTER :: PLOSS
         DOUBLE PRECISION, SAVE,POINTER :: SMALL, HMAX
         CHARACTER(LEN=32),SAVE,DIMENSION(:),    POINTER :: MNWSITE
@@ -23,7 +23,6 @@ c
         CHARACTER(LEN=200),    POINTER :: MNWNAME
         INTEGER,               POINTER :: NWELL2, MXWEL2, IWL2CB, KSPREF
         INTEGER,               POINTER :: IWELPT, NOMOITER
-        REAL,                  POINTER :: HDRY
         DOUBLE PRECISION,      POINTER :: PLOSS
         DOUBLE PRECISION,      POINTER :: SMALL, HMAX
         CHARACTER(LEN=32),     DIMENSION(:),    POINTER :: MNWSITE
@@ -80,7 +79,7 @@ c     ------------------------------------------------------------------
 c     ------------------------------------------------------------------
       ALLOCATE (MNWNAME, NWELL2, MXWEL2, IWL2CB, NOMOITER, KSPREF, 
      +          IWELPT)
-      ALLOCATE (PLOSS, HDRY, SMALL, HMAX, IOWELL2(3), 
+      ALLOCATE (PLOSS, SMALL, HMAX, IOWELL2(3), 
      +          HREF(NCOL,NROW,NLAY))
 c
       IOWELL2(1) = 0
@@ -272,13 +271,10 @@ c
 c        specifications:
 c     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:NODES,NCOL,NROW,NLAY,IBOUND,HOLD,HNEW,IOUT
-      USE GWFBASMODULE,ONLY:TOTIM
-      USE GWFMNWMODULE, ONLY:NWELL2,MXWEL2,IWELPT,PLOSS,HDRY,HMAX,
+      USE GWFBASMODULE,ONLY:TOTIM,HDRY
+      USE GWFMNWMODULE, ONLY:NWELL2,MXWEL2,IWELPT,PLOSS,HMAX,
      1                       MNWSITE,IOWELL2,WELL2,HREF,KSPREF,
      2                       BIG,ZERO25
-      USE GWFLPFMODULE,ONLY:HDRYLPF=>HDRY
-      USE GWFBCFMODULE,ONLY:HDRYBCF=>HDRY
-      USE GWFHUFMODULE,ONLY:HDRYHUF=>HDRY
       IMPLICIT NONE
       INTRINSIC ABS, MAX, MOD, INT
       INTEGER, EXTERNAL :: IFRL, IDIRECT
@@ -305,7 +301,7 @@ c     ------------------------------------------------------------------
 c     ------------------------------------------------------------------
 c-----SET POINTERS FOR THE CURRENT GRID.
       CALL SGWF2MNW7PNT(Igrid)
-cswm: SET POINTERS FOR FLOW PACKAGE TO GET HDRY AND K's FOR CEL2WEL
+cswm: SET POINTERS FOR FLOW PACKAGE TO GET K's FOR CEL2WEL
       IF ( Iubcf.NE.0 ) CALL SGWF2BCF7PNT(Igrid)
       IF ( Iulpf.NE.0 ) CALL SGWF2LPF7PNT(Igrid)
       IF ( Iuhuf.NE.0 ) CALL SGWF2HUF7PNT(Igrid)
@@ -323,10 +319,6 @@ c
 c  Check for setting the HREFerence array
 CERB     IN FIRST STRESS PERIOD, HOLD IS UNDEFINED, SO USE HNEW INSTEAD
       IF ( Kper.EQ.1 ) THEN
-cswm:  SET HDRY DEPENDING ON FLOW PACKAGE
-        IF ( Iubcf.NE.0 ) HDRY = HDRYBCF 
-        IF ( Iulpf.NE.0 ) HDRY = HDRYLPF 
-        IF ( Iuhuf.NE.0 ) HDRY = HDRYHUF
         HMAX = ABS(HNEW(1,1,1))
         DO k = 1, NLAY
           DO i = 1, NROW
@@ -1079,8 +1071,8 @@ c
 c        specifications:
 c     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:NCOL,NROW,NLAY,IBOUND,BUFF,HNEW,IOUT
-      USE GWFBASMODULE,ONLY:DELT,PERTIM,TOTIM,ICBCFL,VBVL,VBNM,MSUM
-      USE GWFMNWMODULE,ONLY:NWELL2,PLOSS,HDRY,MNWSITE,IWL2CB,IOWELL2,
+      USE GWFBASMODULE,ONLY:DELT,PERTIM,TOTIM,ICBCFL,VBVL,VBNM,MSUM,HDRY
+      USE GWFMNWMODULE,ONLY:NWELL2,PLOSS,MNWSITE,IWL2CB,IOWELL2,
      1                      WELL2,ZERO25,BIG
       IMPLICIT NONE
       INTRINSIC ABS, MOD
@@ -1569,8 +1561,9 @@ C        SPECIFICATIONS::
 C     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:NCOL,NROW,LAYHDT,DELR,DELC,BOTM,LBOTM,CR,CC,
      1                      HNEW
+      USE GWFBASMODULE,ONLY:HDRY
       USE GWFBCFMODULE,ONLY:HY,TRPY,LAYCON
-      USE GWFMNWMODULE,ONLY:PLOSS,SMALL,HDRY,TWOPI,ZERO25
+      USE GWFMNWMODULE,ONLY:PLOSS,SMALL,TWOPI,ZERO25
 c
       IMPLICIT NONE
       INTRINSIC LOG, ABS, SQRT
@@ -1718,8 +1711,9 @@ C
 C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:LAYHDT,DELR,DELC,BOTM,LBOTM,HNEW
+      USE GWFBASMODULE,ONLY:HDRY
       USE GWFLPFMODULE,ONLY:HK,CHANI,HANI
-      USE GWFMNWMODULE,ONLY:PLOSS,HDRY,TWOPI,ZERO25
+      USE GWFMNWMODULE,ONLY:PLOSS,TWOPI,ZERO25
       IMPLICIT NONE
       INTRINSIC LOG, ABS, SQRT
 c Arguments
@@ -1814,8 +1808,9 @@ C
 C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:LAYHDT,DELR,DELC,BOTM,LBOTM,HNEW
+      USE GWFBASMODULE,ONLY:HDRY
       USE GWFHUFMODULE,ONLY:HK,HKCC
-      USE GWFMNWMODULE,ONLY:PLOSS,HDRY,TWOPI,ZERO25
+      USE GWFMNWMODULE,ONLY:PLOSS,TWOPI,ZERO25
       IMPLICIT NONE
       INTRINSIC LOG, ABS, SQRT
 c Arguments
@@ -2095,7 +2090,6 @@ C     ------------------------------------------------------------------
       DEALLOCATE (GWFMNWDAT(Igrid)%KSPREF)
       DEALLOCATE (GWFMNWDAT(Igrid)%IWELPT)
       DEALLOCATE (GWFMNWDAT(Igrid)%PLOSS)
-      DEALLOCATE (GWFMNWDAT(Igrid)%HDRY)
       DEALLOCATE (GWFMNWDAT(Igrid)%SMALL)
       DEALLOCATE (GWFMNWDAT(Igrid)%HMAX)
       DEALLOCATE (GWFMNWDAT(Igrid)%MNWNAME)
@@ -2125,7 +2119,6 @@ C     ------------------------------------------------------------------
       KSPREF=>GWFMNWDAT(Igrid)%KSPREF
       IWELPT=>GWFMNWDAT(Igrid)%IWELPT
       PLOSS=>GWFMNWDAT(Igrid)%PLOSS
-      HDRY=>GWFMNWDAT(Igrid)%HDRY
       SMALL=>GWFMNWDAT(Igrid)%SMALL
       HMAX=>GWFMNWDAT(Igrid)%HMAX
       MNWNAME=>GWFMNWDAT(Igrid)%MNWNAME
@@ -2155,7 +2148,6 @@ C     ------------------------------------------------------------------
       GWFMNWDAT(Igrid)%KSPREF=>KSPREF
       GWFMNWDAT(Igrid)%IWELPT=>IWELPT
       GWFMNWDAT(Igrid)%PLOSS=>PLOSS
-      GWFMNWDAT(Igrid)%HDRY=>HDRY
       GWFMNWDAT(Igrid)%SMALL=>SMALL
       GWFMNWDAT(Igrid)%HMAX=>HMAX
       GWFMNWDAT(Igrid)%MNWNAME=>MNWNAME

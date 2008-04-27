@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.4.00 11/2/2007
+                            VERSION 1.5.00 4/28/2008
 
  LIST FILE: ibs2k.lst
                          UNIT    1
@@ -1112,6 +1112,6 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
   10    0.000      5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03
        5.5000E-03   0.000    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/10/25 12:54:51
- Elapsed run time:  0.125 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:38:42
+ Elapsed run time:  0.094 Seconds
 

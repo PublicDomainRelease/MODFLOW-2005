@@ -59,6 +59,14 @@ METHOD
 
 
 HISTORY
+      MODFLOW-2005 Version 1.5 4/28/2008 - Updated SFR, UZF, and LAK
+         Packages to the versions used in the GSFLOW coupled ground-water
+         and surface-water model. Also added the capability to use
+         different damping factors in the PCG Package for transient and
+         steady-state stress periods.  Added option "DDREFERENCE"
+         to the Output Control Files, which was an option implemented
+         in MODFLOW-2000.  Also fixed several miscellaneous problems.
+         All of the changes are documented in the release.txt file.
 
       MODFLOW-2005 Version 1.4 11/2/2007 - Added SWT Package, added
          adaptive damping to GMG, and fixed minor problems (see

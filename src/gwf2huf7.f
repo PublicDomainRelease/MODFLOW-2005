@@ -1,7 +1,7 @@
       MODULE GWFHUFMODULE
         INTEGER, SAVE,   POINTER ::IHUFCB,NHUF,NPHUF,IWETIT,IHDWET,
      1                             IOHUFHDS,IOHUFFLWS
-        REAL,    SAVE,   POINTER ::WETFCT,HDRY
+        REAL,    SAVE,   POINTER ::WETFCT
         CHARACTER(LEN=10),SAVE, POINTER, DIMENSION(:)     ::HGUNAM    
         INTEGER, SAVE,   POINTER, DIMENSION(:)     ::LTHUF
         INTEGER, SAVE,   POINTER, DIMENSION(:)     ::LAYWT
@@ -14,8 +14,8 @@
         REAL,    SAVE,   POINTER, DIMENSION(:)     ::HUFSY
         REAL,    SAVE,   POINTER, DIMENSION(:)     ::HUFHANI
         REAL,    SAVE,   POINTER, DIMENSION(:)     ::HUFKDEP
-        REAL,    SAVE,   POINTER, DIMENSION(:,:)   ::GS
-        REAL,    SAVE,   POINTER, DIMENSION(:,:,:) ::VKA
+        REAL,    SAVE,   POINTER, DIMENSION(:,:)   ::GS,SC2HUF
+        REAL,    SAVE,   POINTER, DIMENSION(:,:,:) ::VKAH
         REAL,    SAVE,   POINTER, DIMENSION(:,:,:) ::SC1
         REAL,    SAVE,   POINTER, DIMENSION(:,:,:) ::WETDRY
         REAL,    SAVE,   POINTER, DIMENSION(:,:,:) ::HK
@@ -28,7 +28,7 @@
       TYPE GWFHUFTYPE
         INTEGER, POINTER ::IHUFCB,NHUF,NPHUF,IWETIT,IHDWET,
      1                     IOHUFHDS,IOHUFFLWS 
-        REAL, POINTER    ::WETFCT,HDRY
+        REAL, POINTER    ::WETFCT
         CHARACTER(LEN=10), POINTER, DIMENSION(:)     ::HGUNAM    
         INTEGER,   POINTER, DIMENSION(:)     ::LTHUF
         INTEGER,   POINTER, DIMENSION(:)     ::LAYWT
@@ -41,8 +41,8 @@
         REAL,      POINTER, DIMENSION(:)     ::HUFSY
         REAL,      POINTER, DIMENSION(:)     ::HUFHANI
         REAL,      POINTER, DIMENSION(:)     ::HUFKDEP
-        REAL,      POINTER, DIMENSION(:,:)   ::GS
-        REAL,      POINTER, DIMENSION(:,:,:) ::VKA
+        REAL,      POINTER, DIMENSION(:,:)   ::GS,SC2HUF
+        REAL,      POINTER, DIMENSION(:,:,:) ::VKAH
         REAL,      POINTER, DIMENSION(:,:,:) ::SC1
         REAL,      POINTER, DIMENSION(:,:,:) ::WETDRY
         REAL,      POINTER, DIMENSION(:,:,:) ::HK
@@ -66,12 +66,13 @@ C
 C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:NCOL,NROW,NLAY,BOTM,ITRSS,LAYHDT,LAYHDS,
-     1                      IOUT
+     1                      IOUT,ISSFLG,NPER,IBOUND,LBOTM
+      USE GWFBASMODULE,ONLY:HDRY
       USE GWFHUFMODULE,ONLY:IHUFCB,NHUF,NPHUF,IWETIT,IHDWET,IOHUFHDS,
-     1                      IOHUFFLWS,WETFCT,HDRY,HGUNAM,LTHUF,LAYWT,
+     1                      IOHUFFLWS,WETFCT,HGUNAM,LTHUF,LAYWT,
      2                      IHGUFLG,HGUHANI,HGUVANI,HUFHK,HUFVK,HUFSS,
-     3                      HUFSY,HUFHANI,HUFKDEP,GS,VKA,SC1,WETDRY,HK,
-     4                      HKCC,HUFTMP,VDHD,HUFTHK,VDHT,A9  
+     3                      HUFSY,HUFHANI,HUFKDEP,GS,VKAH,SC1,WETDRY,HK,
+     4                      HKCC,HUFTMP,VDHD,HUFTHK,VDHT,A9,SC2HUF 
 
       CHARACTER*10 TMPNAM,CTMP1
       CHARACTER*14 LAYPRN(5),TYPNAM(2),VKANAM(2),WETNAM(2),HANNAM,
@@ -86,6 +87,7 @@ C
       CHARACTER*200 LINE
       CHARACTER*24 ANAME(8)
       CHARACTER*4 PTYP
+      DOUBLE PRECISION HN
 C
       DATA ANAME(1) /'   HYD. COND. ALONG ROWS'/
       DATA ANAME(2) /'  HORIZ. ANI. (COL./ROW)'/
@@ -99,7 +101,7 @@ C
 C     ------------------------------------------------------------------
       ALLOCATE(IHUFCB,NHUF,NPHUF,IWETIT,IHDWET,IOHUFHDS,
      &         IOHUFFLWS)
-      ALLOCATE(WETFCT,HDRY)
+      ALLOCATE(WETFCT)
 C
 C1------IDENTIFY PACKAGE
       WRITE(IOUT,1) IN
@@ -243,7 +245,9 @@ C
 C6------ALLOCATE SPACE FOR ARRAYS.
       ALLOCATE(HK(NCOL,NROW,NLAY))
       ALLOCATE(HKCC(NCOL,NROW,NLAY))
-      ALLOCATE(VKA(NCOL,NROW,NLAY))
+      ALLOCATE(VKAH(NCOL,NROW,NLAY))
+      ALLOCATE(SC2HUF(NCOL,NROW))
+      SC2HUF = 0.0
       IF(ITRSS.NE.0)THEN 
         ALLOCATE(SC1(NCOL,NROW,NLAY))
       ELSE
@@ -548,6 +552,41 @@ C-------SUBSTITUTE AND PREPARE DATA FOR HYDROGEOLOGIC-UNIT FLOW PACKAGE
 C
 C-------RETURN
       CALL GWF2HUF7PSV(IGRID)
+!  RGN DEFINE SECONDARY STORAGE COEFFICIENT FOR SFR2 AND UZF1
+!  DETERMINE IF THERE IS A TRANSIENT STRESS PERIOD
+      ISS = 1
+      DO KPER = 1 , NPER
+        IF ( ISSFLG(KPER).EQ.0 ) ISS = 0
+      END DO
+      IF(ISS.EQ.0) THEN
+C   IF CONVERTIBLE LAYER GET PRIMARY STORAGE
+        DO  I=1,NROW
+          DO  J=1,NCOL
+            K = 0
+            KK = 1
+            UPLAY: DO WHILE ( KK.LE.NLAY )
+              IF( IBOUND(J,I,KK).GT.0 ) THEN
+                K = KK
+                EXIT UPLAY
+              ELSE
+                KK = KK + 1
+              END IF
+            END DO UPLAY
+            IF(LTHUF(K).NE.0) THEN
+              IF ( K.GT.0 ) THEN
+! TRICK SUBROUTINE TO THINK UPERMOST LAYER IS UNCONFINED
+                TOP=BOTM(J,I,LBOTM(K)-1)
+                BOT=BOTM(J,I,LBOTM(K))
+                HO=TOP-1.0E-1
+                HN=TOP-1.0D-1
+                CALL SGWF2HUF7SC2(0,J,I,K,TOP,BOT,HN,HO,1.0,CHCOF,
+     &                      CRHS,HUFTHK,NCOL,NROW,NHUF,1.0,IOUT)
+                SC2HUF(J,I) = CHCOF
+              END IF
+            END IF
+          END DO
+        END DO
+      END IF  
       RETURN
       END
 
@@ -599,8 +638,9 @@ C     ------------------------------------------------------------------
 C
 c      USE PARAMMODULE, ONLY:RMLT,IZON,NMLTAR,NZONAR
       USE PARAMMODULE
+      USE GWFBASMODULE,ONLY:HDRY
 C
-      USE GWFHUFMODULE,ONLY:NHUF,IWETIT,IHDWET,HDRY,WETFCT,HK,VKA,SC1,
+      USE GWFHUFMODULE,ONLY:NHUF,IWETIT,IHDWET,WETFCT,HK,VKAH,SC1,
      1                      WETDRY,HUFTHK,HKCC,HUFHK,HUFHANI,HUFVK,
      2                      HUFSS,IHGUFLG,HUFSY,VDHD,HUFTMP,VDHT,
      3                      HUFKDEP,GS,A9,HGUHANI,HGUVANI,HGUNAM  
@@ -636,7 +676,7 @@ C Zero out arrays
           DO 30 J=1,NCOL
             HK(J,I,K)=0.
             HKCC(J,I,K)=0.
-            VKA(J,I,K)=0.
+            VKAH(J,I,K)=0.
             IF(ITRSS.NE.0 .AND. KITER.EQ.0) SC1(J,I,K)=0.
    30     CONTINUE
    20   CONTINUE
@@ -701,7 +741,7 @@ C-----Populate arrays
      &                     HNEW,GS)
 C
           CALL SGWF2HUF7VKA(NCOL,NROW,NLAY,BOTM,NBOTM,I,J,TOPU,BOTU,
-     &                      VKA,HNEW,IBOUND,HUFHK,HUFVK,NHUF,NU,
+     &                      VKAH,HNEW,IBOUND,HUFHK,HUFVK,NHUF,NU,
      &                      HUFKDEP(NU),IOUT,GS)
           IF(ITRSS.NE.0 .AND. KITER.EQ.0 .AND. KPER.EQ.0 .AND.
      &       KSTP.EQ.0) THEN
@@ -715,11 +755,11 @@ C
 C
 C
 C3------CHECK HUF DATA.
-      CALL SGWF2HUF7N(HNEW,IBOUND,HK,VKA,
+      CALL SGWF2HUF7N(HNEW,IBOUND,HK,VKAH,
      &       NCOL,NROW,NLAY,IOUT,WETDRY,BOTM,NBOTM)
 C
 C-------CALCULATE CV
-      CALL SGWF2HUF7VCND(IBOUND,CV,VKA,DELR,DELC,
+      CALL SGWF2HUF7VCND(IBOUND,CV,VKAH,DELR,DELC,
      &       NCOL,NROW,NLAY)
 C
       IF(ILVDA.EQ.0) THEN
@@ -858,7 +898,7 @@ C4------RETURN
 
 c======================================================================
       SUBROUTINE SGWF2HUF7VKA(
-     & NCOL,NROW,NLAY,BOTM,NBOTM,I,J,TOPU,BOTU,VKA,HNEW,IBOUND,HUFHK,
+     & NCOL,NROW,NLAY,BOTM,NBOTM,I,J,TOPU,BOTU,VKAH,HNEW,IBOUND,HUFHK,
      & HUFVK,NHUF,NU,LAMBDA,IOUT,GS)
 C
 C     ******************************************************************
@@ -872,7 +912,7 @@ C     ------------------------------------------------------------------
       DOUBLE PRECISION HNEW
       REAL TOP1,TOP2,TOP3,RMID1,RMID2,LAMBDA,MULTKDEP
       DIMENSION HNEW(NCOL,NROW,NLAY),BOTM(NCOL,NROW,0:NBOTM),
-     &  VKA(NCOL,NROW,NLAY),HUFHK(NHUF),HUFVK(NHUF),
+     &  VKAH(NCOL,NROW,NLAY),HUFHK(NHUF),HUFVK(NHUF),
      &  IBOUND(NCOL,NROW,NLAY),GS(NCOL,NROW)
 C     ------------------------------------------------------------------
 
@@ -905,7 +945,7 @@ C---Check to see if negative thickness
             WRITE(IOUT,500) I,J,NU
             CALL USTOP(' ')
           ENDIF
-          VKA(J,I,KL)=VKA(J,I,KL)+THCK/HUFVK(NU)
+          VKAH(J,I,KL)=VKAH(J,I,KL)+THCK/HUFVK(NU)
         ELSE
           MULTKDEP = 1.0
           IF(LAMBDA.NE.0.) CALL SGWF2HUF7KDEP(LAMBDA,RMID1,RMID2,
@@ -917,7 +957,7 @@ C---Check to see if negative thickness
             WRITE(IOUT,520) I,J,NU
             CALL USTOP(' ')
           ENDIF
-          VKA(J,I,KL)=VKA(J,I,KL)+THCK*HUFVK(NU)/(MULTKDEP*HUFHK(NU))
+          VKAH(J,I,KL)=VKAH(J,I,KL)+THCK*HUFVK(NU)/(MULTKDEP*HUFHK(NU))
         ENDIF
   300 CONTINUE
 C
@@ -1213,7 +1253,7 @@ C4------RETURN
       END
 
 c======================================================================
-      SUBROUTINE SGWF2HUF7N(HNEW,IBOUND,HK,VKA,NCOL,
+      SUBROUTINE SGWF2HUF7N(HNEW,IBOUND,HK,VKAH,NCOL,
      &  NROW,NLAY,IOUT,WETDRY,BOTM,NBOTM)
 C
 C     ******************************************************************
@@ -1223,17 +1263,18 @@ C
 C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
       USE GLOBAL,      ONLY:LBOTM
+      USE GWFBASMODULE,ONLY:HNOFLO
       USE GWFHUFMODULE,ONLY:LAYWT
 C
       DOUBLE PRECISION HNEW
 C
       DIMENSION HNEW(NCOL,NROW,NLAY),IBOUND(NCOL,NROW,NLAY),
-     &    HK(NCOL,NROW,NLAY),VKA(NCOL,NROW,NLAY),
+     &    HK(NCOL,NROW,NLAY),VKAH(NCOL,NROW,NLAY),
      &    WETDRY(NCOL,NROW,NLAY),BOTM(NCOL,NROW,0:NBOTM)
 C
 C     ------------------------------------------------------------------
       ZERO=0.
-      HCNV=888.88
+      HCNV=HNOFLO
       IZFLG=0
 C
 C-------CONVERT CELL TO NO FLOW IF CELL THICKNESS IS 0.
@@ -1249,9 +1290,10 @@ C-------CONVERT CELL TO NO FLOW IF CELL THICKNESS IS 0.
             HNEW(J,I,K)=HCNV
             IF(LAYWT(K).NE.0) WETDRY(J,I,LAYWT(K))=ZERO
             WRITE(IOUT,25) K,I,J
-   25       FORMAT(1X,
-     &  'Converting cell to no flow due to 0 thickness (Layer,row,col)',
-     &     I4,',',I4,',',I4)
+   25       FORMAT(1X,'WARNING: Converting cell to no flow due to 0',
+     &      ' thickness (Layer,row,col)',I4,',',I4,',',I4,/,1X,
+     &      'Head at this cell set to HNOFLO. To avoid warning, set',
+     &      ' IBOUND=0 or thickness>0.')
          END IF
       END IF
    30 CONTINUE
@@ -1289,7 +1331,7 @@ C
 C3B-----CHECK VERTICAL HYDRAULIC CONDUCTIVITY AND CONFINING BED
 C3B-----VERTICAL HYDRAULIC CONDUCTIVITY.
          IF(NLAY.GT.1) THEN
-            IF(VKA(J,I,K).NE.ZERO) GOTO 50
+            IF(VKAH(J,I,K).NE.ZERO) GOTO 50
          END IF
 C
 C3C-----ALL TRANSMISSIVE TERMS ARE 0, SO CONVERT CELL TO NO FLOW.
@@ -1365,7 +1407,7 @@ C7------RETURN.
       RETURN
       END
 c======================================================================
-      SUBROUTINE SGWF2HUF7VCND(IBOUND,CV,VKA,DELR,DELC,
+      SUBROUTINE SGWF2HUF7VCND(IBOUND,CV,VKAH,DELR,DELC,
      &  NCOL,NROW,NLAY)
 C
 C     ******************************************************************
@@ -1377,7 +1419,7 @@ C     ------------------------------------------------------------------
 C
 C
       DIMENSION IBOUND(NCOL,NROW,NLAY),
-     &    CV(NCOL,NROW,NLAY),VKA(NCOL,NROW,NLAY),
+     &    CV(NCOL,NROW,NLAY),VKAH(NCOL,NROW,NLAY),
      &    DELR(NCOL),DELC(NROW)
 C     ------------------------------------------------------------------
 C
@@ -1386,8 +1428,8 @@ C5------CALCULATE VERTICAL CONDUCTANCE
         DO 10 K=1,NLAY-1
         DO 11 I=1,NROW
         DO 11 J=1,NCOL
-          IF(IBOUND(J,I,K).NE.0.AND.VKA(J,I,K).GT.0)  THEN
-            CV(J,I,K)=DELR(J)*DELC(I)/VKA(J,I,K)
+          IF(IBOUND(J,I,K).NE.0.AND.VKAH(J,I,K).GT.0)  THEN
+            CV(J,I,K)=DELR(J)*DELC(I)/VKAH(J,I,K)
           ELSE
             CV(J,I,K)=0.
           ENDIF
@@ -2111,7 +2153,7 @@ C-----------Compute contributions for this unit to flow in layer
 C-------------Layer converts, water table is coming down
                 IF(HN.LT.TOPU.AND.HN.GT.BOTU) THEN
 C---------------New head is in this unit
-                  CHCOF=RMLT0*BNP
+                  CHCOF=CHCOF+RMLT0*BNP
                   CRHS=CRHS+RMLT0*BNP*TOPU
                   IF(IFLG.EQ.1) CRHS=CRHS-RMLT0*BNP*HN
                 ELSEIF(HN.LT.BOTU) THEN
@@ -2134,7 +2176,7 @@ C---------------Water table is coming down
                   IF(HO.LT.TOPU.AND.HO.GT.BOTU .AND.
      &               HN.LT.TOPU.AND.HN.GT.BOTU) THEN
 C-----------------Old and new heads are both in this unit
-                    CHCOF=RMLT0*BNP
+                    CHCOF=CHCOF+RMLT0*BNP
                     CRHS=CRHS+RMLT0*BNP*HO
                     IF(IFLG.EQ.1) CRHS=CRHS-RMLT0*BNP*HN
                   ELSEIF(HO.LT.TOPU.AND.HO.GT.BOTU) THEN
@@ -2142,7 +2184,7 @@ C-----------------Old head is in this unit
                     CRHS=CRHS+RMLT0*BNP*(HO-BOTU)
                   ELSEIF(HN.LT.TOPU.AND.HN.GT.BOTU) THEN
 C-----------------New head is in this unit
-                    CHCOF=RMLT0*BNP
+                    CHCOF=CHCOF+RMLT0*BNP
                     CRHS=CRHS+RMLT0*BNP*TOPU
                     IF(IFLG.EQ.1) CRHS=CRHS-RMLT0*BNP*HN
                   ELSEIF(HO.GT.TOPU.AND.HN.LT.BOTU) THEN
@@ -2154,7 +2196,7 @@ C---------------Water table is going up
                   IF(HO.LT.TOPU.AND.HO.GT.BOTU .AND.
      &               HN.LT.TOPU.AND.HN.GT.BOTU) THEN
 C-----------------Old and new heads are both in this unit
-                    CHCOF=RMLT0*BNP
+                    CHCOF=CHCOF+RMLT0*BNP
                     CRHS=CRHS+RMLT0*BNP*HO
                     IF(IFLG.EQ.1) CRHS=CRHS-RMLT0*BNP*HN
                   ELSEIF(HO.LT.TOPU.AND.HO.GT.BOTU) THEN
@@ -2162,7 +2204,7 @@ C-----------------Old head is in this unit
                     CRHS=CRHS+RMLT0*BNP*(HO-TOPU)
                   ELSEIF(HN.LT.TOPU.AND.HN.GT.BOTU) THEN
 C-----------------New head is in this unit
-                    CHCOF=RMLT0*BNP
+                    CHCOF=CHCOF+RMLT0*BNP
                     CRHS=CRHS+RMLT0*BNP*BOTU
                     IF(IFLG.EQ.1) CRHS=CRHS-RMLT0*BNP*HN
                   ELSEIF(HO.LT.BOTU.AND.HN.GT.TOPU) THEN
@@ -5022,7 +5064,6 @@ C     ------------------------------------------------------------------
       DEALLOCATE(GWFHUFDAT(IGRID)%IOHUFHDS)
       DEALLOCATE(GWFHUFDAT(IGRID)%IOHUFFLWS)
       DEALLOCATE(GWFHUFDAT(IGRID)%WETFCT)
-      DEALLOCATE(GWFHUFDAT(IGRID)%HDRY)
       DEALLOCATE(GWFHUFDAT(IGRID)%HGUNAM)
       DEALLOCATE(GWFHUFDAT(IGRID)%LTHUF)
       DEALLOCATE(GWFHUFDAT(IGRID)%LAYWT)
@@ -5035,7 +5076,7 @@ C     ------------------------------------------------------------------
       DEALLOCATE(GWFHUFDAT(IGRID)%HUFSY)
       DEALLOCATE(GWFHUFDAT(IGRID)%HUFKDEP)
       DEALLOCATE(GWFHUFDAT(IGRID)%GS)
-      DEALLOCATE(GWFHUFDAT(IGRID)%VKA)
+      DEALLOCATE(GWFHUFDAT(IGRID)%VKAH)
       DEALLOCATE(GWFHUFDAT(IGRID)%SC1)
       DEALLOCATE(GWFHUFDAT(IGRID)%WETDRY)
       DEALLOCATE(GWFHUFDAT(IGRID)%HK)
@@ -5045,6 +5086,7 @@ C     ------------------------------------------------------------------
       DEALLOCATE(GWFHUFDAT(IGRID)%HUFTHK)
       DEALLOCATE(GWFHUFDAT(IGRID)%VDHT)
       DEALLOCATE(GWFHUFDAT(IGRID)%A9)
+      DEALLOCATE(GWFHUFDAT(IGRID)%SC2HUF)
 C
       RETURN
       END
@@ -5067,7 +5109,6 @@ C     ------------------------------------------------------------------
       IOHUFHDS=>GWFHUFDAT(IGRID)%IOHUFHDS
       IOHUFFLWS=>GWFHUFDAT(IGRID)%IOHUFFLWS
       WETFCT=>GWFHUFDAT(IGRID)%WETFCT
-      HDRY=>GWFHUFDAT(IGRID)%HDRY
       HGUNAM=>GWFHUFDAT(IGRID)%HGUNAM
       LTHUF=>GWFHUFDAT(IGRID)%LTHUF
       LAYWT=>GWFHUFDAT(IGRID)%LAYWT
@@ -5080,7 +5121,7 @@ C     ------------------------------------------------------------------
       HUFSY=>GWFHUFDAT(IGRID)%HUFSY
       HUFKDEP=>GWFHUFDAT(IGRID)%HUFKDEP
       GS=>GWFHUFDAT(IGRID)%GS
-      VKA=>GWFHUFDAT(IGRID)%VKA
+      VKAH=>GWFHUFDAT(IGRID)%VKAH
       SC1=>GWFHUFDAT(IGRID)%SC1
       WETDRY=>GWFHUFDAT(IGRID)%WETDRY
       HK=>GWFHUFDAT(IGRID)%HK
@@ -5089,7 +5130,8 @@ C     ------------------------------------------------------------------
       VDHD=>GWFHUFDAT(IGRID)%VDHD
       HUFTHK=>GWFHUFDAT(IGRID)%HUFTHK
       VDHT=>GWFHUFDAT(IGRID)%VDHT
-      A9=>GWFHUFDAT(IGRID)%A9      
+      A9=>GWFHUFDAT(IGRID)%A9
+      SC2HUF=>GWFHUFDAT(IGRID)%SC2HUF     
 C
       RETURN
       END
@@ -5112,7 +5154,6 @@ C     ------------------------------------------------------------------
       GWFHUFDAT(IGRID)%IOHUFHDS=>IOHUFHDS
       GWFHUFDAT(IGRID)%IOHUFFLWS=>IOHUFFLWS
       GWFHUFDAT(IGRID)%WETFCT=>WETFCT
-      GWFHUFDAT(IGRID)%HDRY=>HDRY
       GWFHUFDAT(IGRID)%HGUNAM=>HGUNAM
       GWFHUFDAT(IGRID)%LTHUF=>LTHUF
       GWFHUFDAT(IGRID)%LAYWT=>LAYWT
@@ -5125,7 +5166,7 @@ C     ------------------------------------------------------------------
       GWFHUFDAT(IGRID)%HUFSY=>HUFSY
       GWFHUFDAT(IGRID)%HUFKDEP=>HUFKDEP
       GWFHUFDAT(IGRID)%GS=>GS
-      GWFHUFDAT(IGRID)%VKA=>VKA
+      GWFHUFDAT(IGRID)%VKAH=>VKAH
       GWFHUFDAT(IGRID)%SC1=>SC1
       GWFHUFDAT(IGRID)%WETDRY=>WETDRY
       GWFHUFDAT(IGRID)%HK=>HK
@@ -5135,6 +5176,7 @@ C     ------------------------------------------------------------------
       GWFHUFDAT(IGRID)%HUFTHK=>HUFTHK
       GWFHUFDAT(IGRID)%VDHT=>VDHT
       GWFHUFDAT(IGRID)%A9=>A9
+      GWFHUFDAT(IGRID)%SC2HUF=>SC2HUF
 C
       RETURN
       END

@@ -1,8 +1,49 @@
-LAK7_Read_Me.txt
+LAK_Read_Me.txt
 
 Modifications to the Lake(LAK3) Package since it was documented by
 Merritt and Konikow (2000). The modifications are listed starting from
 the most recent.
+
+
+Changes to the LAK package for MODFLOW-2005 version 1.5:
+
+The ability to simulate vertical unsaturated flow beneath lakes was added
+to the Lake (LAK7) Package (Merritt and Konikow, 2000). An unsaturated zone
+can develop beneath lakes whenever the ground-water head in the underlying
+finite-difference cell is less than the bottom of the lake cell. This can
+occur when the hydraulic conductivity of the lakebed is much less than
+that of the underlying aquifer and/or ground water is pumped from a well
+or wells near the lake.
+
+The LAK7 Package was revised to compute unsaturated flow beneath a lake
+using the Unsaturated-Zone Flow (UZF1) Package (Niswonger and others, 2006)
+whenever the ground-water head in an underlying cell is beneath the bottom
+of the lake cell. Hydraulic properties of the unsaturated zone in cells
+beneath a lake are specified in the data input for the UZF1 Package in the
+same manner as any other cell that is used to simulate unsaturated flow
+from land surface to the water table. Unsaturated flow beneath a lake cell
+is computed from the bottom of the lake cell. The bottom of a lake cell
+can be higher than the water table in the underlying aquifer cell, in which
+case leakage is routed through the unsaturated zone between the lakebed and
+underlying water table.
+
+Gravity drainage through the unsaturated zone beneath lakes is simulated
+using the same method as that used to simulate unsaturated-zone flow beneath
+land surface and streams. Unsaturated flow and water-contents beneath a
+particular lake can be printed using the option variable NUZGAG in the data
+input for the UZF1 Package. The maximum lake leakage through a lakebed is
+limited to the saturated vertical hydraulic conductivity multiplied by the
+top area of the finite-difference cell. Initial water contents within the
+unsaturated zone beneath a lake can be calculated using a steady-state
+simulation or specified in the input for the Unsaturated-Zone Flow Package.
+A more complete description of the changes to the LAK Package is included
+on page 78 in Markstrom and others (2008).
+
+Another small change to the LAK Package was to make variables related to
+the calculations of lake stage double precision. Prior to this change,
+differences in values for single precision variables were causing MODFLOW
+to fail to converge for some simulations.
+
 
 LAK3 Package updates (May-July 2006): Modifications by D.E. Prudic and R.G.
 Niswonger
@@ -203,6 +244,12 @@ References:
 
 Fread, D.L., 1993, Flow Routing, in Maidment, D.R., ed., Handbook of 
 hydrology: New York, McGraw-Hill, Chapter 10, p. 10.1-10.36.
+
+Markstrom, S.L., Niswonger, R.G., Regan, R.S., Prudic, D.E., and
+Barlow, P.M., 2008, GSFLOW—Coupled ground-water and surface-water
+flow model based on the integration of the Precipitation-Runoff Modeling
+System (PRMS) and the Modular Ground-Water Flow Model (MODFLOW-2005):
+U.S. Geological Survey Techniques and Methods 6-D1, 240 p.
 
 Merritt, M.L., and Konikow, L.F., 2000, Documentation of a computer
 program to simulate lake-aquifer interaction using the MODFLOW

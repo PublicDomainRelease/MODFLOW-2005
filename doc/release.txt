@@ -11,7 +11,48 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
-o Version 1.4.00
+o Version 1.5.00 4/28/2008
+   PCG7 -- Added capability to use different damping factors for transient
+       and steady-state stress periods. See readme_PCG.txt.
+   GWF2LPF7, GWF2BCF7, GWF2HUF7 -- Set HNEW=HNOFLO when a cell initially
+       has all transmissive terms as 0 rather than setting HNEW=888.88 .
+   GWF2BAS7 --  Added variable HDRY to module GWFBASMODULE.  The LPF, BCF,
+       HUF, MNW, UZF, and SFR Packages were modified to access HDRY through
+       GWFBASMODULE.
+       Added the ability to change the reference time step when computing
+       drawdown, which was also an option in MODFLOW-2000.  This is done
+       through the Output Control option. For each time step for which
+       output is desired, "DDREFERENCE" can be optionally specified at the
+       end of any "PERIOD n STEP n" line, and indicates that the heads
+       calculated at the end of the associated stress period and time step
+       are to be used as the reference heads for calculating drawdown for
+       all subsequent time steps up to the next occurrence of DDREFERENCE.
+       By default, the initial heads will be used for calculating drawdown.
+       For example, if the user specifies the following input line:
+          PERIOD 2 STEP 1 DDREFERENCE
+       then heads calculated at the end of time step 1 in stress period 2
+       will be used as the reference heads for calculating drawdown until
+       DDREFERENCE occurs in another "PERIOD n STEP n" line.
+   GWF2GAG7 -- Removed duplicate reference to variable RNF in the
+       USE GWFLAKMODULE statement in SGWF2GAG7LO.
+   OBS2BAS7 -- Fixed a problem where a head observation was incorrectly
+       omitted when some of the neighboring cells used in the horizontal
+       spatial interpolation were dry.
+   GWF2SFR7FM -- Fixed precision problem that caused convergence problems
+       for steady-state time steps.  Updated to the version used in GSFLOW.
+       See readme_SFR.txt.
+   GWF2LAK7 and GWF2UZF1 -- Updated to the version used in GSFLOW.  UZF
+       has a small change in input data.  See readme_LAK.txt and
+       readme_UZF.pdf.
+   GWF2CHD7, GWF2GHB7, GWF2RIV7, GWF2DRN7 -- Fixed bug that caused the
+       program to stop when the NOPRINT option is used with parameters.
+   GWF2HUF7 -- A bug was fixed to allow proper handling of SY parameters.
+       HUF was also modified to calculate vertical hydraulic conductivity
+       and specific yield for all cells in the uppermost cells at the
+       beginning of the simulation as required for use with UZF. See
+       readme_HUF.txt.
+
+o Version 1.4.00  11/02/2007
    Added SUB-WT Package
    GMG -- Added adaptive damping option as documented in "GMG_Damping.pdf"
        and "Banta_damping_paper.pdf" in the doc directory.

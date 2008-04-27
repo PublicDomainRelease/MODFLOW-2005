@@ -1,7 +1,32 @@
-SFR7_Read_Me.txt
+SFR_read_me.txt
 
 Modifications to the Streamflow Routing Package originally documented
 by Prudic and others (2004) and Niswonger and Prudic (2005):
+
+
+Changes to the SFR7 package for MODFLOW-2005 version 1.5:
+
+A few small changes were made to the Streamflow Routing Package
+(Niswonger and Prudic, 2005) since its last release. A change was made in
+the calculation of stream seepage during steady-state simulations. In the
+previous version, single precision variables were used during intermediate
+calculations of streambed seepage. As a result, the model could fail to
+converge for some steady-state simulations. The code was modified such
+that only double precision arithmetic is used during the calculations of
+streambed seepage during steady-state simulations.
+
+Another larger modification was made to SFR7 to include the capability of
+distributed streamflow routing using the kinematic-wave approximation to
+the Saint-Venant Equations (Lighthill and Whitham, 1955). This new
+capability is described in Markstrom and others (2008) on pages 68-69.
+This capability requires the addition of one new input variable that needs
+to be appended to the end of the first record of input variables in the
+SFR7. This new input variable is a flag that specifies whether or not the
+kinematic-wave equation will be used to route water in channels. The
+updated input instructions for SFR7 are documented in Markstrom and others
+(2008), pp 202-210.
+
+
 
 Update (June 2006):
 
@@ -54,6 +79,19 @@ and lake outflow was sensitive to small changes in lake stage.
 
 
 References:
+
+References
+
+Lighthill, M.J., and Whitham, G.B., 1955, On kinematic floods—flood
+movements in long rivers: Proceedings, R. Soc. London, v. A220,
+p. 281-316.
+
+Markstrom, S.L., Niswonger, R.G., Regan, R.S., Prudic, D.E., and
+Barlow, P.M., 2008, GSFLOW—Coupled ground-water and surface-water
+flow model based on the integration of the Precipitation-Runoff
+Modeling System (PRMS) and the Modular Ground-Water Flow Model
+(MODFLOW-2005): U.S. Geological Survey Techniques and Methods 6-D1,
+240 p.
 
 Merritt, M.L., and Konikow, L.F., 2000, Documentation of a computer
 program to simulate lake-aquifer interaction using the MODFLOW

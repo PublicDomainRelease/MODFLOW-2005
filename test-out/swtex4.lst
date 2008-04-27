@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.4.00 11/2/2007
+                            VERSION 1.5.00 4/28/2008
 
  LIST FILE: swtex4.lst
                          UNIT   92
@@ -3184,7 +3184,7 @@ CHNGE IN GEOSTATIC STRS PRINT FORMAT IS NUMBER   4
              STORAGE =  3013379584.0000               STORAGE =      130388.1016
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =   867873088.0000                 WELLS =       39600.0000
-    INTERBED STORAGE =    27110926.0000      INTERBED STORAGE =        1508.4871
+    INTERBED STORAGE =    27110928.0000      INTERBED STORAGE =        1508.4871
 
             TOTAL IN =  3908363520.0000              TOTAL IN =      171496.5938
 
@@ -5688,7 +5688,7 @@ CHNGE IN GEOSTATIC STRS PRINT FORMAT IS NUMBER   4
              STORAGE =   614984384.0000               STORAGE =       13694.0029
        CONSTANT HEAD =  1318676736.0000         CONSTANT HEAD =       26399.8965
                WELLS =  3155758592.0000                 WELLS =           0.0000
-    INTERBED STORAGE =     3927570.7500      INTERBED STORAGE =          86.0345
+    INTERBED STORAGE =     3927570.5000      INTERBED STORAGE =          86.0345
 
            TOTAL OUT =  5093347328.0000             TOTAL OUT =       40179.9336
 
@@ -6464,6 +6464,6 @@ CHNGE IN GEOSTATIC STRS PRINT FORMAT IS NUMBER   4
   19   0.00  0.00  0.00  0.00  0.00  0.00  3.86  2.75  2.74  3.85  0.00  0.00  0.00  0.00  0.00
   20   0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2007/10/25 12:56:23
- Elapsed run time:  1.390 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:40:12
+ Elapsed run time:  1.906 Seconds
 

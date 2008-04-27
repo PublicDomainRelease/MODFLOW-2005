@@ -594,7 +594,7 @@ C     ******************************************************************
       USE GWFGAGMODULE
       USE GWFBASMODULE, ONLY: DELT
       USE GWFLAKMODULE, ONLY:NLAKES,RNF,STAGES,VOL,STGNEW,PRECIP,EVAP,
-     1                       RNF,SURFIN,SURFOT,WITHDRW,SUMCNN,STGOLD2,
+     1                       SURFIN,SURFOT,WITHDRW,SUMCNN,STGOLD2,
      2                       VOLINIT,OVRLNDRNF
 C     ------------------------------------------------------------------
       DIMENSION CLAKE(NLAKES,NSOL)

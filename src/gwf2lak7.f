@@ -15,8 +15,8 @@ C
       MODULE GWFLAKMODULE
 C------VERSION 7;   CREATED FOR MODFLOW-2005
         CHARACTER(LEN=64),PARAMETER ::Version_lak =
-     +'$Id: gwf2lak7.f 3297 2007-05-03 17:48:43Z rsregan $'
-        INTEGER,SAVE,POINTER   ::NLAKES,NLAKESAR,ILKCB,NSSITR
+     +'$Id: gwf2lak7.f 3931 2008-03-10 22:36:12Z rniswon $'
+        INTEGER,SAVE,POINTER   ::NLAKES,NLAKESAR,ILKCB,NSSITR,LAKUNIT
         INTEGER,SAVE,POINTER   ::MXLKND,LKNODE,ICMX,NCLS,LWRT,NDV,NTRB
         REAL,   SAVE,POINTER   ::THETA,SSCNCR
 Crgn    Added budget variables for GSFLOW CSV file
@@ -63,7 +63,7 @@ Crsr    Allocate arrays in BD subroutine
         REAL,   SAVE, DIMENSION(:),  POINTER ::FLXINL,VOLOLD,GWIN,GWOUT
         REAL,   SAVE, DIMENSION(:),  POINTER ::DELH,TDELH,SVT,STGADJ
       TYPE GWFLAKTYPE
-        INTEGER,      POINTER   ::NLAKES,NLAKESAR,ILKCB,NSSITR
+        INTEGER,      POINTER   ::NLAKES,NLAKESAR,ILKCB,NSSITR,LAKUNIT
         INTEGER,      POINTER   ::MXLKND,LKNODE,ICMX,NCLS,LWRT,NDV,NTRB
         REAL,         POINTER   ::THETA,SSCNCR
 Crgn    Added budget variables for GSFLOW CSV file
@@ -135,8 +135,9 @@ C      SPECIFICATIONS:
 C      ------------------------------------------------------------------
 Crsr  Allocate lake variables used by SFR even if lakes not active so that
 C       argument lists are defined     
-      ALLOCATE (NLAKES, NLAKESAR,THETA)
+      ALLOCATE (NLAKES, NLAKESAR,THETA,LAKUNIT)
       NLAKES = 0
+      LAKUNIT = IN
       NLAKESAR = 1
       THETA = 0.0
       IF (IN.GT.0) THEN
@@ -326,7 +327,7 @@ Cdep  Allocate arrays that track lake budgets for dry lakes
         WITHDRW = 0.0
         FLWIN = 0.0
         FLWITER = 0.0
-        GWRATLIM= 0.0
+!rsr    GWRATLIM= 0.0
 Cdep  Allocate space for three arrays used in GAGE Package 
 C       when Solute Transport is active
         ALLOCATE (XLAKES(NLAKES,1), XLAKINIT(NLAKES,1))
@@ -390,6 +391,7 @@ C     ------------------------------------------------------------------
       USE GLOBAL,       ONLY: IOUT, NCOL, NROW, NLAY, IFREFM, IBOUND,
      +                        LBOTM, BOTM, DELR, DELC, ISSFLG
 C     USE GWFSFRMODULE, ONLY: NSS
+      !rsr: argument IUNITUZF not used
       CHARACTER*24 ANAME(2)
 C     CHARACTER*30 LFRMAT      !gsf
       DATA ANAME(1)/'           LAKE ID ARRAY'/
@@ -1117,8 +1119,14 @@ Cdep  Compute flow into lake for surface sources
       DO LAKE = 1,NLAKES
        IF(RNF(LAKE).GE.0.0) RUNF = RNF(LAKE)
        IF(RNF(LAKE).LT.0.0) RUNF =-RNF(LAKE)*PRCPLK(LAKE)*BGAREA(LAKE)
+Cdep11/30/2007  added runoff from overland flow when Unsaturated Flow is active
+       IF (IUNITUZF.GT.0) THEN
+         RUNOFF = OVRLNDRNF(LAKE)
+        ELSE
+         RUNOFF = 0.0
+       END IF
        FLWIN(LAKE) = PRCPLK(LAKE)*AREATABLE(1,LAKE)+SURFIN(LAKE)
-     +               +RUNF
+     +               +RUNF+RUNOFF
        IF(WTHDRW(LAKE).LE.0.0) FLWIN(LAKE) = FLWIN(LAKE) - WTHDRW(LAKE)
       END DO
 Cdep    commented the initialization of SURFOT; NO LONGER NEEDED.
@@ -1431,9 +1439,9 @@ Cdep Added conditional if to skip computation if no streams.
             INODE=IDIV(LAKE,IDV)
             IF (INODE.GT.0) THEN
               IF( DLKSTAGE(1,INODE).LT.BOTTMS(LAKE)) THEN
-                WRITE(IOUT,972)LAKE,BOTTMS(LAKE),
+                WRITE(IOUT,971)LAKE,BOTTMS(LAKE),
      +                         DLKSTAGE(1,INODE),INODE
-972             FORMAT(' BOTTOM ELEVATION OF LAKE ',I5,' IS ', F10.2,
+971             FORMAT(' BOTTOM ELEVATION OF LAKE ',I5,' IS ', F10.2,
      +                 ' AND IS ABOVE OUTLET ELEVATION OF ', F10.2,
      +                 ' FOR STREAM SEGMENT ',I5,/1X,
      +                 ' THIS WILL CAUSE PROBLEMS IN COMPUTING LAKE',
@@ -1462,19 +1470,19 @@ Cdep     1  SURFIN(LAKE)-SURFOT(LAKE)+SEEP(LAKE)
 Cdep      STGO = STGOLD(LAKE)
 Cdep      STGOLD(LAKE) = STGOLD(LAKE) + RESID/(DSRFOT(LAKE)+SUMCNN(LAKE))
 Cdep      IF(STGOLD(LAKE).LE.SSMX1.AND.STGOLD(LAKE).GE.SSMN1) GO TO 975
-Cdep  Test for transient or steady-state
+Cdep  Test for transient or steady-state--added runoff from UZF 11/30/2007
          IF(ISS.EQ.0) THEN
            IF(STGNEW(LAKE)-BOTTMS(LAKE).LT.CLOSEZERO) THEN
              RESID1 = FLWITER(LAKE)*DELT/AREATABLE(1,LAKE)
            ELSE
-             RESID1 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF-WTHDRW(LAKE)+
+             RESID1 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF+RUNOFF-WTHDRW(LAKE)+
      1                SURFIN(LAKE)-SURFOT(LAKE)+SEEP(LAKE))*
      2                DELT/FINTERP(STGITER(LAKE),LAKE)-(STGITER(LAKE)-
      3                STGOLD(LAKE))
            END IF
              OUTFLOW = SURFOT(LAKE)+ DSRFOT(LAKE)*DLSTG
              IF(OUTFLOW.LT.0.0)SURFOT(LAKE)=0.0
-             RESID2 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF-WTHDRW(LAKE)+
+             RESID2 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF+RUNOFF-WTHDRW(LAKE)+
      1                SURFIN(LAKE)-OUTFLOW+SEEP3(LAKE))*
      2                DELT/FINTERP(STGITER(LAKE)+DLSTG,LAKE)-
      4                (STGITER(LAKE)+DLSTG-STGOLD(LAKE))
@@ -1482,15 +1490,16 @@ Cdep  Test for transient or steady-state
            IF(STGNEW(LAKE)-BOTTMS(LAKE).LT.CLOSEZERO) THEN
              RESID1 = FLWITER(LAKE)*DELT/AREATABLE(1,LAKE)
            ELSE
-             RESID1 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF-WTHDRW(LAKE)+
+             RESID1 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF+RUNOFF-WTHDRW(LAKE)+
      1                SURFIN(LAKE)-SURFOT(LAKE)+SEEP(LAKE))*
      2                DELT/FINTERP(STGITER(LAKE),LAKE)
            END IF
              OUTFLOW = SURFOT(LAKE)+ DSRFOT(LAKE)*DLSTG
-             RESID2 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF-WTHDRW(LAKE)+
+             RESID2 = (PRECIP(LAKE)-EVAP(LAKE)+RUNF+RUNOFF-WTHDRW(LAKE)+
      1                SURFIN(LAKE)-OUTFLOW+SEEP3(LAKE))*
      2                DELT/FINTERP(STGITER(LAKE)+DLSTG,LAKE)
          END IF
+Cdep 11/30/2007  end changes to newton method
            IF (DABS(RESID2-RESID1).GT.0.0D0) THEN
              DERIV = (RESID2-RESID1)/(DLSTG)
              STGNEW(LAKE) = STGITER(LAKE) - RESID1/DERIV
@@ -1500,24 +1509,36 @@ Cdep  Test for transient or steady-state
 Cdep  Set STGNEW to lake bottom if STGNEW less than lake bottom.
         IF(STGNEW(LAKE).LT.BOTTMS(LAKE)) STGNEW(LAKE)=BOTTMS(LAKE)
         IF(ISS.NE.0)THEN
+Cdep 11/30/2007  Revised error statements
           IF(STGNEW(LAKE).LE.SSMX1.AND.STGNEW(LAKE).GE.SSMN1) GO TO 975
 Cdep  Revised write statement to print STGNEW instead of STGOLD
 Cdep      WRITE(IOUT,976) STGOLD(LAKE)
 Cdep  976 FORMAT(/1X,'ERROR -- COMPUTED STEADY-STATE STAGE EXCEEDS SPECIFIED
 Cdep     1 MAXIMUM OR MINIMUM ',F10.2)
-          WRITE(IOUT,976) STGNEW(LAKE)
-  976     FORMAT(/1X,'ERROR -- COMPUTED STAGE EXCEEDS SPECIFIED ',
-     1     'MAXIMUM OR MINIMUM ',F10.2)
-          LIMERR(LAKE) = LIMERR(LAKE) + 1
-          IF(LIMERR(LAKE).LT.10) GO TO 977
-          WRITE(IOUT,979) LAKE
-  979     FORMAT(1X,'LAKE',I3,3X,'STAGE REPEATEDLY EXCEEDS ITS BOUNDS ',
-     1         '--STOPPING EXECUTION')
-          CALL USTOP(' ')
+            IF (STGNEW(LAKE).LT.SSMN1) THEN
+              WRITE(IOUT,972) STGNEW(LAKE), SSMN1, LAKE 
+  972         FORMAT(/1X,'WARNING-- COMPUTED STAGE OF ',F10.2,
+     1               ' IS LESS THAN SPECIFIED MINIMUM ',F10.2,
+     2               ' FOR LAKE ',I5)
+            ELSE IF (STGNEW(LAKE).GT.SSMX1) THEN
+              WRITE(IOUT,973) STGNEW(LAKE), SSMX1, LAKE 
+  973         FORMAT(/1X,'WARNING-- COMPUTED STAGE OF ',F10.2,
+     1               ' IS GREATER THAN SPECIFIED MAXIMUM ',F10.2,
+     2               ' FOR LAKE ',I5, 'SOMETHING WRONG WITH MODEL',
+     3               ' CONCEPTUALIZATION')
+            END IF
+Cdep 11/30/2007 commented out where it switches to a bisection method          
+c          LIMERR(LAKE) = LIMERR(LAKE) + 1
+c          IF(LIMERR(LAKE).LT.10) GO TO 977
+c         WRITE(IOUT,979) LAKE
+c  979     FORMAT(1X,'LAKE',I3,3X,'STAGE REPEATEDLY EXCEEDS ITS BOUNDS ',
+c     1         '--STOPPING EXECUTION')
+c        CALL USTOP(' ')
 Cdep  Replaced STGOLD with STGNEW
 Cdep  977 STGOLD(LAKE) = (SSMN1+SSMX1)/2.0
 Cdep  975 STGNEW(LAKE) = STGOLD(LAKE)
-  977     STGNEW(LAKE) = (SSMN1+SSMX1)/2.0
+Cdep  977 STGNEW(LAKE) = (BOTTMS(LAKE)+SSMX1)/2.0
+Cdep 11/30/2007 end changes
   975     CONTINUE
         END IF
 Cdep  Replaced STGOLD with STGNEW
@@ -1583,6 +1604,7 @@ C     ------------------------------------------------------------------
       USE GWFBASMODULE, ONLY: MSUM, ICBCFL, IAUXSV, DELT, PERTIM, TOTIM,
      +                        HNOFLO, VBVL, VBNM
       USE GWFSFRMODULE, ONLY: STRIN, DLKSTAGE, SLKOTFLW
+      !rsr: argument IUNITSFR not used
       CHARACTER*16 TEXT
 Cdep  Added functions for interpolating between areas, derivatives,
 Cdep     and outflow rates
@@ -1691,7 +1713,14 @@ Cdep  Compute flow into lake for surface sources
       DO LAKE = 1,NLAKES
        IF(RNF(LAKE).GE.0.0) RUNF = RNF(LAKE)
        IF(RNF(LAKE).LT.0.0) RUNF =-RNF(LAKE)*PRCPLK(LAKE)*BGAREA(LAKE)
-       FLWIN(LAKE) = PRCPLK(LAKE)*AREATABLE(1,LAKE)+SURFIN(LAKE)+RUNF
+Cdep11/30/2007  added runoff from overland flow when Unsaturated Flow is active
+       IF (IUNITUZF.GT.0) THEN
+         RUNOFF = OVRLNDRNF(LAKE)
+        ELSE
+         RUNOFF = 0.0
+       END IF
+       FLWIN(LAKE) = PRCPLK(LAKE)*AREATABLE(1,LAKE)+SURFIN(LAKE)
+     +               +RUNF+RUNOFF
        IF(WTHDRW(LAKE).LE.0.0) FLWIN(LAKE) = FLWIN(LAKE) - WTHDRW(LAKE)
       END DO
 Cdep  End do loop for flow into lake
@@ -2558,8 +2587,8 @@ Cdep  added computed runoff from UZF Package to lake budget
       ELSE
         WRITE(IOUT,21055) KCNT
 21055 FORMAT(/1X,I3,' CONNECTED LAKE SET'/)
-        JIC = MSUB1(IIC)
-        WRITE(IOUT,11057) JIC, (MSUB(LIC,IIC),LIC=1,JIC)
+        JIC = MSUB1(KCNT)         !DEP changed IIC to KCNT; IIC not set
+        WRITE(IOUT,11057) JIC, (MSUB(LIC,KCNT),LIC=1,JIC)
       END IF
 11041 CONTINUE
  1041 CONTINUE
@@ -3031,7 +3060,8 @@ Cdep     used in solving lake stage in the FORMULATE SUBROUTINE (LAK7FM).
       DOUBLE PRECISION FUNCTION FINTERP (STAGE,LN)
 Cdep&rgn  FUNCTION LINEARLY INTERPOLATES BETWEEN TWO VALUES
 C          OF LAKE STAGE TO CACULATE LAKE AREA.
-C         ADDED 5/15/2006
+C         ADDED 5/16/2006-- changed 12/2007 from "DOUBLE PRECISION FUNCTION"
+C          to "FUNCTION"
       USE GWFLAKMODULE, ONLY: AREATABLE, DEPTHTABLE
       DOUBLE PRECISION STAGE
       TOLF2=1.0E-4
@@ -3065,7 +3095,8 @@ C------FUNCTION DERIVTERP FOR INTERPOLATING DERIVATIVE OF LAKE OUTFLOW.
       DOUBLE PRECISION FUNCTION DERIVTERP (STAGE,LSEG)
 Cdep&rgn  FUNCTION LINEARLY INTERPOLATES BETWEEN TWO VALUES
 C          OF LAKE STAGE TO CACULATE LAKE OUTFLOW DERIVATIVE.
-C         ADDED 5/16/2006
+C         ADDED 5/16/2006-- changed 12/2007 from "DOUBLE PRECISION FUNCTION"
+C          to "FUNCTION"
       USE GWFSFRMODULE, ONLY: DLKOTFLW, DLKSTAGE
       DOUBLE PRECISION STAGE, DEROTFLW
       TOLF2=1.0E-4
@@ -3079,7 +3110,7 @@ C         ADDED 5/16/2006
         FOLD=ABS(STAGE-DLKSTAGE(I,LSEG))     
         IF (FOLD .LE. TOLF2) THEN  
           DEROTFLW=DLKOTFLW(I,LSEG)
-          ISFLG = 1
+          IFLG = 1          !rsr, changed ISFLG to IFLG
         ELSEIF (STAGE.LT.DLKSTAGE(1,LSEG)) THEN
           DEROTFLW=0.0D0
           IFLG = 1
@@ -3102,7 +3133,8 @@ C------FUNCTION OUTFLWTERP FOR INTERPOLATING DERIVATIVE OF LAKE OUTFLOW.
       DOUBLE PRECISION FUNCTION OUTFLWTERP (STAGE,LSEG)
 Cdep&rgn  FUNCTION LINEARLY INTERPOLATES BETWEEN TWO VALUES
 C          OF LAKE OUTFLOW STORED IN SLKOTFLW ARRAY.
-C         ADDED 5/16/2006
+C         ADDED 5/16/2006-- changed 12/2007 from "DOUBLE PRECISION FUNCTION"
+C          to "FUNCTION"
       USE GWFSFRMODULE, ONLY: SLKOTFLW, DLKSTAGE
       DOUBLE PRECISION STAGE, OUTFLOW
       TOLF2=1.0E-4
@@ -3152,6 +3184,7 @@ C
       DEALLOCATE (GWFLAKDAT(IGRID)%STGOLD)
       DEALLOCATE (GWFLAKDAT(IGRID)%STGITER)
       DEALLOCATE (GWFLAKDAT(IGRID)%VOL)
+      DEALLOCATE (GWFLAKDAT(IGRID)%LAKUNIT)
       IF ( IUNITLAK.LT.1 ) RETURN
 
       DEALLOCATE (GWFLAKDAT(IGRID)%ILKCB)
@@ -3365,6 +3398,7 @@ Crsr allocate BD arrays
       TOTWTHDRW_LAK=>GWFLAKDAT(IGRID)%TOTWTHDRW_LAK
       TOTSURFIN_LAK=>GWFLAKDAT(IGRID)%TOTSURFIN_LAK
       TOTSURFOT_LAK=>GWFLAKDAT(IGRID)%TOTSURFOT_LAK
+      LAKUNIT=>GWFLAKDAT(IGRID)%LAKUNIT
       END SUBROUTINE SGWF2LAK7PNT
 
       SUBROUTINE SGWF2LAK7PSV1(IGRID)
@@ -3378,6 +3412,7 @@ C
       GWFLAKDAT(IGRID)%STGNEW=>STGNEW
       GWFLAKDAT(IGRID)%STGITER=>STGITER
       GWFLAKDAT(IGRID)%VOL=>VOL
+      GWFLAKDAT(IGRID)%LAKUNIT=>LAKUNIT
       END SUBROUTINE SGWF2LAK7PSV1
 
       SUBROUTINE SGWF2LAK7PSV(IGRID)

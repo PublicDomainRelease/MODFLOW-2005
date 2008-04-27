@@ -21,7 +21,7 @@ C
 C-------ASSIGN VERSION NUMBER AND DATE
       CHARACTER*40 VERSION
       CHARACTER*10 MFVNAM
-      PARAMETER (VERSION='1.4.00 11/2/2007')
+      PARAMETER (VERSION='1.5.00 4/28/2008')
       PARAMETER (MFVNAM='-2005')
 C
       CHARACTER*80 HEADNG(2)
@@ -37,7 +37,7 @@ C
      &           '    ', 'HUF2', 'CHOB', 'ETS ', 'DRT ', '    ', 'GMG ',  ! 42
      &           'hyd ', 'SFR ', '    ', 'GAGE', 'LVDA', '    ', 'lmt6',  ! 49
      &           'MNW1', '    ', '    ', 'KDEP', 'SUB ', 'UZF ', 'gwm ',  ! 56
-     &           'SWT ', '    ', '    ', '    ', '    ', '    ', '    ',  ! 63
+     &           'SWT ', 'cfp ', '    ', '    ', '    ', '    ', '    ',  ! 63
      &           37*'    '/
 C     ------------------------------------------------------------------
 C
@@ -205,8 +205,8 @@ C7C2A---FORMULATE THE FINITE DIFFERENCE EQUATIONS.
             IF(IUNIT(19).GT.0) CALL GWF2IBS7FM(KKPER,IGRID)
             IF(IUNIT(39).GT.0) CALL GWF2ETS7FM(IGRID)
             IF(IUNIT(40).GT.0) CALL GWF2DRT7FM(IGRID)
-            IF(IUNIT(55).GT.0) CALL GWF2UZF1FM(KKPER,KKSTP,
-     1                                 IUNIT(44),IUNIT(22),IGRID)
+            IF(IUNIT(55).GT.0) CALL GWF2UZF1FM(KKPER,KKSTP,KKITER,
+     1                           IUNIT(44),IUNIT(22),IUNIT(58),IGRID)
             IF(IUNIT(44).GT.0) CALL GWF2SFR7FM(KKITER,KKPER,KKSTP,
      1                              IUNIT(22),NLAKESAR,THETA,
      2                              STGOLD,STGNEW,VOL,IGRID)
@@ -243,7 +243,7 @@ C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
      2               HCLOSEPCG,RCLOSEPCG,ICNVG,KKSTP,KKPER,IPRPCG,
      3               MXITER,ITER1,NPCOND,NBPOL,NSTP(KKPER),NCOL,NROW,
      4               NLAY,NODES,RELAXPCG,IOUT,MUTPCG,IT1,DAMPPCG,BUFF,
-     5               HCSV,IERR,HPCG)
+     5               HCSV,IERR,HPCG,DAMPPCGT,ISSFLG(KKPER))
             END IF
             IF (IUNIT(42).GT.0) THEN
                    CALL GMG7PNT(IGRID)
