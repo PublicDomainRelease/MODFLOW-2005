@@ -69,6 +69,8 @@ OBJECTS = \
         parutl7.o \
         gwf2mnw7.o \
         utl7.o \
+        lmt7.o \
+        gwf2hydmod7.o \
         mf2005.o \
 
 # Define Task Function

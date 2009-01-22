@@ -263,8 +263,8 @@ C        ARRAYS.
         ELSE
           DO 90 I = 1,NETSEG-1
             WRITE(IOUT,100) I
-            CALL U2DREL(PXDP(1,1,I),ANAME(5),NROW,NCOL,0,IN,IOUT)
-            CALL U2DREL(PETM(1,1,I),ANAME(6),NROW,NCOL,0,IN,IOUT)
+            CALL U2DREL(PXDP(:,:,I),ANAME(5),NROW,NCOL,0,IN,IOUT)
+            CALL U2DREL(PETM(:,:,I),ANAME(6),NROW,NCOL,0,IN,IOUT)
    90     CONTINUE
         ENDIF
       ENDIF

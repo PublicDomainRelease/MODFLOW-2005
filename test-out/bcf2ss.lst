@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.5.00 4/28/2008
+                            VERSION 1.6.00 1/23/2009
 
  LIST FILE: bcf2ss.lst
                          UNIT    7
@@ -77,7 +77,7 @@
 
            BOUNDARY ARRAY =              1 FOR LAYER   2
 
- AQUIFER HEAD WILL BE SET TO  999.99     AT ALL NO-FLOW NODES (IBOUND=0).
+ AQUIFER HEAD WILL BE SET TO   999.99     AT ALL NO-FLOW NODES (IBOUND=0).
 
              INITIAL HEAD =   0.00000     FOR LAYER   1
 
@@ -168,7 +168,8 @@
                      RESIDUAL CHANGE CRITERION FOR CLOSURE =    0.10000E+04
             PCG HEAD AND RESIDUAL CHANGE PRINTOUT INTERVAL =        1
      PRINTING FROM SOLVER IS LIMITED(1) OR SUPPRESSED (>1) =        1
-                                         DAMPING PARAMETER =    0.10000E+01
+                            STEADY-STATE DAMPING PARAMETER =    0.10000E+01
+                               TRANSIENT DAMPING PARAMETER =    0.10000E+01
 1
                             STRESS PERIOD NO.    1, LENGTH =   1.000000    
                             -----------------------------------------------
@@ -285,19 +286,19 @@
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =           0.0000                 WELLS =           0.0000
        RIVER LEAKAGE =           0.0000         RIVER LEAKAGE =           0.0000
-            RECHARGE =      150000.0156              RECHARGE =      150000.0156
+            RECHARGE =      150000.0000              RECHARGE =      150000.0000
 
-            TOTAL IN =      150000.0156              TOTAL IN =      150000.0156
+            TOTAL IN =      150000.0000              TOTAL IN =      150000.0000
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =           0.0000                 WELLS =           0.0000
-       RIVER LEAKAGE =      150000.0156         RIVER LEAKAGE =      150000.0156
+       RIVER LEAKAGE =      150000.0000         RIVER LEAKAGE =      150000.0000
             RECHARGE =           0.0000              RECHARGE =           0.0000
 
-           TOTAL OUT =      150000.0156             TOTAL OUT =      150000.0156
+           TOTAL OUT =      150000.0000             TOTAL OUT =      150000.0000
 
             IN - OUT =           0.0000              IN - OUT =           0.0000
 
@@ -395,7 +396,7 @@
 
 
     12 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    2
-   108 TOTAL ITERATIONS
+   109 TOTAL ITERATIONS
 
  HEAD/DRAWDOWN PRINTOUT FLAG = 1     TOTAL BUDGET PRINTOUT FLAG = 1
  CELL-BY-CELL FLOW TERM FLAG = 0
@@ -450,21 +451,21 @@
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =           0.0000                 WELLS =           0.0000
        RIVER LEAKAGE =           0.0000         RIVER LEAKAGE =           0.0000
-            RECHARGE =      300000.0312              RECHARGE =      150000.0156
+            RECHARGE =      300000.0000              RECHARGE =      150000.0000
 
-            TOTAL IN =      300000.0312              TOTAL IN =      150000.0156
+            TOTAL IN =      300000.0000              TOTAL IN =      150000.0000
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =       70000.0000                 WELLS =       70000.0000
-       RIVER LEAKAGE =      230000.0312         RIVER LEAKAGE =       80000.0078
+       RIVER LEAKAGE =      230000.0000         RIVER LEAKAGE =       80000.0000
             RECHARGE =           0.0000              RECHARGE =           0.0000
 
-           TOTAL OUT =      300000.0312             TOTAL OUT =      150000.0000
+           TOTAL OUT =      300000.0000             TOTAL OUT =      150000.0000
 
-            IN - OUT =           0.0000              IN - OUT =       1.5625E-02
+            IN - OUT =           0.0000              IN - OUT =           0.0000
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -481,6 +482,6 @@
          TOTAL TIME 1.72800E+05  2880.0      48.000      2.0000     5.47570E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:38:42
- Elapsed run time:  0.110 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:37:46
+ Elapsed run time:  0.015 Seconds
 

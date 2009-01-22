@@ -391,9 +391,8 @@ C     ------------------------------------------------------------------
       USE GLOBAL,       ONLY: IOUT, NCOL, NROW, NLAY, IFREFM, IBOUND,
      +                        LBOTM, BOTM, DELR, DELC, ISSFLG
 C     USE GWFSFRMODULE, ONLY: NSS
-      !rsr: argument IUNITUZF not used
       CHARACTER*24 ANAME(2)
-C     CHARACTER*30 LFRMAT      !gsf
+      CHARACTER*30 LFRMAT      
       DATA ANAME(1)/'           LAKE ID ARRAY'/
       DATA ANAME(2)/'  LAKEBED LEAKANCE ARRAY'/
 C
@@ -424,28 +423,23 @@ C1A1----READ INITIAL CONDITIONS FOR ALL LAKES (ONLY READ ONCE)
             IF(ISS.EQ.0) WRITE (IOUT,22) LM,STAGES(LM)
  30         CONTINUE
          ELSE
-Crgn stop program if solute transport is active.
-            WRITE(iout,*)'GSFLOW-1.0 cannot simulate transport',
-     1                    '--program stopping'
-            WRITE(iout,*)'Please change input and restart program'
-            CALL USTOP(' ')
-C            WRITE (IOUTS,21) NSOL
-C            WRITE (LFRMAT,23) NSOL
-C            DO 35 LM=1,NLAKES
-C               IF (IFREFM.EQ.0) THEN
-C                 IF(ISS.NE.0) READ(IN,'(100F10.4)') STAGES(LM),SSMN(LM),
-C     1              SSMX(LM),(CLAKE(LM,ISOL),ISOL=1,NSOL)
-C                 IF(ISS.EQ.0) READ (IN,'(100F10.4)') STAGES(LM),
-C     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
-C               ELSE
-C                 IF(ISS.NE.0) READ (IN,*) STAGES(LM),SSMN(LM),SSMX(LM),
-C     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
-C                 IF(ISS.EQ.0) READ (IN,*) STAGES(LM),
-C     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
-C               END IF
-C            IF(ISS.NE.0) WRITE (IOUT,22) LM,STAGES(LM),SSMN(LM),SSMX(LM)
-C            IF(ISS.EQ.0) WRITE (IOUT,22) LM,STAGES(LM)
-C 35           WRITE (IOUTS,LFRMAT) LM,(CLAKE(LM,ISOL),ISOL=1,NSOL)
+            WRITE (IOUTS,21) NSOL
+!            WRITE (LFRMAT,23) NSOL  !LFRMAT is not set
+            DO 35 LM=1,NLAKES
+               IF (IFREFM.EQ.0) THEN
+                 IF(ISS.NE.0) READ(IN,'(100F10.4)') STAGES(LM),SSMN(LM),
+     1              SSMX(LM),(CLAKE(LM,ISOL),ISOL=1,NSOL)
+                 IF(ISS.EQ.0) READ (IN,'(100F10.4)') STAGES(LM),
+     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
+               ELSE
+                 IF(ISS.NE.0) READ (IN,*) STAGES(LM),SSMN(LM),SSMX(LM),
+     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
+                 IF(ISS.EQ.0) READ (IN,*) STAGES(LM),
+     1                        (CLAKE(LM,ISOL),ISOL=1,NSOL)
+               END IF
+            IF(ISS.NE.0) WRITE (IOUT,22) LM,STAGES(LM),SSMN(LM),SSMX(LM)
+            IF(ISS.EQ.0) WRITE (IOUT,22) LM,STAGES(LM)
+ 35           WRITE (IOUTS,*) LM,(CLAKE(LM,ISOL),ISOL=1,NSOL)
 cgage
 C            CLAKINIT=CLAKE
          END IF
@@ -457,10 +451,10 @@ C
      1TIME STEP WILL BE STORED IN HNEW ARRAY.')
  20   FORMAT(///1X,'INITIAL LAKE STAGE:  LAKE    STAGE    SS MIN    SS M
      1AX'/)
-C 21   FORMAT (//1X,'INITIAL LAKE CONCENTRATIONS:  LAKE   CONCENTRATION (   !rsr
-C     1NSOL =',I3,')'/)                                                     !rsr
+ 21   FORMAT (//1X,'INITIAL LAKE CONCENTRATIONS:  LAKE   CONCENTRATION (   !rsr
+     1NSOL =',I3,')'/)                                                     !rsr
  22   FORMAT (22X,I3,3F10.3)
-C 23   FORMAT ('(31X,I3,3X,1P',I3,'(E12.3))')                               !rsr
+ 23   FORMAT ('(31X,I3,3X,1P',I3,'(E12.3))')                               !rsr
  820  FORMAT (/1X,'INITIAL LAKE STAGE:  LAKE    STAGE'/)
  822  FORMAT(//1X,'If any subsequent steady-state stress periods, min. a
      1nd max. stages for each lake will be read in Record 9a.'//)
@@ -936,11 +930,11 @@ cgage
       ELSE IF (IUNITLPF.GT.0) THEN
         CALL SGWF2LAK7LPF7RPS()
       ELSE IF (IUNITHUF.GT.0) THEN
-        STOP 'ERROR, HUF Package not implemented in GSFLOW'   !gsf
+!        STOP 'ERROR, HUF Package not implemented in GSFLOW'   !gsf
         CALL SGWF2LAK7HUF7RPS()
       ELSE
-!gsf    WRITE (IOUT, *) 'LAK Package requires BCF, LPF, or HUF'
-        WRITE (IOUT, *) 'LAK Package requires BCF or LPF'     !gsf
+        WRITE (IOUT, *) 'LAK Package requires BCF, LPF, or HUF'
+!        WRITE (IOUT, *) 'LAK Package requires BCF or LPF'     !gsf
         CALL USTOP(' ')
       END IF
       IF (IUNITSFR.GT.0) CALL SGWF2LAK7SFR7RPS()

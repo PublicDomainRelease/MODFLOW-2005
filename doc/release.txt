@@ -10,6 +10,50 @@ For information and references related to these packages, see mf2005.txt
 
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
+      
+o Version 1.6.00 1/23/2009
+   GWF2BAS7 -- Changed the message printed when the solver does not meet
+       convergence criteria. Old message: "FAILED TO CONVERGE ...". New 
+       message: "FAILED TO MEET SOLVER CONVERGENCE CRITERIA ...".  The
+       maximum number of parameters has been increased from 999 to 2000.
+   Main program -- Fixed bug that caused numerical error messages from SIP,
+       PCG, and DE4 solvers to print multiple times.
+   PCG7 -- Added statement to write locations of isolated cells that are
+       converted to no flow.
+       The code was modified to set DAMPPCG to 1.0 if the user specifies it
+       as 0.0. Similarly, DAMPPCGT is set to 1.0 if the user specifies it as
+       0.0 
+   GWF2SWT7 and GWF2SUB7 -- Fixed the problem in which a divide-by-zero
+      error occurred when these packages were used with a steady-state
+      stress period with PERLEN specified as 0.0 .
+   GWF2HUF7 -- Fixed bug in which error messages identifying problems
+       with vertical conductance calculations specified reversed row and
+       column indices.
+       A bug was fixed to allow proper calculation of SC1. Previously,
+       the method of computing SC1 allowed the portion of an HGU that is
+       above the topmost active cell or below the bottommost active cell 
+       to be included in the HGU thickness within those cells.
+   GWF2SFR7 -- Added a check for values of streambed thickness that are
+       zero.  Removed duplicate declaration of variables NHUF and HGUVANI.
+       Added definitions of NUMTIM and WEIGHT to the readme_SFR.txt file.
+   GWF2LAK7 -- Reactivated the capability to use LAK with the HUF PAckage.
+   GWF2UZF1 -- Removed duplicate declaration of LAYTYP.
+   GMG7 -- Fixed bug that caused a file unit error when IADAMPGMG was 1 or 2.
+   Added HYDMOD -- This saves data for producing hydrographs.
+   Added LMT7 -- This is the link to the MT3DMS transport code.
+   OBS2BAS7 -- Fixed a bug that caused incorrect values for multi-layer
+       head oservations.  Incorrect weights were being used in some
+       situations.
+   GWF2BCF7 -- Fixed problem in which input items 1 and 2 were read with
+       free format even when fixed format was specified.
+   GWF2LPF7 -- Added the NOVFC option, which turns off the vertical flow
+       correction under dewatered conditions.  This option turns off the
+       vertical flow calculation described on p. 5-8 of USGS Techniques
+       and Methods Report 6-A16 and the vertical conductance correction
+       described on p. 5-18 of that report.  To activate the NOVFC option,
+       use the keyword NOVFC as the Options Variable at the end of Item 1
+       in the LPF Package input file (see Options variable on pages 8-28
+       and 8-29 of TM 6-A16).
 
 o Version 1.5.00 4/28/2008
    PCG7 -- Added capability to use different damping factors for transient

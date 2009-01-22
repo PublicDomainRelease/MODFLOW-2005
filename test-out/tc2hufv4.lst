@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.5.00 4/28/2008
+                            VERSION 1.6.00 1/23/2009
 
  LIST FILE: tc2hufv4.lst
                          UNIT    2
@@ -118,7 +118,7 @@
                      BOUNDARY ARRAY FOR LAYER   3
  READING ON UNIT    8 WITH FORMAT: (18I3)              
 
- AQUIFER HEAD WILL BE SET TO  9999.0     AT ALL NO-FLOW NODES (IBOUND=0).
+ AQUIFER HEAD WILL BE SET TO   9999.0     AT ALL NO-FLOW NODES (IBOUND=0).
 
 
 
@@ -922,7 +922,8 @@ HGU5           0     0     0     0     0
                      RESIDUAL CHANGE CRITERION FOR CLOSURE =    0.80000E+02
             PCG HEAD AND RESIDUAL CHANGE PRINTOUT INTERVAL =      999
      PRINTING FROM SOLVER IS LIMITED(1) OR SUPPRESSED (>1) =        1
-                                         DAMPING PARAMETER =    0.10000E+01
+                            STEADY-STATE DAMPING PARAMETER =    0.10000E+01
+                               TRANSIENT DAMPING PARAMETER =    0.10000E+01
 1
                             STRESS PERIOD NO.    1, LENGTH =   86400.00    
                             -----------------------------------------------
@@ -1104,8 +1105,8 @@ HGU5           0     0     0     0     0
  SOLVING FOR HEAD 
 
 
-    36 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    1
-   270 TOTAL ITERATIONS
+    32 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    1
+   242 TOTAL ITERATIONS
 
  OUTPUT CONTROL FOR STRESS PERIOD    1   TIME STEP   1
     PRINT HEAD FOR ALL LAYERS
@@ -1306,28 +1307,28 @@ HGU5           0     0     0     0     0
            IN:                                      IN:
            ---                                      ---
              STORAGE =           0.0000               STORAGE =           0.0000
-       CONSTANT HEAD =   500443360.0000         CONSTANT HEAD =        5792.1685
+       CONSTANT HEAD =   500441632.0000         CONSTANT HEAD =        5792.1484
                WELLS =           0.0000                 WELLS =           0.0000
               DRAINS =           0.0000                DRAINS =           0.0000
                   ET =           0.0000                    ET =           0.0000
      HEAD DEP BOUNDS =           0.0000       HEAD DEP BOUNDS =           0.0000
             RECHARGE =  1145016064.0000              RECHARGE =       13252.5000
 
-            TOTAL IN =  1645459456.0000              TOTAL IN =       19044.6680
+            TOTAL IN =  1645457664.0000              TOTAL IN =       19044.6484
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =           0.0000               STORAGE =           0.0000
-       CONSTANT HEAD =   367719648.0000         CONSTANT HEAD =        4256.0146
+       CONSTANT HEAD =   367719680.0000         CONSTANT HEAD =        4256.0146
                WELLS =    38880000.0000                 WELLS =         450.0000
-              DRAINS =   131848360.0000                DRAINS =        1526.0226
-                  ET =   878410880.0000                    ET =       10166.7930
-     HEAD DEP BOUNDS =   228600448.0000       HEAD DEP BOUNDS =        2645.8384
+              DRAINS =   131848360.0000                DRAINS =        1526.0227
+                  ET =   878410944.0000                    ET =       10166.7930
+     HEAD DEP BOUNDS =   228600464.0000       HEAD DEP BOUNDS =        2645.8386
             RECHARGE =           0.0000              RECHARGE =           0.0000
 
-           TOTAL OUT =  1645459328.0000             TOTAL OUT =       19044.6680
+           TOTAL OUT =  1645459456.0000             TOTAL OUT =       19044.6680
 
-            IN - OUT =         128.0000              IN - OUT =           0.0000
+            IN - OUT =       -1792.0000              IN - OUT =      -1.9531E-02
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -1661,6 +1662,6 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:38:45
- Elapsed run time:  0.313 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:37:48
+ Elapsed run time:  0.172 Seconds
 

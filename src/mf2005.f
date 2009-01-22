@@ -21,7 +21,7 @@ C
 C-------ASSIGN VERSION NUMBER AND DATE
       CHARACTER*40 VERSION
       CHARACTER*10 MFVNAM
-      PARAMETER (VERSION='1.5.00 4/28/2008')
+      PARAMETER (VERSION='1.6.00 1/23/2009')
       PARAMETER (MFVNAM='-2005')
 C
       CHARACTER*80 HEADNG(2)
@@ -35,9 +35,9 @@ C
      &           'LAK ', 'LPF ', 'DIS ', '    ', 'PVAL', '    ', 'HOB ',  ! 28
      &           '    ', '    ', 'ZONE', 'MULT', 'DROB', 'RVOB', 'GBOB',  ! 35
      &           '    ', 'HUF2', 'CHOB', 'ETS ', 'DRT ', '    ', 'GMG ',  ! 42
-     &           'hyd ', 'SFR ', '    ', 'GAGE', 'LVDA', '    ', 'lmt6',  ! 49
+     &           'HYD ', 'SFR ', '    ', 'GAGE', 'LVDA', '    ', 'LMT6',  ! 49
      &           'MNW1', '    ', '    ', 'KDEP', 'SUB ', 'UZF ', 'gwm ',  ! 56
-     &           'SWT ', 'cfp ', '    ', '    ', '    ', '    ', '    ',  ! 63
+     &           'SWT ', 'cfp ', '    ', '    ', '    ', '    ', 'nrs ',  ! 63
      &           37*'    '/
 C     ------------------------------------------------------------------
 C
@@ -104,6 +104,15 @@ C6------ALLOCATE AND READ (AR) PROCEDURE
      1                     IUNIT(10),0,IUNIT(13),
      2                     0,IUNIT(42),FNAME,IGRID)
       IF(IUNIT(57).GT.0) CALL GWF2SWT7AR(IUNIT(57),IGRID)
+      IF(IUNIT(43).GT.0) CALL GWF2HYD7BAS7AR(IUNIT(43),IGRID)
+      IF(IUNIT(43).GT.0 .AND. IUNIT(19).GT.0)
+     1                   CALL GWF2HYD7IBS7AR(IUNIT(43),IGRID)
+      IF(IUNIT(43).GT.0 .AND. IUNIT(54).GT.0)
+     1                   CALL GWF2HYD7SUB7AR(IUNIT(43),IGRID)
+      IF(IUNIT(43).GT.0 .AND. IUNIT(18).GT.0)
+     1                   CALL GWF2HYD7STR7AR(IUNIT(43),IGRID)
+      IF(IUNIT(43).GT.0 .AND. IUNIT(44).GT.0)
+     1                   CALL GWF2HYD7SFR7AR(IUNIT(43),IGRID)
 C
 C  Observation allocate and read
       CALL OBS2BAS7AR(IUNIT(28),IGRID)
@@ -130,10 +139,14 @@ C----------READ USING PACKAGE READ AND PREPARE MODULES.
         IF(IUNIT(8).GT.0) CALL GWF2RCH7RP(IUNIT(8),IGRID)
         IF(IUNIT(17).GT.0) CALL GWF2RES7RP(IUNIT(17),IGRID)
         IF(IUNIT(18).GT.0) CALL GWF2STR7RP(IUNIT(18),IGRID)
+        IF(IUNIT(43).GT.0 .AND. IUNIT(18).GT.0)
+     1                     CALL GWF2HYD7STR7RP(IUNIT(43),KKPER,IGRID)
         IF(IUNIT(20).GT.0) CALL GWF2CHD7RP(IUNIT(20),IGRID)
         IF(IUNIT(44).GT.0) CALL GWF2SFR7RP(IUNIT(44),IUNIT(15),
      1                                     IUNIT(22),KKPER,NSOL,
      2                                     IOUTS,IGRID)
+        IF(IUNIT(43).GT.0 .AND. IUNIT(44).GT.0)
+     1                     CALL GWF2HYD7SFR7RP(IUNIT(43),KKPER,IGRID)
         IF(IUNIT(55).GT.0) CALL GWF2UZF1RP(IUNIT(55),KKPER,IGRID)
         IF(IUNIT(22).GT.0) CALL GWF2LAK7RP(IUNIT(22),IUNIT(1),
      1               IUNIT(15),IUNIT(23),IUNIT(37),IUNIT(44),IUNIT(55),
@@ -220,6 +233,7 @@ C7C2A---FORMULATE THE FINITE DIFFERENCE EQUATIONS.
             IF(IUNIT(57).GT.0) CALL GWF2SWT7FM(KKPER,IGRID)
 C
 C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
+            IERR=0
             IF (IUNIT(9).GT.0) THEN
                    CALL SIP7PNT(IGRID)
                    CALL SIP7AP(HNEW,IBOUND,CR,CC,CV,HCOF,RHS,EL,FL,GL,
@@ -243,7 +257,7 @@ C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
      2               HCLOSEPCG,RCLOSEPCG,ICNVG,KKSTP,KKPER,IPRPCG,
      3               MXITER,ITER1,NPCOND,NBPOL,NSTP(KKPER),NCOL,NROW,
      4               NLAY,NODES,RELAXPCG,IOUT,MUTPCG,IT1,DAMPPCG,BUFF,
-     5               HCSV,IERR,HPCG,DAMPPCGT,ISSFLG(KKPER))
+     5               HCSV,IERR,HPCG,DAMPPCGT,ISSFLG(KKPER),HDRY)
             END IF
             IF (IUNIT(42).GT.0) THEN
                    CALL GMG7PNT(IGRID)
@@ -255,13 +269,14 @@ C7C2B---MAKE ONE CUT AT AN APPROXIMATE SOLUTION.
      5                         IUNITMHC,DUP,DLOW,CHGLIMIT,
      6                         BIGHEADCHG,HNEWLAST)
             ENDIF
+            IF(IERR.EQ.1) CALL USTOP(' ')
 C
 C7C2C---IF CONVERGENCE CRITERION HAS BEEN MET STOP ITERATING.
             IF (ICNVG.EQ.1) GOTO 33
   30      CONTINUE
           KITER = MXITER
 C
-   33     CONTINUE
+  33      CONTINUE
 C
 C7C3----DETERMINE WHICH OUTPUT IS NEEDED.
           CALL GWF2BAS7OC(KKSTP,KKPER,ICNVG,IUNIT(12),IGRID)
@@ -349,13 +364,28 @@ C7C4----CALCULATE BUDGET TERMS. SAVE CELL-BY-CELL FLOW TERMS.
      1                      IGRID)
           IF(IUNIT(54).GT.0) CALL GWF2SUB7BD(KKSTP,KKPER,IGRID)
           IF(IUNIT(57).GT.0) CALL GWF2SWT7BD(KKSTP,KKPER,IGRID)
+CLMT
+CLMT----CALL LINK-MT3DMS SUBROUTINES TO SAVE FLOW-TRANSPORT LINK FILE
+CLMT----FOR USE BY MT3DMS FOR TRANSPORT SIMULATION
+CLMT
+          INCLUDE 'lmt7.inc'
+CLMT                              
 C
-C  Observation simulated equivalents
+C  Observation and hydrograph simulated equivalents
           CALL OBS2BAS7SE(IUNIT(28),IGRID)
           IF(IUNIT(33).GT.0) CALL OBS2DRN7SE(IGRID)
           IF(IUNIT(34).GT.0) CALL OBS2RIV7SE(IGRID)
           IF(IUNIT(35).GT.0) CALL OBS2GHB7SE(IGRID)
           IF(IUNIT(38).GT.0) CALL OBS2CHD7SE(KKPER,IGRID)
+          IF(IUNIT(43).GT.0) CALL GWF2HYD7BAS7SE(1,IGRID)
+          IF(IUNIT(43).GT.0 .AND. IUNIT(19).GT.0)
+     1                              CALL GWF2HYD7IBS7SE(1,IGRID)
+          IF(IUNIT(43).GT.0 .AND. IUNIT(54).GT.0)
+     1                              CALL GWF2HYD7SUB7SE(1,IGRID)
+          IF(IUNIT(43).GT.0 .AND. IUNIT(18).GT.0)
+     1                              CALL GWF2HYD7STR7SE(1,IGRID)
+          IF(IUNIT(43).GT.0 .AND. IUNIT(44).GT.0)
+     1                              CALL GWF2HYD7SFR7SE(1,IGRID)
 C
 C7C5---PRINT AND/OR SAVE DATA.
           CALL GWF2BAS7OT(KKSTP,KKPER,ICNVG,1,IGRID)
@@ -368,6 +398,7 @@ C7C5---PRINT AND/OR SAVE DATA.
           IF(IUNIT(54).GT.0) CALL GWF2SUB7OT(KKSTP,KKPER,IUNIT(54),
      1                                       IGRID)
           IF(IUNIT(57).GT.0) CALL GWF2SWT7OT(KKSTP,KKPER,IGRID)
+          IF(IUNIT(43).GT.0) CALL GWF2HYD7BAS7OT(KKSTP,KKPER,IGRID)
 C
 C7C6---JUMP TO END OF PROGRAM IF CONVERGENCE WAS NOT ACHIEVED.
           IF(ICNVG.EQ.0) GO TO 110
@@ -428,11 +459,12 @@ C9------LAST BECAUSE IT DEALLOCATES IUNIT.
       IF(IUNIT(34).GT.0) CALL OBS2RIV7DA(IGRID)
       IF(IUNIT(35).GT.0) CALL OBS2GHB7DA(IGRID)
       IF(IUNIT(38).GT.0) CALL OBS2CHD7DA(IGRID)
+      IF(IUNIT(43).GT.0) CALL GWF2HYD7DA(IGRID)
       CALL GWF2BAS7DA(IGRID)
 C
 C10-----END OF PROGRAM.
       IF(ICNVG.EQ.0) THEN
-        WRITE(*,*) ' Failure to converge'
+        WRITE(*,*) 'FAILED TO MEET SOLVER CONVERGENCE CRITERIA'
       ELSE
         WRITE(*,*) ' Normal termination of simulation'
       END IF

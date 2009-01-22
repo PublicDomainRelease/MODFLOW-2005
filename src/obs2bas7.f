@@ -138,7 +138,7 @@ C6------ALLOCATE ARRAY DATA.
       ALLOCATE(ROFF(NH))
       ALLOCATE(COFF(NH))
       ALLOCATE(RINT(4,NH))
-      IF(MOBS.GT.1 .AND. MAXM.GT.1) THEN
+      IF(MOBS.GT.0 .AND. MAXM.GT.1) THEN
         ALLOCATE(MLAY(MAXM,MOBS))
         ALLOCATE(PR(MAXM,MOBS))
       ELSE
@@ -223,6 +223,9 @@ C13B----MULTI-LAYER -- CHECK LIMITS AND READ THE LAYERS AND PROPORTIONS.
      &    I3,' -- INCREASE MAXM.')
            CALL USTOP(' ')
          END IF
+         DO 268 M=1,MAXM
+           MLAY(M,ML) = 0
+  268    CONTINUE
          READ (IUHDOB,*) (MLAY(M,ML),PR(M,ML),M=1,NL)
          WRITE(IOUT,540) (MLAY(M,ML),PR(M,ML),M=1,NL)
   540  FORMAT (5X,'MULTIPLE LAYERS AND PROPORTIONS :',5(I5,',',F5.2,3X))
@@ -423,8 +426,8 @@ C5------CHECK TO SEE IF A CELL USED IN INTERPOLATION IS INACTIVE
      &' OR INACTIVE (OBS2BAS7SE)')
             MLL = 0
             IF (NDER(1,N).LT.0) MLL = MLAY(1,ML)
-            CALL SOBS2BAS7HIB(NDER(1,N),COFF(N),ROFF(N),DELR,DELC,
-     &                            IBOUND,NCOL,NROW,NLAY,RINT(1,N),
+            CALL SOBS2BAS7HIB(NDER(:,N),COFF(N),ROFF(N),DELR,DELC,
+     &                            IBOUND,NCOL,NROW,NLAY,RINT(:,N),
      &                            JOFF(N),IOFF(N),MLL)
             JDRY = JDRY + 1
 C
@@ -438,10 +441,6 @@ C7------INTERPOLATION
       ML = 0
       DO 60 N = 1, NH
 C
-C9------OBSERVATION AT THIS TIME STEP?
-        IF((IHOBWET(N).LT.0) .OR.
-     &     (NDER(4,N).NE.ITS .AND. NDER(4,N)+1.NE.ITS)) GO TO 60
-C
 C8------UPDATE COUNTER FOR MULTILAYER WELLS
         K = NDER(1,N)
         MM = 1
@@ -449,6 +448,10 @@ C8------UPDATE COUNTER FOR MULTILAYER WELLS
           ML = ML + 1
           MM = -K
         ENDIF
+C
+C9------OBSERVATION AT THIS TIME STEP?
+        IF((IHOBWET(N).LT.0) .OR.
+     &     (NDER(4,N).NE.ITS .AND. NDER(4,N)+1.NE.ITS)) GO TO 60
 C
         II = NDER(2,N)
         JJ = NDER(3,N)
@@ -585,7 +588,7 @@ C
       IF (I1.LT.1 .OR. I1.GT.NROW .OR. J1.LT.1 .OR. J1.GT.NCOL) IBIJ = 0
 C
       CALL SOBS2BAS7HBF(COFF(N),DELC,DELR,I,I1,IBI,IBIJ,IBJ,IOFF(N),
-     1                  J,J1,JOFF(N),NCOL,NROW,RINT(1,N),ROFF(N))
+     1                  J,J1,JOFF(N),NCOL,NROW,RINT(:,N),ROFF(N))
 C
       RETURN
       END

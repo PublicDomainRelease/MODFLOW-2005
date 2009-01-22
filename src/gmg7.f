@@ -81,6 +81,8 @@ C
         CALL USTOP(' ')
       END IF
 C
+      IIOUT=IOUT
+      IF(IOUTGMG .GT. 2) IIOUT=6
       IF(IADAMPGMG==1) WRITE(IIOUT,510)
       IF(IADAMPGMG==2) THEN
         WRITE(IIOUT,512)
@@ -96,8 +98,6 @@ C
       END IF
 C
       IF(DAMPGMG .LE. 0.0 .OR. DAMPGMG .GT. 1.0) DAMPGMG=1.0
-      IIOUT=IOUT
-      IF(IOUTGMG .GT. 2) IIOUT=6
 C
 C--------------------------------------------------------------------
 C     ALLOCATE

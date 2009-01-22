@@ -91,12 +91,14 @@ C-------READ HCLOSEPCG,RCLOSEPCG,RELAXPCG,NBPOL,IPRPCG,MUTPCG
 Crgn changed read to check for different value for transient dampening
       READ (IN,*) HCLOSEPCG,RCLOSEPCG,RELAXPCG,
      1    NBPOL,IPRPCG,MUTPCG,DAMPPCG
-      IF ( DAMPPCG.LT.0 ) THEN
+      IF ( DAMPPCG.LT.0.0 ) THEN
         BACKSPACE IN
         READ (IN,*) HCLOSEPCG,RCLOSEPCG,RELAXPCG,
      1    NBPOL,IPRPCG,MUTPCG,DAMPPCG,DAMPPCGT
           DAMPPCG = -DAMPPCG
+          IF (DAMPPCGT.EQ.0.0) DAMPPCGT = 1.0
       ELSE
+        IF (DAMPPCG.EQ.0.0) DAMPPCG = 1.0
         DAMPPCGT = DAMPPCG
       END IF                                      
 C
@@ -128,9 +130,9 @@ C-------MUTPCG,DAMPPCG
      &        I9,/,1X,4X,
      &        'PRINTING FROM SOLVER IS LIMITED(1) OR SUPPRESSED (>1) =',
      &        I9)
-      IF (DAMPPCG.LE.0.0) DAMPPCG = 1.0
-      WRITE (IOUT,550) DAMPPCG
-  550 FORMAT (1X,40X,'DAMPING PARAMETER =',E15.5)
+      WRITE (IOUT,550) DAMPPCG,DAMPPCGT
+  550 FORMAT (1X,27X,'STEADY-STATE DAMPING PARAMETER =',E15.5
+     &       /1X,30X,'TRANSIENT DAMPING PARAMETER =',E15.5)
       NITER = 0
 C
       CALL PCG7PSV(IGRID)
@@ -140,7 +142,8 @@ C
      &                  LHCH,RCHG,LRCH,KITER,NITER,HCLOSE,RCLOSE,
      &                  ICNVG,KSTP,KPER,IPRPCG,MXITER,ITER1,NPCOND,
      &                  NBPOL,NSTP,NCOL,NROW,NLAY,NODES,RELAX,IOUT,
-     &                  MUTPCG,IT1,DAMPSS,RES,HCSV,IERR,HPCG,DAMPTR,ISS)
+     &                  MUTPCG,IT1,DAMPSS,RES,HCSV,IERR,HPCG,DAMPTR,
+     &                  ISS,HDRY)
 C
 C     01JULY1990 COMMENT STATEMENTS ADDED AND MODIFIED
 C     01SEPT1990 IPCGCD OMITTED; STATEMENT 590 ADDED
@@ -168,7 +171,7 @@ C        SPECIFICATIONS:
 C     ------------------------------------------------------------------
       REAL BIGH, BIGR, BPOLY, C0, C1, C2, CC, CD, CD1, CR, CV, DAMP, 
      &     HCHG, HCLOSE, HCOF, RCHG, RCLOSE, RELAX, RHS, T,
-     &     DAMPSS, DAMPTR
+     &     DAMPSS, DAMPTR,HDRY
       INTEGER I, IBOUND, IC, ICNVG, IH, II, IICNVG, IITER, IL, IOUT,
      &        IPRPCG, IR, IT1, ITER1, J, JH, JJ, JR, K, KH, KITER, 
      &        KK, KPER, KR, KSTP, LHCH, LRCH, MUTPCG, MXITER, N, NBPOL, 
@@ -211,7 +214,7 @@ c     1     RHS(I),HNEW(I),IBOUND(I),I=1,nodes)
 c      ENDIF
 c 895  FORMAT ('    I',5X,'CC',13X,'CR',13X,'CV',12X,'HCOF',12X,'RHS',
 c     &        12X,'HNEW',7X,'IBOUND')
-c 900  FORMAT (I5,6G15.8,I5)
+c 900  FORMAT (I7,6G15.8,I5)
 
 
       DDAMP=DAMP
@@ -343,8 +346,13 @@ C-------15JUN1993 SKIP CALCULATIONS AND MAKE CELL INACTIVE IF ALL
 C                 SURROUNDING CELLS ARE INACTIVE
             IF (B+H+D+F+Z+S.EQ.0.) THEN
               IBOUND(N) = 0
+              HNEW(N)=HDRY
               HCOF(N) = 0.
               RHS(N) = 0.
+              WRITE(IOUT,27) K,I,J
+   27           FORMAT (/,
+     &        ' ISOLATED CELL IS BEING ELIMINATED (LAYER,ROW,COL):',
+     &        3I6,/,' (PCG7AP)')
               GOTO 30
             ENDIF
 C

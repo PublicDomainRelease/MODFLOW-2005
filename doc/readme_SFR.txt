@@ -4,6 +4,27 @@ Modifications to the Streamflow Routing Package originally documented
 by Prudic and others (2004) and Niswonger and Prudic (2005):
 
 
+Update to the SFR7 Package for MODFLOW-2005 version 1.6 (January 2009):
+
+    Following the modification of SFR2 to simulate transient  
+streamflow routing based on the kinematic-wave equation, two 
+new input variables were added if the option for transient 
+routing is used. The option for simulating transient streamflow
+routing is documented by Markstrom and others (2008). The following 
+two input variables are now required when transient routing
+is simulated (IRTFLG>0). NUMTIM and WEIGHT follow directly after 
+and on the same line as the variable IRTFLG.
+
+NUMTIM-- is the number of sub-time steps used to route 
+streamflow. The time step that will be used to route streamflow
+will be equal to the MODFLOW time step divided by NUMTIM.
+
+WEIGHT-- is the time weighting factor used to calculate the 
+change in channel storage. WEIGHT has values between 0.5 and 1.
+Refer to equation 83 of Markstrom and others (2008)
+for further details.
+
+
 Changes to the SFR7 package for MODFLOW-2005 version 1.5:
 
 A few small changes were made to the Streamflow Routing Package
@@ -80,7 +101,6 @@ and lake outflow was sensitive to small changes in lake stage.
 
 References:
 
-References
 
 Lighthill, M.J., and Whitham, G.B., 1955, On kinematic floods—flood
 movements in long rivers: Proceedings, R. Soc. London, v. A220,

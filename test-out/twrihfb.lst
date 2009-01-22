@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.5.00 4/28/2008
+                            VERSION 1.6.00 1/23/2009
 
  LIST FILE: twrihfb.lst
                          UNIT    7
@@ -128,7 +128,7 @@
 
            BOUNDARY ARRAY =              1 FOR LAYER   3
 
- AQUIFER HEAD WILL BE SET TO  999.99     AT ALL NO-FLOW NODES (IBOUND=0).
+ AQUIFER HEAD WILL BE SET TO   999.99     AT ALL NO-FLOW NODES (IBOUND=0).
 
              INITIAL HEAD =   0.00000     FOR LAYER   1
 
@@ -369,7 +369,7 @@
   (  1, 13, 12) (  2, 11, 11) (  3, 11, 10) (  1, 14, 14) (  3,  7, 14)
      0.4170E-02    0.2556E-02    0.9774E-02    0.1083E-01    0.1030E-01
   (  1, 13, 14) (  3, 14, 15) (  1, 14, 14) (  3, 13, 14) (  1, 15, 15)
-     0.2432E-03
+     0.2436E-03
   (  1, 13, 12)
 
 
@@ -547,21 +547,21 @@
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
                WELLS =           0.0000                 WELLS =           0.0000
               DRAINS =           0.0000                DRAINS =           0.0000
-            RECHARGE =    13608000.0000              RECHARGE =         157.5000
+            RECHARGE =    13607999.0000              RECHARGE =         157.5000
 
-            TOTAL IN =    13608000.0000              TOTAL IN =         157.5000
+            TOTAL IN =    13607999.0000              TOTAL IN =         157.5000
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =           0.0000               STORAGE =           0.0000
-       CONSTANT HEAD =     4326517.5000         CONSTANT HEAD =          50.0754
+       CONSTANT HEAD =     4326516.5000         CONSTANT HEAD =          50.0754
                WELLS =     6480000.0000                 WELLS =          75.0000
-              DRAINS =     2801086.0000                DRAINS =          32.4200
+              DRAINS =     2801085.5000                DRAINS =          32.4200
             RECHARGE =           0.0000              RECHARGE =           0.0000
 
-           TOTAL OUT =    13607604.0000             TOTAL OUT =         157.4954
+           TOTAL OUT =    13607602.0000             TOTAL OUT =         157.4954
 
-            IN - OUT =         396.0000              IN - OUT =       4.5929E-03
+            IN - OUT =         397.0000              IN - OUT =       4.5929E-03
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -578,6 +578,6 @@
          TOTAL TIME  86400.      1440.0      24.000      1.0000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:39:55
- Elapsed run time:  0.047 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:38:21
+ Elapsed run time:  0.015 Seconds
 

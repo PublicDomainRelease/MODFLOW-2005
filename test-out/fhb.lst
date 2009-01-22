@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.5.00 4/28/2008
+                            VERSION 1.6.00 1/23/2009
 
  LIST FILE: fhb.lst
                          UNIT    7
@@ -81,7 +81,7 @@
    2    1   1   1   1   1   1   1   1   1   1
    3    1   1   1   1   1   1   1   1   1   1
 
- AQUIFER HEAD WILL BE SET TO  0.0000     AT ALL NO-FLOW NODES (IBOUND=0).
+ AQUIFER HEAD WILL BE SET TO   0.0000     AT ALL NO-FLOW NODES (IBOUND=0).
 
              INITIAL HEAD =   0.00000     FOR LAYER   1
 
@@ -304,19 +304,19 @@
            ---                                      ---
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
-     SPECIFIED FLOWS =     1777065.1250       SPECIFIED FLOWS =        5849.1733
+     SPECIFIED FLOWS =     1777065.2500       SPECIFIED FLOWS =        5849.1738
 
-            TOTAL IN =     1777065.1250              TOTAL IN =        5849.1733
+            TOTAL IN =     1777065.2500              TOTAL IN =        5849.1738
 
           OUT:                                     OUT:
           ----                                     ----
-             STORAGE =      860090.2500               STORAGE =        2264.6069
-       CONSTANT HEAD =      916104.9375         CONSTANT HEAD =        3582.3157
+             STORAGE =      860090.3125               STORAGE =        2264.6077
+       CONSTANT HEAD =      916104.8750         CONSTANT HEAD =        3582.3159
      SPECIFIED FLOWS =           0.0000       SPECIFIED FLOWS =           0.0000
 
-           TOTAL OUT =     1776195.2500             TOTAL OUT =        5846.9229
+           TOTAL OUT =     1776195.2500             TOTAL OUT =        5846.9238
 
-            IN - OUT =         869.8750              IN - OUT =           2.2505
+            IN - OUT =         870.0000              IN - OUT =           2.2500
 
  PERCENT DISCREPANCY =           0.05     PERCENT DISCREPANCY =           0.04
 
@@ -406,17 +406,17 @@
            ---                                      ---
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
-     SPECIFIED FLOWS =     2897313.0000       SPECIFIED FLOWS =        5446.2808
+     SPECIFIED FLOWS =     2897313.0000       SPECIFIED FLOWS =        5446.2812
 
-            TOTAL IN =     2897313.0000              TOTAL IN =        5446.2808
+            TOTAL IN =     2897313.0000              TOTAL IN =        5446.2812
 
           OUT:                                     OUT:
           ----                                     ----
-             STORAGE =     1284297.2500               STORAGE =        2075.0767
-       CONSTANT HEAD =     1611474.1250         CONSTANT HEAD =        3367.9294
+             STORAGE =     1284297.3750               STORAGE =        2075.0767
+       CONSTANT HEAD =     1611474.1250         CONSTANT HEAD =        3367.9297
      SPECIFIED FLOWS =           0.0000       SPECIFIED FLOWS =           0.0000
 
-           TOTAL OUT =     2895771.5000             TOTAL OUT =        5443.0059
+           TOTAL OUT =     2895771.5000             TOTAL OUT =        5443.0063
 
             IN - OUT =        1541.5000              IN - OUT =           3.2749
 
@@ -553,19 +553,19 @@
 
            IN:                                      IN:
            ---                                      ---
-             STORAGE =      284414.2500               STORAGE =        1836.9204
+             STORAGE =      284414.2188               STORAGE =        1836.9207
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
-     SPECIFIED FLOWS =     5353000.0000       SPECIFIED FLOWS =        8201.0186
+     SPECIFIED FLOWS =     5352999.5000       SPECIFIED FLOWS =        8201.0176
 
-            TOTAL IN =     5637414.0000              TOTAL IN =       10037.9395
+            TOTAL IN =     5637413.5000              TOTAL IN =       10037.9385
 
           OUT:                                     OUT:
           ----                                     ----
-             STORAGE =     1656061.7500               STORAGE =           0.0000
-       CONSTANT HEAD =     3979499.2500         CONSTANT HEAD =       10050.3271
+             STORAGE =     1656061.8750               STORAGE =           0.0000
+       CONSTANT HEAD =     3979498.7500         CONSTANT HEAD =       10050.3262
      SPECIFIED FLOWS =           0.0000       SPECIFIED FLOWS =           0.0000
 
-           TOTAL OUT =     5635561.0000             TOTAL OUT =       10050.3271
+           TOTAL OUT =     5635560.5000             TOTAL OUT =       10050.3262
 
             IN - OUT =        1853.0000              IN - OUT =         -12.3877
 
@@ -584,6 +584,6 @@
          TOTAL TIME 8.64000E+07 1.44000E+06  24000.      1000.0      2.7379    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:38:42
- Elapsed run time:  0.109 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:37:46
+ Elapsed run time:  0.062 Seconds
 

@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.5.00 4/28/2008
+                            VERSION 1.6.00 1/23/2009
 
  LIST FILE: restest.lst
                          UNIT    7
@@ -86,7 +86,7 @@
   11    1   1   1   1   1   1   1   1   1   1   1   1
   12    1   1   1   1   1   1   1   1   1   1   1   1
 
- AQUIFER HEAD WILL BE SET TO  999.00     AT ALL NO-FLOW NODES (IBOUND=0).
+ AQUIFER HEAD WILL BE SET TO   999.00     AT ALL NO-FLOW NODES (IBOUND=0).
 
              INITIAL HEAD =   0.00000     FOR LAYER   1
 
@@ -317,9 +317,9 @@ RES7 -- RESERVOIR PACKAGE, VERSION 7, 2/28/2006 INPUT READ FROM UNIT 27
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
      HEAD DEP BOUNDS =           0.0000       HEAD DEP BOUNDS =           0.0000
-     RESERV. LEAKAGE =     1351890.2500       RESERV. LEAKAGE =     1006890.2500
+     RESERV. LEAKAGE =     1351890.3750       RESERV. LEAKAGE =     1006890.3750
 
-            TOTAL IN =     1351890.2500              TOTAL IN =     1006890.2500
+            TOTAL IN =     1351890.3750              TOTAL IN =     1006890.3750
 
           OUT:                                     OUT:
           ----                                     ----
@@ -330,7 +330,7 @@ RES7 -- RESERVOIR PACKAGE, VERSION 7, 2/28/2006 INPUT READ FROM UNIT 27
 
            TOTAL OUT =     1351907.1250             TOTAL OUT =     1006914.5625
 
-            IN - OUT =         -16.8750              IN - OUT =         -24.3125
+            IN - OUT =         -16.7500              IN - OUT =         -24.1875
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -435,20 +435,20 @@ RES7 -- RESERVOIR PACKAGE, VERSION 7, 2/28/2006 INPUT READ FROM UNIT 27
              STORAGE =           0.0000               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
      HEAD DEP BOUNDS =           0.0000       HEAD DEP BOUNDS =           0.0000
-     RESERV. LEAKAGE =     2770539.5000       RESERV. LEAKAGE =      640179.1250
+     RESERV. LEAKAGE =     2770540.0000       RESERV. LEAKAGE =      640179.1250
 
-            TOTAL IN =     2770539.5000              TOTAL IN =      640179.1250
+            TOTAL IN =     2770540.0000              TOTAL IN =      640179.1250
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =     2452313.0000               STORAGE =      495440.7500
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
-     HEAD DEP BOUNDS =      318248.2500       HEAD DEP BOUNDS =      144740.9375
+     HEAD DEP BOUNDS =      318248.2812       HEAD DEP BOUNDS =      144740.9375
      RESERV. LEAKAGE =           0.0000       RESERV. LEAKAGE =           0.0000
 
            TOTAL OUT =     2770561.2500             TOTAL OUT =      640181.6875
 
-            IN - OUT =         -21.7500              IN - OUT =          -2.5625
+            IN - OUT =         -21.2500              IN - OUT =          -2.5625
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
 
@@ -584,23 +584,23 @@ RES7 -- RESERVOIR PACKAGE, VERSION 7, 2/28/2006 INPUT READ FROM UNIT 27
 
            IN:                                      IN:
            ---                                      ---
-             STORAGE =      671650.2500               STORAGE =      140131.0938
+             STORAGE =      671650.1875               STORAGE =      140131.1094
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
      HEAD DEP BOUNDS =           0.0000       HEAD DEP BOUNDS =           0.0000
-     RESERV. LEAKAGE =     3088022.0000       RESERV. LEAKAGE =           0.0000
+     RESERV. LEAKAGE =     3088022.5000       RESERV. LEAKAGE =           0.0000
 
-            TOTAL IN =     3759672.2500              TOTAL IN =      140131.0938
+            TOTAL IN =     3759672.7500              TOTAL IN =      140131.1094
 
           OUT:                                     OUT:
           ----                                     ----
              STORAGE =     2625537.2500               STORAGE =           0.0000
        CONSTANT HEAD =           0.0000         CONSTANT HEAD =           0.0000
      HEAD DEP BOUNDS =     1098479.7500       HEAD DEP BOUNDS =      140112.0156
-     RESERV. LEAKAGE =       35687.6680       RESERV. LEAKAGE =           0.0000
+     RESERV. LEAKAGE =       35687.6602       RESERV. LEAKAGE =           0.0000
 
            TOTAL OUT =     3759704.7500             TOTAL OUT =      140112.0156
 
-            IN - OUT =         -32.5000              IN - OUT =          19.0781
+            IN - OUT =         -32.0000              IN - OUT =          19.0938
 
  PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.01
 
@@ -617,6 +617,6 @@ RES7 -- RESERVOIR PACKAGE, VERSION 7, 2/28/2006 INPUT READ FROM UNIT 27
          TOTAL TIME 7.77600E+05  12960.      216.00      9.0000     2.46407E-02
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2008/04/14  9:38:44
- Elapsed run time:  0.109 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:37:47
+ Elapsed run time:  0.000 Seconds
 

@@ -1,64 +1,62 @@
+U.S. Geological Survey (USGS)                               modflow(1)
 
-
-
-U.S. Geological Survey (USGS)                         modflow(1)
-
-NOTE: Any use of trade, product or firm names is for descriptive
-      purposes only and does not imply endorsement by the U.S.
-      Government.
+NOTE: Any use of trade, product or firm names is for descriptive purposes
+      only and does not imply endorsement by the U.S. Government.
 
 NAME
-     modflow - Modular three-dimensional finite-difference
-               ground-water model
+     modflow - Modular three-dimensional finite-difference ground-water
+               model
 
 ABSTRACT
-     MODFLOW is a three-dimensional finite-difference ground-
-     water model that was first published in 1984.  It has a modular
-     structure that allows it to be easily modified to adapt the
-     code for a particular application.  Many new capabilities have
-     been added to the original model.  Harbaugh (2005) documents a
-     general update to MODFLOW, which is called MODFLOW-2005 in order
-     to distinguish it from earlier versions.
+     MODFLOW is a three-dimensional finite-difference ground-water model
+     that was first published in 1984.  It has a modular structure that
+     allows it to be easily modified to adapt the code for a particular
+     application.  Many new capabilities have been added to the original
+     model.  Harbaugh (2005) documents a general update to MODFLOW, which
+     is called MODFLOW-2005 in order to distinguish it from earlier
+     versions.
 
-     MODFLOW-2005 simulates steady and nonsteady flow in an
-     irregularly shaped flow system in which aquifer layers can
-     be confined, unconfined, or a combination of confined and
-     unconfined.  Flow from external stresses, such as flow to
-     wells, areal recharge, evapotranspiration, flow to drains,
-     and flow through river beds, can be simulated.  Hydraulic
-     conductivities or transmissivities for any layer may differ
-     spatially and be anisotropic (restricted to having the
-     principal directions aligned with the grid axes), and the
-     storage coefficient may be heterogeneous.  Specified head
-     and specified flux boundaries can be simulated as can a head
-     dependent flux across the model's outer boundary that allows
-     water to be supplied to a boundary block in the modeled area
-     at a rate proportional to the current head difference
-     between a "source" of water outside the modeled area and the
-     boundary block.
+     MODFLOW-2005 simulates steady and nonsteady flow in an irregularly
+     shaped flow system in which aquifer layers can be confined,
+     unconfined, or a combination of confined and unconfined.  Flow from
+     external stresses, such as flow to wells, areal recharge,
+     evapotranspiration, flow to drains, and flow through river beds,
+     can be simulated.  Hydraulic conductivities or transmissivities for
+     any layer may differ spatially and be anisotropic (restricted to
+     having the principal directions aligned with the grid axes), and the
+     storage coefficient may be heterogeneous.  Specified head and
+     specified flux boundaries can be simulated as can a head dependent
+     flux across the model's outer boundary that allows water to be
+     supplied to a boundary block in the modeled area at a rate
+     proportional to the current head difference between a "source" of
+     water outside the modeled area and the boundary block.
 
      In addition to simulating ground-water flow, the scope of
-     MODFLOW-2005 has been expanded to incorporate related
-     capabilities such as solute transport and ground-water
-     management; however, this distribution incorporates only the
-     ground-water flow parts of MODFLOW.
+     MODFLOW-2005 has been expanded to incorporate related capabilities
+     such as solute transport and ground-water management; however, this
+     distribution incorporates only the ground-water flow parts of MODFLOW.
 
 
 METHOD
-     The ground-water flow equation is solved using the finite-
-     difference approximation.  The flow region is subdivided
-     into blocks in which the medium properties are assumed
-     to be uniform.  In plan view the blocks are made from
-     a grid of mutually perpendicular lines that may be
-     variably spaced.  Model layers can have varying thickness.
-     A flow equation is written for each block, called a cell.
-     Several solvers are provided for solving the resulting matrix
-     problem; the user can choose the best solver for the particular
-     problem.  Flow-rate and cumulative-volume balances from each
-     type of inflow and outflow are computed for each time step.
+     The ground-water flow equation is solved using the finite-difference
+     approximation.  The flow region is subdivided into blocks in which
+     the medium properties are assumed to be uniform.  In plan view the
+     blocks are made from a grid of mutually perpendicular lines that may
+     be variably spaced.  Model layers can have varying thickness.  A flow
+     equation is written for each block, called a cell.  Several solvers
+     are provided for solving the resulting matrix problem; the user can
+     choose the best solver for the particular problem.  Flow-rate and
+     cumulative-volume balances from each type of inflow and outflow are
+     computed for each time step.
 
 
 HISTORY
+      MODFLOW-2005 Version 1.6 1/23/2009 - Added HYDMOD and LMT Packages.
+         Added NOVFC option to LPF Package. Added a full double-precision
+         executable version of MODFLOW for downloading (see readme.txt
+         file). Also fixed several miscellaneous problems.  All of the
+         changes are documented in the release.txt file.
+
       MODFLOW-2005 Version 1.5 4/28/2008 - Updated SFR, UZF, and LAK
          Packages to the versions used in the GSFLOW coupled ground-water
          and surface-water model. Also added the capability to use
@@ -92,22 +90,21 @@ HISTORY
 
 
 DATA REQUIREMENTS
-     In order to use MODFLOW, initial conditions, hydraulic
-     properties, and stresses must be specified for every model
-     cell in the finite-difference grid. Input data are read from
-     files.
+     In order to use MODFLOW, initial conditions, hydraulic properties,
+     and stresses must be specified for every model cell in the finite-
+     difference grid. Input data are read from files.
 
 
 SYSTEM REQUIREMENTS
-     MODFLOW-2005 is written primarily in Fortran 90. Only the GMG
-     solver package is written in C.  The code has been used on
-     UNIX-based computers and personal computers running various
-     forms of the Microsoft Windows operating system.
+     MODFLOW-2005 is written primarily in Fortran 90. Only the GMG solver
+     package is written in C.  The code has been used on UNIX-based
+     computers and personal computers running various forms of the Microsoft
+     Windows operating system.
 
 
 FUNTIONALITY
-     This version of MODFLOW includes the following functionality that
-     is documented in Harbaugh (2005).
+     This version of MODFLOW includes the following functionality that is
+     documented in Harbaugh (2005).
 
          BAS -- Basic Package
          BCF -- Block-Centered Flow Package
@@ -124,11 +121,11 @@ FUNTIONALITY
          PCG -- Preconditioned Conjugate Gradient Package
          DE4 -- Direct solver
 
-      The following functionality is also included. This functionality
-      is documented in separate reports for use in earlier versions
-      of MODFLOW.  Conversion of this functionality to work with
-      MODFLOW-2005 is documented in separate files that are provided
-      with the MODFLOW-2005 distribution.
+      The following functionality is also included. This functionality is
+      documented in separate reports for use in earlier versions of MODFLOW.
+      Conversion of this functionality to work with MODFLOW-2005 is
+      documented in separate files that are provided with the MODFLOW-2005
+      distribution.
          STR -- Streamflow-Routing Package
          FHB -- Flow and Head Boundary Package
          IBS -- Interbed Storage Package
@@ -145,6 +142,14 @@ FUNTIONALITY
          UZF -- Unsaturated Zone Package
          GAG -- Gage Package
          SWT -- Subsidence and Aquifer-System Compaction Package
+         LMT -- Link to the MT3DMS contaminant-transport model
+         HYDMOD -- Hydrograph capability
+
+Unlike MODFLOW-2000, MODFLOW-2005 does not support a parameter-estimation
+process. Users of MODFLOW-2005 are encouraged to take advantage of
+'clip-on' parameter-estimation programs such as UCODE_2005. UCODE_2005 and
+supporting documentation are available at:
+         http://typhoon.mines.edu/freeware/ucode/
 
 DOCUMENTATION
 
@@ -237,6 +242,9 @@ User guide to the Observation, Sensitivity, and Parameter-Estimation
 Processes and three post-processing programs: U.S. Geological Survey
 Open-File Report 00-184, 209 p.
 
+See file obs.pdf for documentation of the OBS Process in MODFLOW-2005,
+including input instructions.
+
   The SFR Package is documented in:
 
 Prudic, D.E., Konikow, L.F., and Banta, E.R., A new Streamflow-Routing
@@ -271,6 +279,23 @@ Leake, S.A. and Galloway, D.L., 2007, MODFLOW ground-water model -- User
 guide to the Subsidence and Aquifer-System Compaction Package (SUB-WT) for
 water-table aquifers: U.S. Geological Survey Techniques and Methods 6-A23,
 42 p.
+
+  The LMT Package is documented in:
+  
+Zheng, Chunmiao, Hill, M.C., and Hsieh, P.A., 2001, MODFLOW-2000, the U.S.
+Geological Survey modular ground-water model - User guide to the LMT6
+package, the linkage with MT3DMS for multi-species mass transport modeling:
+U.S. Geological Survey Open-File Report 01-82, 43 p.
+
+   HYDMOD is documented in:
+
+Hanson, R.T. and Leake, S.A., 1999, Documentation of HYDMOD, a program for
+extracting and processing time-series data from the U.S. Geological
+Survey's modular three-dimensional finite-difference ground-water flow
+model: U.S. Geological Survey Open-File Report 98-564, 57 p.
+
+A separate file, hydmod7.pdf, documents the conversion for MODFLOW-2005.
+
 
 CONTACTS
     U.S. Geological Survey
