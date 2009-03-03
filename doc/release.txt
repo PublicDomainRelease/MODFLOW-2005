@@ -10,6 +10,12 @@ For information and references related to these packages, see mf2005.txt
 
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
+
+o Version 1.6.01 3/4/2009
+    GWF2SFR7 -- Fixed the problem in which the new NUMTIM and WEIGHT
+       variables that are read when using the transient routing option
+       (IRTFLG>0) were ignored. Also added the FLWTOL variable, which is
+       documented in the readme_SFR.txt file.
       
 o Version 1.6.00 1/23/2009
    GWF2BAS7 -- Changed the message printed when the solver does not meet
@@ -104,7 +110,7 @@ o Version 1.4.00  11/02/2007
        DERIVTERP, and OUTFLWTERP.
 
 o Version 1.3.01
-   GWF2BAS7 -- MXPAR, the maximum number of parameters, increased fromm
+   GWF2BAS7 -- MXPAR, the maximum number of parameters, increased from
        500 to 999.
 
 o Version 1.3

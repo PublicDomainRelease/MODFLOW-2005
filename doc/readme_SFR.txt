@@ -4,6 +4,33 @@ Modifications to the Streamflow Routing Package originally documented
 by Prudic and others (2004) and Niswonger and Prudic (2005):
 
 
+Update to the SFR7 Package for MODFLOW-2005 version 1.6.01 (March 2009):
+
+    Following the modification of SFR2 to simulate transient  
+streamflow routing based on the kinematic-wave equation, three 
+new input variables were added if the option for transient 
+routing is used. The option for simulating transient streamflow
+routing is documented by Markstrom and others (2008). The following 
+three input variables are now required when transient routing
+is simulated (IRTFLG>0). NUMTIM, WEIGHT, and FLWTOL follow directly 
+after IRTFLG in item 1.
+
+NUMTIM-- is the number of sub time steps used to route 
+streamflow. The time step that will be used to route streamflow
+will be equal to the MODFLOW time step divided by NUMTIM.
+
+WEIGHT-- is the time weighting factor used to calculate the 
+change in channel storage. WEIGHT has a value between 0.5 and 1.
+Please refer to equation 83 of Markstrom and others (2008)
+for further details.
+
+FLWTOL-- is the streamflow tolerance for convergence of the kinematic
+wave equation used for transient streamflow routing. A value of
+0.00003 cubic meters per second has been used successfully in test
+simulations (and would need to be converted to whatever units are
+being used in the particular simulation).
+
+
 Update to the SFR7 Package for MODFLOW-2005 version 1.6 (January 2009):
 
     Following the modification of SFR2 to simulate transient  

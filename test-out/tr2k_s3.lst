@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.6.00 1/23/2009
+                             VERSION 1.6.01 3/4/2009
 
  LIST FILE: tr2k_s3.lst
                          UNIT    2
@@ -10274,6 +10274,6 @@ SUB7 -- SUBSIDENCE PACKAGE, VERSION 7, 03/31/2006 INPUT READ FROM UNIT 19
   --------|--------------------------------------------------------|--------------------------------------------------------|
  TOTALS:    0.16958E+09   -0.16958E+09     0.0000         0.0000         14553.        -14553.        0.29297E-02    0.20132E-04
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/01/21 10:38:21
- Elapsed run time:  1.141 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:48
+ Elapsed run time:  1.203 Seconds
 
