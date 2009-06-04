@@ -1,45 +1,44 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: mnw1.lst
                          UNIT    7
 #                                                                                                                                                                                                                                                                                                           
-# Input files                                                                                                                                                                                                                                                                                               
 
- OPENING mnw1.dis
+ OPENING ..\mnw1.dis
  FILE TYPE:DIS   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.bas
+ OPENING ..\mnw1.bas
  FILE TYPE:BAS6   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.bcf
+ OPENING ..\mnw1.bcf
  FILE TYPE:BCF6   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.mnw
+ OPENING ..\mnw1.mnw
  FILE TYPE:MNW1   UNIT   75   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.drn
+ OPENING ..\mnw1.drn
  FILE TYPE:DRN   UNIT   77   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.rch
+ OPENING ..\mnw1.rch
  FILE TYPE:RCH   UNIT   72   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.pcg
+ OPENING ..\mnw1.pcg
  FILE TYPE:PCG   UNIT   74   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.chd
+ OPENING ..\mnw1.chd
  FILE TYPE:CHD   UNIT   76   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING mnw1.oc
+ OPENING ..\mnw1.oc
  FILE TYPE:OC   UNIT   71   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 #                                                                                                                                                                                                                                                                                                           
@@ -173,7 +172,7 @@
 
  MNW7 -- MULTI-NODE WELL PACKAGE, VERSION 7, 11/07/2005.
     INPUT READ FROM UNIT  75
- MAXIMUM OF  120 WELLS
+ MAXIMUM OF    120 WELLS
  CELL-BY-CELL FLOWS WILL BE PRINTED WHEN ICBCFL NOT 0
   The heads at the beginning of SP:   2 will be the default reference elevations.
 
@@ -2129,6 +2128,6 @@ Well-B                          5     6 -130000.      143.222     -13.3190      
          TOTAL TIME 8.64839E+10 1.44140E+09 2.40233E+07 1.00097E+06  2740.5    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:14
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:59
  Elapsed run time:  0.125 Seconds
 

@@ -1,39 +1,39 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: bcf2ss.lst
                          UNIT    7
 
- OPENING bcf2ss.ba6
+ OPENING ..\bcf2ss.ba6
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.bc6
+ OPENING ..\bcf2ss.bc6
  FILE TYPE:BCF6   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.wel
+ OPENING ..\bcf2ss.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.riv
+ OPENING ..\bcf2ss.riv
  FILE TYPE:RIV   UNIT   14   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.rch
+ OPENING ..\bcf2ss.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.pcg
+ OPENING ..\bcf2ss.pcg
  FILE TYPE:PCG   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.oc
+ OPENING ..\bcf2ss.oc
  FILE TYPE:OC   UNIT   20   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING bcf2ss.dis
+ OPENING ..\bcf2ss.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -482,6 +482,6 @@
          TOTAL TIME 1.72800E+05  2880.0      48.000      2.0000     5.47570E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:13
- Elapsed run time:  0.062 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:58
+ Elapsed run time:  0.015 Seconds
 

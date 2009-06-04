@@ -11,6 +11,17 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.6.02 6/5/2009
+    OBS2BAS7 -- Fixed a bug that incorrectly caused some multi-layer
+       head observations to be eliminated because dry cells were being
+       checked in the wrong layer.
+    HUF2 -- Fixed a bug that sometimes caused the interpolated head in 
+       hydrogeologic units to be incorrectly calculated.
+    OBS2 -- Additional digits included in the output of simulated
+       equivalents.
+    GWF2BAS7 -- Increased maximum number of clusters and instances for 
+       defining parameters.
+
 o Version 1.6.01 3/4/2009
     GWF2SFR7 -- Fixed the problem in which the new NUMTIM and WEIGHT
        variables that are read when using the transient routing option
@@ -109,11 +120,11 @@ o Version 1.4.00  11/02/2007
    GWF2LAK7 -- Corrected precision declaration for functions FINTERP,
        DERIVTERP, and OUTFLWTERP.
 
-o Version 1.3.01
+o Version 1.3.01  8/02/2007
    GWF2BAS7 -- MXPAR, the maximum number of parameters, increased from
        500 to 999.
 
-o Version 1.3
+o Version 1.3  8/01/2007
    GWF2GAG7 -- Removed duplicate reference to RNF in USE statement in
        subroutine SGWF2GAG7LO.  Modifications to format statements.
    GWF2UZF1 -- Fixed memory allocation problem when using UZF to simulate

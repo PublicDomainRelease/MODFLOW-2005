@@ -1,39 +1,39 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: twri.lst
                          UNIT    7
 
- OPENING twri.ba6
+ OPENING ..\twri.ba6
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.bc6
+ OPENING ..\twri.bc6
  FILE TYPE:BCF6   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.wel
+ OPENING ..\twri.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.drn
+ OPENING ..\twri.drn
  FILE TYPE:DRN   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.rch
+ OPENING ..\twri.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.sip
+ OPENING ..\twri.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.oc
+ OPENING ..\twri.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twri.dis
+ OPENING ..\twri.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -471,6 +471,6 @@
          TOTAL TIME  86400.      1440.0      24.000      1.0000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:48
- Elapsed run time:  0.016 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:32
+ Elapsed run time:  0.015 Seconds
 

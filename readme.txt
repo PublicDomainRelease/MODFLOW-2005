@@ -1,30 +1,33 @@
 README.TXT
 
 
-                       MODFLOW-2005 - Version: 1.6.01
+                       MODFLOW-2005 - Version: 1.6.02
          Three-dimensional finite-difference ground-water flow model
 
 
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
-This version of MODFLOW-2005 is packaged for use on computers using a
-Unix operating system.  Source and documentation files are provided, but
-not an executable file.  Fortran and C compilers are required to create
-an executable file.
+This version of MODFLOW is referred to as MODFLOW-2005 in order to distinguish
+it from older versions of the code.  This version of MODFLOW-2005 is packaged
+for use on computers using a Unix operating system.  Source and documentation
+files are provided, but not an executable file.  Fortran and C compilers are
+required to create an executable file.
 
-This version of MODFLOW is referred to as MODFLOW-2005 in order to
-distinguish it from older versions.  See the file doc\Mf2005.txt for
-a description and references for this software.
+IMPORTANT: Users should review the file Mf2005.txt for a description of, and
+references for, this software. Users should also review the file release.txt,
+which describes changes that have been introduced into MODFLOW-2005 with each
+official release; these changes may substantially affect users.
+
 
 The following tar file is provided for Unix computers:
 
-         mf2005v1_6_01.tar.Z
+         mf2005v1_6_02.tar.Z
 
 The distribution file can be used through the following commands:
 
-    uncompress mf2005v1_6_01.tar
-    tar -xvf mf2005v1_6_01.tar
+    uncompress mf2005v1_6_02.tar
+    tar -xvf mf2005v1_6_02.tar
 
 The gunzip program can be used in place of uncompress if desired.
 The tar command will create numerous individual files.  Source files will

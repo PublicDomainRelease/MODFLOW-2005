@@ -1,47 +1,47 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: twrip.lst
                          UNIT    2
 
- OPENING twrip.ba6
+ OPENING ..\twrip.ba6
  FILE TYPE:BAS6   UNIT    3   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.lpf
+ OPENING ..\twrip.lpf
  FILE TYPE:LPF   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.wel
+ OPENING ..\twrip.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.drn
+ OPENING ..\twrip.drn
  FILE TYPE:DRN   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.rch
+ OPENING ..\twrip.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.sip
+ OPENING ..\twrip.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.oc
+ OPENING ..\twrip.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.mlt
+ OPENING ..\twrip.mlt
  FILE TYPE:MULT   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.zon
+ OPENING ..\twrip.zon
  FILE TYPE:ZONE   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrip.dis
+ OPENING ..\twrip.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -268,7 +268,7 @@
       VERTICAL HYD. COND. =   1.00000     FOR LAYER   3
 
  WEL -- WELL PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT   12
-     1 Named Parameters        12 List entries
+          1 Named Parameters             12 List entries
  MAXIMUM OF     15 ACTIVE WELLS AT ONE TIME
 
 
@@ -294,7 +294,7 @@
      12      1     13     14      -5.000    
 
  DRN -- DRAIN PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT   13
-     1 Named Parameters         2 List entries
+          1 Named Parameters              2 List entries
  MAXIMUM OF      9 ACTIVE DRAINS AT ONE TIME
 
 
@@ -631,6 +631,6 @@
          TOTAL TIME  86400.      1440.0      24.000      1.0000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:48
- Elapsed run time:  0.015 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:32
+ Elapsed run time:  0.000 Seconds
 

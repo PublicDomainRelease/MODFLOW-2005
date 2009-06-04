@@ -1,47 +1,47 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: UZFtest2.lst
                          UNIT    9
 
- OPENING UZFtest2.ba6
+ OPENING ..\UZFtest2.ba6
  FILE TYPE:BAS6   UNIT   75   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.lpf
+ OPENING ..\UZFtest2.lpf
  FILE TYPE:LPF   UNIT    7   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.dis
+ OPENING ..\UZFtest2.dis
  FILE TYPE:DIS   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.sip
+ OPENING ..\UZFtest2.sip
  FILE TYPE:SIP   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.oc
+ OPENING ..\UZFtest2.oc
  FILE TYPE:OC   UNIT   14   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.sfr
+ OPENING ..\UZFtest2.sfr
  FILE TYPE:SFR   UNIT   15   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.wel
+ OPENING ..\UZFtest2.wel
  FILE TYPE:WEL   UNIT   16   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.ghb
+ OPENING ..\UZFtest2.ghb
  FILE TYPE:GHB   UNIT   17   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.uzf
+ OPENING ..\UZFtest2.uzf
  FILE TYPE:UZF   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING UZFtest2.gag
+ OPENING ..\UZFtest2.gag
  FILE TYPE:GAGE   UNIT   32   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -10118,6 +10118,6 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
          TOTAL TIME 3.15360E+07 5.25600E+05  8760.0      365.00     0.99932    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:54
- Elapsed run time:  5.656 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:37
+ Elapsed run time:  5.156 Seconds
 

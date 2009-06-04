@@ -51,6 +51,12 @@ METHOD
 
 
 HISTORY
+      MODFLOW-2005 Version 1.6.02 6/5/2009 - Fixed problem with
+         multi-layer head observations in the OBS Process and computation
+         of interpolated head in hydrogeologic units in the HUF Package.
+         Also made other minor changes, which are documented in the
+         release.txt file.
+
       MODFLOW-2005 Version 1.6.01 3/4/2009 - Fixed SFR problem in which
          the new NUMTIM and WEIGHT variables that are read when using
          the transient routing option (IRTFLG>0) were ignored.  Also

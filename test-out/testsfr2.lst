@@ -1,39 +1,39 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: testsfr2.lst
                          UNIT   12
 
- OPENING testsfr2.dis
+ OPENING ..\testsfr2.dis
  FILE TYPE:DIS   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.ghb
+ OPENING ..\testsfr2.ghb
  FILE TYPE:GHB   UNIT   15   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.bs6
+ OPENING ..\testsfr2.bs6
  FILE TYPE:BAS6   UNIT   41   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.lpf
+ OPENING ..\testsfr2.lpf
  FILE TYPE:LPF   UNIT   42   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.pcg
+ OPENING ..\testsfr2.pcg
  FILE TYPE:PCG   UNIT   43   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.oc
+ OPENING ..\testsfr2.oc
  FILE TYPE:OC   UNIT   44   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.sfr
+ OPENING ..\testsfr2.sfr
  FILE TYPE:SFR   UNIT   45   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING testsfr2.gag
+ OPENING ..\testsfr2.gag
  FILE TYPE:GAGE   UNIT   46   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -14958,6 +14958,6 @@
          TOTAL TIME 1.29600E+08 2.16000E+06  36000.      1500.0      4.1068    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:47
- Elapsed run time: 31.703 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:31
+ Elapsed run time: 31.438 Seconds
 

@@ -1,31 +1,31 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: str.lst
                          UNIT    7
 
- OPENING str.ba6
+ OPENING ..\str.ba6
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING str.sip
+ OPENING ..\str.sip
  FILE TYPE:SIP   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING str.oc
+ OPENING ..\str.oc
  FILE TYPE:OC   UNIT   14   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING str.str
+ OPENING ..\str.str
  FILE TYPE:STR   UNIT   15   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING str.bc6
+ OPENING ..\str.bc6
  FILE TYPE:BCF6   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING str.dis
+ OPENING ..\str.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -337,6 +337,6 @@
          TOTAL TIME 1.29600E+06  21600.      360.00      15.000     4.10678E-02
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:14
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:59
  Elapsed run time:  0.000 Seconds
 

@@ -3042,35 +3042,14 @@ C     ------------------------------------------------------------------
      &    DELR(NCOL),DELC(NROW),CV(NCOL,NROW,NLAY),
      &    HUFTHK(NCOL,NROW,NHUF,2),INDX(NHUF),GS(NCOL,NROW)
 C     ------------------------------------------------------------------
-
-C
-C     SORT HYDROGEOLOGIC UNITS
-      CALL SGWF2HUF7IND(NCOL,NROW,NHUF,HUFTHK,1,1,INDX)
-C     CHECK SORTING TO CORRECT FOR ZERO-THICKNESS UNITS
-      DO 50 NU=1,NHUF
-        IF(HUFTHK(1,1,INDX(NU),2).EQ.0) THEN
-          DO 60 I=1,NROW
-          DO 60 J=1,NCOL
-            IF(HUFTHK(J,I,INDX(NU),2).GT.0) THEN
-              IF(NU.GT.1 .AND. HUFTHK(J,I,INDX(NU),1).LT.
-     &           HUFTHK(J,I,INDX(NU-1),1)) THEN
-                NNU=INDX(NU)
-                INDX(NU)=INDX(NU-1)
-                INDX(NU-1)=NNU
-              ELSEIF(NU.LT.NHUF .AND. HUFTHK(J,I,INDX(NU),1).GT.
-     &               HUFTHK(J,I,INDX(NU+1),1)) THEN
-                NNU=INDX(NU)
-                INDX(NU)=INDX(NU+1)
-                INDX(NU+1)=NNU
-              ENDIF
-            ENDIF
-   60     CONTINUE
-        ENDIF
-   50 CONTINUE
 C
 C-----LOOP THROUGH ROWS AND COLUMNS
       DO 100 I=1,NROW
       DO 200 J=1,NCOL
+C
+C     SORT HYDROGEOLOGIC UNITS
+        CALL SGWF2HUF7IND(NCOL,NROW,NHUF,HUFTHK,J,I,INDX)
+C
 C Zero out arrays
         DO 210 NU=1,NHUF
           HUFHK(NU)=0.
@@ -3090,8 +3069,6 @@ c     a parameter
           IF(HGUVANI(NU).GT.0..AND.HUFVK(NU).EQ.0.)
      &          HUFVK(NU)=HGUVANI(NU)
   220   CONTINUE
-
-
         DRDC=DELR(J)*DELC(I)
         IFRST=0
         DO 300 NNU=NHUF,1,-1

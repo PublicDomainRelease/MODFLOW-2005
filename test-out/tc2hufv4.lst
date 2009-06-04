@@ -1,11 +1,11 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: tc2hufv4.lst
                          UNIT    2
 
- OPENING tc2hufv4.huf
+ OPENING ..\tc2hufv4.huf
  FILE TYPE:HUF2   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -14,43 +14,43 @@
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 #Common files                                                                                                                                                                                                                                                                                               
 
- OPENING tc2hufv4.bas
+ OPENING ..\tc2hufv4.bas
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.dis
+ OPENING ..\tc2hufv4.dis
  FILE TYPE:DIS   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.wel
+ OPENING ..\tc2hufv4.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.drn
+ OPENING ..\tc2hufv4.drn
  FILE TYPE:DRN   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.evt
+ OPENING ..\tc2hufv4.evt
  FILE TYPE:EVT   UNIT   15   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.ghb
+ OPENING ..\tc2hufv4.ghb
  FILE TYPE:GHB   UNIT   17   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.rch
+ OPENING ..\tc2hufv4.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.oc
+ OPENING ..\tc2hufv4.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.pcg
+ OPENING ..\tc2hufv4.pcg
  FILE TYPE:PCG   UNIT   23   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING tc2hufv4.zon
+ OPENING ..\tc2hufv4.zon
  FILE TYPE:ZONE   UNIT   39   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -841,7 +841,7 @@ HGU5           0     0     0     0     0
      0 Well parameters
 
  DRN -- DRAIN PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT   13
-     1 Named Parameters         5 List entries
+          1 Named Parameters              5 List entries
  MAXIMUM OF      5 ACTIVE DRAINS AT ONE TIME
 
 
@@ -874,7 +874,7 @@ HGU5           0     0     0     0     0
 
  GHB -- GENERAL-HEAD BOUNDARY PACKAGE, VERSION 7, 5/2/2005
          INPUT READ FROM UNIT   17
-     1 Named Parameters         5 List entries
+          1 Named Parameters              5 List entries
  MAXIMUM OF      5 ACTIVE GHB CELLS AT ONE TIME
 
 
@@ -1662,6 +1662,6 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:14
- Elapsed run time:  0.203 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:59
+ Elapsed run time:  0.171 Seconds
 

@@ -1,31 +1,31 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: fhb.lst
                          UNIT    7
 
- OPENING fhb.ba6
+ OPENING ..\fhb.ba6
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING fhb.dis
+ OPENING ..\fhb.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING fhb.bc6
+ OPENING ..\fhb.bc6
  FILE TYPE:BCF6   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING fhb.sip
+ OPENING ..\fhb.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING fhb.oc
+ OPENING ..\fhb.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING fhb.fhb
+ OPENING ..\fhb.fhb
  FILE TYPE:FHB   UNIT   31   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -584,6 +584,6 @@
          TOTAL TIME 8.64000E+07 1.44000E+06  24000.      1000.0      2.7379    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:13
- Elapsed run time:  0.016 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:58
+ Elapsed run time:  0.015 Seconds
 

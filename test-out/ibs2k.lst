@@ -1,31 +1,31 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: ibs2k.lst
                          UNIT    1
 
- OPENING ibs2k.ba6
+ OPENING ..\ibs2k.ba6
  FILE TYPE:BAS6   UNIT    2   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ibs2k.bc6
+ OPENING ..\ibs2k.bc6
  FILE TYPE:BCF6   UNIT    7   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ibs2k.dis
+ OPENING ..\ibs2k.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ibs2k.oc
+ OPENING ..\ibs2k.oc
  FILE TYPE:OC   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ibs2k.ibs
+ OPENING ..\ibs2k.ibs
  FILE TYPE:IBS   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ibs2k.sip
+ OPENING ..\ibs2k.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -1112,6 +1112,6 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
   10    0.000      5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03
        5.5000E-03   0.000    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:13
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:58
  Elapsed run time:  0.016 Seconds
 

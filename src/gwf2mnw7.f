@@ -121,7 +121,7 @@ c
       IF ( IWL2CB.LT.0 ) WRITE (IOUT, 9004)
       WRITE (IOUT, 9005) KSPREF
       WRITE (IOUT, 9006) NOMOITER
- 9002 FORMAT (' MAXIMUM OF', i5, ' WELLS')
+ 9002 FORMAT (' MAXIMUM OF', i7, ' WELLS')
  9003 FORMAT (' CELL-BY-CELL FLOWS WILL BE RECORDED ON UNIT', i3)
  9004 FORMAT (' CELL-BY-CELL FLOWS WILL BE PRINTED WHEN ICBCFL NOT 0')
  9005 FORMAT ('  The heads at the beginning of SP:', i4, 
@@ -1223,7 +1223,7 @@ c -----print the individual rates to auxillary file if requested(IWL2CB<0).
             ENDIF
 c  Create WEL1 file if iowell2(1) > 0
             IF ( IOWELL2(1).GT.0 .AND. Nstp.EQ.Kstp )
-     +           WRITE (IOWELL2(1), '(i9,2i10,g11.4,i10,2x,6g11.4)')
+     +         WRITE(IOWELL2(1),'(i9,2i10,1X,g11.4,1X,i10,2x,6g11.4)')
      +           k, j, i, q, 0, qd, hwell, HNEW(i,j,k), dd, href, qwbar
 c
             Buff(i,j,k) = Buff(i,j,k) + q

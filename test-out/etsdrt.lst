@@ -1,47 +1,43 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: etsdrt.lst
                          UNIT   12
-#                                                                                                                                                                                                                                                                                                           
-# Global input files                                                                                                                                                                                                                                                                                        
 
- OPENING etsdrt.dis
+ OPENING ..\etsdrt.dis
  FILE TYPE:DIS   UNIT   21   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
-#                                                                                                                                                                                                                                                                                                           
-# Flow process input files                                                                                                                                                                                                                                                                                  
 
- OPENING etsdrt.bas
+ OPENING ..\etsdrt.bas
  FILE TYPE:BAS6   UNIT   31   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.oc
+ OPENING ..\etsdrt.oc
  FILE TYPE:OC   UNIT   32   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.lpf
+ OPENING ..\etsdrt.lpf
  FILE TYPE:LPF   UNIT   33   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.drt
+ OPENING ..\etsdrt.drt
  FILE TYPE:DRT   UNIT   34   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.rch
+ OPENING ..\etsdrt.rch
  FILE TYPE:RCH   UNIT   36   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.ets
+ OPENING ..\etsdrt.ets
  FILE TYPE:ETS   UNIT   37   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.pcg
+ OPENING ..\etsdrt.pcg
  FILE TYPE:PCG   UNIT   39   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING etsdrt.pvl
+ OPENING ..\etsdrt.pvl
  FILE TYPE:PVAL   UNIT   45   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -370,6 +366,6 @@
          TOTAL TIME  0.0000      0.0000      0.0000      0.0000      0.0000    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:13
- Elapsed run time:  0.000 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:58
+ Elapsed run time:  0.016 Seconds
 

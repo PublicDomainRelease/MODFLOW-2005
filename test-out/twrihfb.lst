@@ -1,43 +1,43 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: twrihfb.lst
                          UNIT    7
 
- OPENING twrihfb.ba6
+ OPENING ..\twrihfb.ba6
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.bc6
+ OPENING ..\twrihfb.bc6
  FILE TYPE:BCF6   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.wel
+ OPENING ..\twrihfb.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.drn
+ OPENING ..\twrihfb.drn
  FILE TYPE:DRN   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.rch
+ OPENING ..\twrihfb.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.sip
+ OPENING ..\twrihfb.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.oc
+ OPENING ..\twrihfb.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.dis
+ OPENING ..\twrihfb.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING twrihfb.hfb
+ OPENING ..\twrihfb.hfb
  FILE TYPE:HFB6   UNIT   30   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -578,6 +578,6 @@
          TOTAL TIME  86400.      1440.0      24.000      1.0000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:48
- Elapsed run time:  0.000 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:32
+ Elapsed run time:  0.016 Seconds
 

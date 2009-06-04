@@ -1,43 +1,43 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.01 3/4/2009
+                             VERSION 1.6.02 6/5/2009
 
  LIST FILE: l1b2k.lst
                          UNIT    1
 
- OPENING l1b2k.ba6
+ OPENING ..\l1b2k.ba6
  FILE TYPE:BAS6   UNIT    7   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.bc6
+ OPENING ..\l1b2k.bc6
  FILE TYPE:BCF6   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.evt
+ OPENING ..\l1b2k.evt
  FILE TYPE:EVT   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.rch
+ OPENING ..\l1b2k.rch
  FILE TYPE:RCH   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.sip
+ OPENING ..\l1b2k.sip
  FILE TYPE:SIP   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.oc
+ OPENING ..\l1b2k.oc
  FILE TYPE:OC   UNIT   17   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.lak
+ OPENING ..\l1b2k.lak
  FILE TYPE:LAK   UNIT   16   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.dis
+ OPENING ..\l1b2k.dis
  FILE TYPE:DIS   UNIT   14   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING l1b2k.fhb
+ OPENING ..\l1b2k.fhb
  FILE TYPE:FHB   UNIT   21   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -2036,6 +2036,6 @@
          TOTAL TIME  86400.      1440.0      24.000      1.0000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/03/03 13:10:14
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:22:59
  Elapsed run time:  0.172 Seconds
 
