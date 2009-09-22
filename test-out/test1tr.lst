@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                             VERSION 1.6.02 6/5/2009
+                            VERSION 1.7.00 9/23/2009
 
  LIST FILE: test1tr.lst
                          UNIT    9
@@ -331,7 +331,7 @@
 
      0 Recharge parameters
 
- SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 7.1.01, 02/15/2009
+ SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 7.1.02, 06/29/2009
          INPUT READ FROM UNIT  15
  #Test Problem 1 using SFR1
 
@@ -347,6 +347,8 @@
  MAXIMUM ERROR FOR STREAM LEAKAGE RATES IS  1.00E-04
 
  CONSTANT FOR MANNINGS EQUATION IS  1.4860E+00
+
+
 
  STREAM OUTPUT WILL BE WRITTEN TO FILE ON UNIT  81
 
@@ -6207,6 +6209,6 @@
          TOTAL TIME 3.15576E+09 5.25960E+07 8.76600E+05  36525.      100.00    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/05/22 15:23:00
- Elapsed run time:  0.469 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/09/21 10:52:29
+ Elapsed run time:  1.532 Seconds
 

@@ -51,6 +51,12 @@ METHOD
 
 
 HISTORY
+
+      MODFLOW-2005 Version 1.7 9/23/2009 -- Added observation capability
+         for the STR Package. Fixed problems with SFR, LAK, and UZF
+         Packages.  All of the changes are documented in the release.txt
+         file.
+
       MODFLOW-2005 Version 1.6.02 6/5/2009 - Fixed problem with
          multi-layer head observations in the OBS Process and computation
          of interpolated head in hydrogeologic units in the HUF Package.

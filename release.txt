@@ -11,6 +11,58 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.7.0 9/23/2009
+    GWF2BAS7 -- Added MXITER to the GLOBAL Module so that a different
+       value can be used for each grid when using Local-Grid Refinement
+       (LGR).  This change has no impact if LGR is not being used.
+    Added observations from the Streamflow-Routing Package (STR) to the
+       Observation Process.
+    GWF2ETS7 -- Added option (NESTOP=3) to cause ET to be applied to the
+       uppermost active cell in each horizontal location.
+    GWF2SFR7 --  A bug was fixed that caused the model to fail to
+       converge or to produce erroneous results in simulations with
+       transient streamflow routing when the ICALC=3 option was used.
+       Another bug was found in the calculations of mid-point flow, which
+       is printed to the gage output. This erroneous streamflow
+       calculation did not affect anything other than the printed
+       streamflow at the mid-point of a stream reach to the gage file.
+       See file readme_SFR.pdf in the doc\Updates directory for the full
+       history of SFR changes and information about updated SFR input
+       instructions.
+    GWF2UZF1.f -- A bug was fixed that affected the value of the
+       UZF input variable VKS. The error occurred if the vertical
+       hydraulic conductivity for UZF was specified in the LPF input
+       file and if the LPF input variable LAYVKA was not set to 0, such
+       that the LPF input variable VKA is the ratio of horizontal
+       to vertical hydraulic conductivity.  A bug was fixed in which UZF
+       was not allowing recharge and discharge to be simulated for dry
+       lake cells when the LAK Package was being used.  Another bug was
+       fixed that, in some cases, caused water content profiles to be
+       incorrectly printed in separate files. This bug did not affect
+       simulation results.  Finally, the options for writing unsaturated
+       flow budget files were changed.  See file readme_UZF.pdf in the
+       doc\Updates directory for the full history of UZF changes.
+    GWF2LAK7.f -- To allow the user to better assess the reliability of
+       the lake calculations, time-step and cumulative mass-balance errors
+       (as percent discrepancy) are calculated for each lake and have been
+       added to the lake budget output information in the main listing file
+       and to the gage output file for a lake.  The Lake Package was also 
+       modified to always write IFACE values when saving data to a compact
+       budget file. This will facilitate enhanced  compatibility and
+       consistency with MODPATH.  Modifications were made to the code to
+       better evaluate the lake volume and changes to lake volume for each
+       time step and to allow the lake to drain and fill on the basis of
+       surface water and groundwater inflows and outflows.  See file
+       readme_LAK.pdf in the doc\Updates directory for the full history of
+       LAK changes.
+    GWF2GAG7.f -- Two new output options have been added to the Stream and
+       Lake Gaging (GAGE) Package. An option has been added for Stream
+       output to list selected budget components summed over all stream
+       reaches when unsaturated flow is simulated (OUTTYPE = 8) and an
+       option has been added for Lake output to print volumetric flow rates
+       at a Lake gage (OUTTYPE = 4). See file Gage7_input_instructions.pdf
+       in the doc\Updates directory for complete descriptions of the options.
+
 o Version 1.6.02 6/5/2009
     OBS2BAS7 -- Fixed a bug that incorrectly caused some multi-layer
        head observations to be eliminated because dry cells were being
@@ -21,7 +73,7 @@ o Version 1.6.02 6/5/2009
        equivalents.
     GWF2BAS7 -- Increased maximum number of clusters and instances for 
        defining parameters.
-
+      
 o Version 1.6.01 3/4/2009
     GWF2SFR7 -- Fixed the problem in which the new NUMTIM and WEIGHT
        variables that are read when using the transient routing option
@@ -120,11 +172,11 @@ o Version 1.4.00  11/02/2007
    GWF2LAK7 -- Corrected precision declaration for functions FINTERP,
        DERIVTERP, and OUTFLWTERP.
 
-o Version 1.3.01  8/02/2007
+o Version 1.3.01
    GWF2BAS7 -- MXPAR, the maximum number of parameters, increased from
        500 to 999.
 
-o Version 1.3  8/01/2007
+o Version 1.3
    GWF2GAG7 -- Removed duplicate reference to RNF in USE statement in
        subroutine SGWF2GAG7LO.  Modifications to format statements.
    GWF2UZF1 -- Fixed memory allocation problem when using UZF to simulate

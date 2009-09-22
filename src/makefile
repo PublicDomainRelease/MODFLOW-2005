@@ -40,8 +40,10 @@ OBJECTS = \
         gwf2bcf7.o \
         gwf2lpf7.o \
         gwf2huf7.o \
-        gwf2sfr7.o \
+        gwfuzfmodule.o \
+        gwfsfrmodule.o \
         gwf2lak7.o \
+        gwf2sfr7.o \
         gwf2uzf1.o \
         gwf2gag7.o \
         gwf2chd7.o \
@@ -66,6 +68,7 @@ OBJECTS = \
         obs2ghb7.o \
         obs2riv7.o \
         obs2chd7.o \
+        obs2str7.o \
         parutl7.o \
         gwf2mnw7.o \
         utl7.o \

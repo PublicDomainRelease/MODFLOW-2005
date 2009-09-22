@@ -83,11 +83,6 @@ C
 C
       IIOUT=IOUT
       IF(IOUTGMG .GT. 2) IIOUT=6
-      IF(IADAMPGMG==1) WRITE(IIOUT,510)
-      IF(IADAMPGMG==2) THEN
-        WRITE(IIOUT,512)
-        WRITE(IIOUT,513)DUP,DLOW,CHGLIMIT
-      ENDIF   
 C
       SITER=0
       TSITER=0
@@ -104,8 +99,6 @@ C     ALLOCATE
 C--------------------------------------------------------------------
       IF(IUNITMHC.GT.0 .OR. IADAMPGMG.EQ.2) THEN
         ALLOCATE(HNEWLAST(NCOL,NROW,NLAY))
-        IF(IUNITMHC.GT.0) WRITE(IOUT,501) IUNITMHC
- 501    FORMAT(1X,'Head change will be saved on unit',I5)
       ELSE
         ALLOCATE(HNEWLAST(1,1,1))
       END IF
@@ -125,7 +118,11 @@ C
      &                 DAMPGMG,IADAMPGMG,IOUTGMG,
      &                 ISM,ISC,RELAXGMG
 C
-      IF(IADAMPGMG .NE. 0) WRITE(IIOUT,510)
+      IF(IADAMPGMG==1) WRITE(IIOUT,510)
+      IF(IADAMPGMG==2) THEN
+        WRITE(IIOUT,512)
+        WRITE(IIOUT,513)DUP,DLOW,CHGLIMIT
+      ENDIF   
       IF(ISM .EQ. 0) WRITE(IIOUT,520)
       IF(ISM .EQ. 1) WRITE(IIOUT,525)
       IF(ISC .EQ. 0) WRITE(IIOUT,530)
@@ -133,6 +130,7 @@ C
       IF(ISC .EQ. 2) WRITE(IIOUT,532)
       IF(ISC .EQ. 3) WRITE(IIOUT,533)
       IF(ISC .EQ. 4) WRITE(IIOUT,534)
+      IF(IUNITMHC.GT.0) WRITE(IOUT,501) IUNITMHC
 C
       WRITE(IIOUT,540) ISIZ
 C
@@ -154,6 +152,7 @@ C--------------------------------------------------------------------
      &       1X,'RELAX   = ',1P,E8.2,'; RELAXATION PARAMETER       ',/,
      &       1X,"-------------------------------------------------")
 C
+  501 FORMAT(1X,'Head change will be saved on unit',I5)
   510 FORMAT(1X,"COOLEY'S ADAPTIVE DAMPING METHOD IMPLEMENTED")
   512 FORMAT(1X,'RELATIVE REDUCED RESIDUAL ADAPTIVE DAMPING METHOD',
      1    ' WILL BE USED')
