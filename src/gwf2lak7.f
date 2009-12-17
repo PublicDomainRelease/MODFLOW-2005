@@ -35,7 +35,7 @@ Crgn    Added budget variables for GSFLOW CSV file
         INTEGER,SAVE, DIMENSION(:,:,:),POINTER ::LKARR1
         REAL,   SAVE, DIMENSION(:),  POINTER ::STAGES
         DOUBLE PRECISION,SAVE,DIMENSION(:), POINTER ::STGNEW,STGOLD,
-     +                                                STGITER,VOLOLDD
+     +                                          STGOLD2,STGITER,VOLOLDD
         REAL,   SAVE, DIMENSION(:),  POINTER ::VOL,FLOB,DSRFOT
         REAL,   SAVE, DIMENSION(:),  POINTER ::PRCPLK,EVAPLK,BEDLAK
         REAL,   SAVE, DIMENSION(:),  POINTER ::WTHDRW,RNF,CUMRNF
@@ -91,7 +91,8 @@ Crgn    Added budget variables for GSFLOW CSV file
         INTEGER,      DIMENSION(:,:),POINTER ::ILAKE,ITRB,IDIV,ISUB,IRK
         INTEGER,      DIMENSION(:,:,:),POINTER ::LKARR1
         REAL,         DIMENSION(:),  POINTER ::STAGES
-        DOUBLE PRECISION,DIMENSION(:),POINTER ::STGNEW,STGOLD,STGITER
+        DOUBLE PRECISION,DIMENSION(:),POINTER ::STGNEW,STGOLD,STGITER,
+     +                                          STGOLD2 
         DOUBLE PRECISION,DIMENSION(:),POINTER :: VOLOLDD
         REAL,         DIMENSION(:),  POINTER ::VOL,FLOB, DSRFOT
         REAL,         DIMENSION(:),  POINTER ::PRCPLK,EVAPLK,BEDLAK
@@ -219,10 +220,10 @@ Cdep fixed format can't read in exponent notation
             READ (IN, '(A)') CARD 
             NUMCHAR = LEN(TRIM(CARD)) 
             IF ( NUMCHAR>30 ) THEN 
-              READ(CARD,'(F10.2,I10,2E10.5)') DUM,NSSITR,SSCNCR,
+              READ(CARD,'(F10.2,I10,2F10.5)') DUM,NSSITR,SSCNCR,
      +                                         SURFDEPTH 
             ELSE 
-              READ(CARD,'(F10.2,I10,E10.5)') DUM,NSSITR,SSCNCR 
+              READ(CARD,'(F10.2,I10,F10.5)') DUM,NSSITR,SSCNCR 
             ENDIF 
           ELSE 
             READ(IN,*,IOSTAT=IOS) DUM,NSSITR,SSCNCR,SURFDEPTH 
@@ -241,11 +242,12 @@ C
 C  SET NLAKES ARRAY VARIABLE TO NLAKES IF NLAKES GREATER THAN 0.
       IF (NLAKES.GT.0) NLAKESAR = NLAKES
       ALLOCATE (VOL(NLAKESAR), STGOLD(NLAKESAR), STGNEW(NLAKESAR))
-      ALLOCATE (VOLOLDD(NLAKESAR))
+      ALLOCATE (VOLOLDD(NLAKESAR), STGOLD2(NLAKESAR))
 !     ALLOCATE (VOLOLDD(NLAKESAR), VOLOLD(NLAKES), VOLINIT(NLAKES))
       ALLOCATE (STGITER(NLAKESAR))
       STGNEW = 0.0D0
       STGOLD = 0.0D0
+      STGOLD2 = 0.0D0
       STGITER = 0.0D0
       VOLOLDD = 0.0D0
 Cdep initialized VOLOLD and VOLINIT  6/4/2009 (VOLOLD is single precision)
@@ -1121,7 +1123,8 @@ C     ******************************************************************
 C     SPECIFICATIONS:
 C     ------------------------------------------------------------------
       USE GWFLAKMODULE, ONLY: NLAKES, LKNODE, FLOB, STAGES,
-     +                        STGNEW, STGOLD, VOLOLDD, VOLOLD, VOLINIT
+     +                        STGNEW, STGOLD, VOLOLDD, VOLOLD, VOLINIT,
+     +                        STGOLD2
 C     ------------------------------------------------------------------
 C     FUNCTIONS
 C     ------------------------------------------------------------------
@@ -1143,6 +1146,7 @@ Cdep  initialized VOLINIT and VOLOLD to VOLOLDD 6/4/2009
           VOLINIT(I) = VOLOLDD(I)
           STGNEW(I)=STAGES(I)
         ELSE
+          STGOLD2(I)=STGNEW(I)
           STGOLD(I)=STGNEW(I)
           VOLOLDD(I)=VOLTERP(STGOLD(I),I)
           VOLOLD(I)=VOLOLDD(I)
@@ -1743,6 +1747,15 @@ C
 C16-----COMPUTE NEW LAKE STAGE USING NEWTON METHOD AND THET1>0.
             IF ( THET1.GT.CLOSEZERO ) THEN
               IF ( NCNV == 1 ) THEN
+! RGN have to calc overland flow again becuase it it lost from above. 12/3/09
+                IF(RNF(LAKE).GE.0.0) RUNF = RNF(LAKE)
+                IF(RNF(LAKE).LT.0.0) RUNF =-RNF(LAKE)*
+     +                               PRCPLK(LAKE)*BGAREA(LAKE)
+                IF (IUNITUZF.GT.0) THEN
+                  RUNOFF = OVRLNDRNF(LAKE)
+                ELSE
+                  RUNOFF = 0.0
+                END IF
 C
 C16B----COMPUTE RESIDUALS FOR TRANSIENT SIMULATIONS.
                 IF(ISS.EQ.0) THEN
@@ -3762,6 +3775,7 @@ C
       DEALLOCATE (GWFLAKDAT(IGRID)%THETA)
       DEALLOCATE (GWFLAKDAT(IGRID)%STGNEW)
       DEALLOCATE (GWFLAKDAT(IGRID)%STGOLD)
+      DEALLOCATE (GWFLAKDAT(IGRID)%STGOLD2)
       DEALLOCATE (GWFLAKDAT(IGRID)%STGITER)
       DEALLOCATE (GWFLAKDAT(IGRID)%VOL)
       DEALLOCATE (GWFLAKDAT(IGRID)%LAKUNIT)
@@ -3913,6 +3927,7 @@ Cdep  added SURFDEPTH 3/3/2009
       STAGES=>GWFLAKDAT(IGRID)%STAGES
       STGNEW=>GWFLAKDAT(IGRID)%STGNEW
       STGOLD=>GWFLAKDAT(IGRID)%STGOLD
+      STGOLD2=>GWFLAKDAT(IGRID)%STGOLD2
       STGITER=>GWFLAKDAT(IGRID)%STGITER
       VOL=>GWFLAKDAT(IGRID)%VOL
       FLOB=>GWFLAKDAT(IGRID)%FLOB
@@ -4017,6 +4032,7 @@ C
       GWFLAKDAT(IGRID)%NLAKESAR=>NLAKESAR
       GWFLAKDAT(IGRID)%THETA=>THETA
       GWFLAKDAT(IGRID)%STGOLD=>STGOLD
+      GWFLAKDAT(IGRID)%STGOLD2=>STGOLD2
       GWFLAKDAT(IGRID)%STGNEW=>STGNEW
       GWFLAKDAT(IGRID)%STGITER=>STGITER
       GWFLAKDAT(IGRID)%VOL=>VOL

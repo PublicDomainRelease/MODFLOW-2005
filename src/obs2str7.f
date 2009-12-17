@@ -265,14 +265,17 @@ Cx------COMPUTE FLOW FOR THE REACH.
                     FLWCEL = C*(HB-RBOT)
                     IF(ISTRF.EQ.1) FLWCEL=STRM(10,NB)
                     IF (JRBOT.EQ.0) WRITE (IOUT,41 )
-   41                 FORMAT (/,
-     &                ' HEADS AT STREAM CELLS ARE BELOW THE',
-     &                ' BOTTOM OF THE STREAMBED AT THE CELLS LISTED',/,
-     &                ' BELOW.  THESE CONDITIONS DIMINISH THE IMPACT',
-     &                ' OF THE OBSERVATION ON ESTIMATES OF',/,
-     &       ' ALL PARAMETERS EXCEPT THOSE THAT CONTROL THE HYDRAULIC',
-     &                ' CONDUCTIVITY OF THE',/,
-     &                ' STREAMBED.  (SEE TEXT FOR MORE INFORMATION).')
+   41               FORMAT(/,'For the cells listed below, one of two',
+     &              ' conditions exist, as indicated by the',/,
+     &              ' absence or presence of an asterisk (*). If the',
+     &              ' observation is being used for',/,
+     &              ' parameter estimation, these conditions can',
+     &              ' diminish the impact of the',/,
+     &              ' observation for some parameters.',/,
+     &              '  No *: Aquifer head at the stream cell is',
+     &              ' below, the bottom of the streambed.',/,
+     &              '  *   : Seepage to the aquifer is limited by',
+     &              ' available streamflow.')
                     JRBOT = 1
                     IF (IRBOT.EQ.0) THEN
                       WRITE (IOUT,42 ) NT, OBSNAM(NT), ITS

@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.7.00 9/23/2009
+                            VERSION 1.8.00 12/18/2009
 
  LIST FILE: tc2hufv4.lst
                          UNIT    2
@@ -1662,6 +1662,6 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/09/21 10:52:27
- Elapsed run time:  0.360 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/12/22  9:38:25
+ Elapsed run time:  0.359 Seconds
 

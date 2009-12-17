@@ -468,82 +468,82 @@ C16-----FORMATS.
  240  FORMAT (/2X,'*** ERROR ***   NSOL NEEDED BUT NOT DEFINED IN ',
      *   'GAGE PACKAGE.  PROGRAM TERMINATING.')
 C     minor format adjustments below by LFK, July 2006
- 250  FORMAT (5X,'"DATA-0:_Time',11X,'Stage',12X,'Flow"')
- 251  FORMAT (5X,'"DATA-3:_Time',11X,'Stage',12X,'Flow"')
- 255  FORMAT (5X,'"DATA-1:_Time',11X,'Stage',12X,'Flow',
+ 250  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow"')
+ 251  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow"')
+ 255  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow',
      *           11X,'Depth',11X,'Width',6X,'Midpt-Flow',9X,
      +           'Precip.',14X,'ET',10X,'Runoff"')
- 256  FORMAT (5X,'"DATA-1:_Time',11X,'Stage',12X,'Flow',
+ 256  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow',
      *           11X,'Depth',11X,'Width',6X,'Midpt-Flow',9X,
      +           'Precip.',14X,'ET',6X,'SFR-Runoff',6X,
      +           'UZF-Runoff"')
- 260  FORMAT (5X,'"DATA-2:_Time',11X,'Stage',12X,'Flow',
+ 260  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow',
      *           5X,'Conductance',8X,'HeadDiff',7X,'Hyd.Grad."')
- 265  FORMAT (5X,'"DATA-4:_Time',11X,'Stage',12X,'Flow',
+ 265  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow',
      *           11X,'Depth',11X,'Width',6X,'Midpt-Flow',9X,
      +           'Precip.',14X,'ET',10X,'Runoff',5X,'Conductance',
      *           8X,'HeadDiff',7X,'Hyd.Grad."')
- 266  FORMAT (5X,'"DATA-4:_Time',11X,'Stage',12X,'Flow',
+ 266  FORMAT (5X,'"DATA: Time',11X,'Stage',12X,'Flow',
      *           11X,'Depth',11X,'Width',6X,'Midpt-Flow',9X,
      +           'Precip.',14X,'ET',6X,'SFR-Runoff',6X,
      +           'UZF-Runoff',5X,'Conductance',8X,'HeadDiff',
      *           7X,'Hyd.Grad. "')
- 267  FORMAT (5X,'"DATA-5:_Time',11X,'Stage',7X,
+ 267  FORMAT (5X,'"DATA: Time',11X,'Stage',7X,
      *           'Max.-Rate',3X,'Rate-Diverted',3X,
      *           'Upstream-Flow "')
 Cdep---added option for printing unsaturated flow beneath streams
- 268  FORMAT (5X,'"DATA-6:_Time',11X,'Stage',11X,'Depth',9X,
+ 268  FORMAT (5X,'"DATA: Time',11X,'Stage',11X,'Depth',9X,
      *           'GW-Head',4X,'Midpt-Flow',7X,'Stream-Loss',8X,
      *           'GW-Rech.',2X,'Chnge-UZ-Stor.',3X,
      *           'Vol.-UZ-Stor."')
 Cdep---added option for printing water content in unsaturated zone
- 269  FORMAT (5X,'"DATA-7:_Time',11X,'Depth',7X,
+ 269  FORMAT (5X,'"DATA: Time',11X,'Depth',7X,
      *           'Width-Ave.-Water-Content',5X,
      *           'Cell-1-Water-Content"')
 C     following formats modified by LFK, July 2006:
- 270  FORMAT (2X,'"DATA-0:__Time',9X,'Stage',11X,'Flow',
+ 270  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           '     Concentration"')
- 272  FORMAT (2X,'"DATA-0:__Time',9X,'Stage',11X,'Flow',
+ 272  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           '     Concentration ',
      *           'of ',I3,' Solutes "')
-  275  FORMAT (2X,'"DATA-1:__Time',9X,'Stage',11X,'Flow',
+  275  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *          10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X,
      *          'Precip.',12X,'ET',10X,'Runoff',
      *          '     Concentration"')
- 277  FORMAT (2X,'"DATA-1:__Time',9X,'Stage',11X,'Flow',
+ 277  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X
      *           'Precip.',12X,'ET',10X,'Runoff',
      *           '    Concentration ',
      *           'of ',I3,' Solutes "')
- 280  FORMAT (2X,'"DATA-2:__Time',9X,'Stage',11X,'Flow',
+ 280  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           6X,'Conductance',5X,'HeadDiff',7X,'Hyd.Grad.',
      *           '    Concentration"')
- 281  FORMAT (2X,'"DATA-3:__Time',9X,'Stage',11X,'Flow',
+ 281  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           '     Concentration      Load "')
- 282  FORMAT (2X,'"DATA-2:__Time',9X,'Stage',11X,'Flow',
+ 282  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           6X,'Conductance',5X,'HeadDiff',7X,'Hyd.Grad.',
      *           '    Concentration ',
      *           'of ',I3,' Solutes "')
- 284  FORMAT (2X,'"DATA-3:__Time',9X,'Stage',11X,'Flow',
+ 284  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           '    Concentration  &  Load ',
      *           'of ',I3,' Solutes "')
 C285  FORMAT (1X,'" DATA:   Time',8X,'Stage',9X,'Flow',
- 285  FORMAT (2X,'"DATA-4:__Time',9X,'Stage',11X,'Flow',
+ 285  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X,
      *           'Precip.',12X,'ET',10X,'Runoff',6X'Conductance',
      *           5X,'HeadDiff',7X,'Hyd.Grad.',
      *           '    Concentration      Load "')
- 287  FORMAT (2X,'"DATA-4:__Time',9X,'Stage',11X,'Flow',
+ 287  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X,
      *           'Precip.',12X,'ET',10X,'Runoff',6x,'Conductance',
      *           5X,'HeadDiff',7X,'Hyd.Grad.',
      *           '    Concentration  &  Load ',
      *           'of ',I3,' Solutes "')
- 290  FORMAT (2X,'"DATA-5:__Time',9X,'Stage',8X,
+ 290  FORMAT (2X,'"DATA: Time',9X,'Stage',8X,
      *           'Max.-Rate',5X,'Rate-Diverted',3X,
      *           'Upstream-Flow   Concentration',7X,
      *           'Load "')
- 292  FORMAT (2X,'"DATA-5:__Time',9X,'Stage',8X,
+ 292  FORMAT (2X,'"DATA: Time',9X,'Stage',8X,
      *           'Max.-Rate',5X,'Rate-Diverted',3X,
      *           'Upstream-Flow   Concentration & ',
      *           'Load of ',I3,' Solutes "')
@@ -555,62 +555,62 @@ C  LFK
  296  FORMAT (1X,'*****WARNING  UZF PACKAGE ACTIVE WITH TRANSPORT ',/1X,
      +        'GWT PROCESS DOES NOT SUPPORT THE UZF PACKAGE',/1X,
      +        'RUNOFF FROM UZF TO GAGED STREAM WILL NOT BE PRINTED')
- 305  FORMAT (4X,'"DATA(0):_Time',7X,'Stage(H)',9X,'Volume "')
- 306  FORMAT (4X,'"DATA(1):_Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
+ 305  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume "')
+ 306  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
      *,10X,'Evap.',9X,'Runoff',7X,'GW-Inflw',6X,'GW-Outflw',7X,
      * 'SW-Inflw',6X,'SW-Outflw',5X,'Withdrawal',5X,'Lake-Inflx',4X,
      * 'Total-Cond.',4X,'Percent-Err "')
- 307  FORMAT (4X,'"DATA(2):_Time',7X,'Stage(H)',9X,'Volume',
+ 307  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',
      * 7x,'Del-H-TS',7x,'Del-V-TS',6x,'Del-H-Cum',6x,'Del-V-Cum',2x,
      * 'Cum-Prcnt-Err "')
- 308  FORMAT (4X,'"DATA(3):_Time',7X,'Stage(H)',9X,'Volume',8X,
+ 308  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',8X,
      1 'Precip.',10x,'Evap.',9x,'Runoff',7x,'GW-Inflw',6x,'GW-Outflw',
      2 7x,'SW-Inflw',6x,'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',4x,
      * 'Total-Cond.',7x,'Del-H-TS',7x,'Del-V-TS',6x,'Del-H-Cum',6x,
      * 'Del-V-Cum',2x,'Cum-Prcnt-Err "')
 Cdep 4/20/2009 revised format to include lake seepage to UZF
- 309  FORMAT (4X,'"DATA(4):_Time',7X,'Stage(H)',9X,'Volume',5X,
+ 309  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',5X,
      * 'Vol.Change',8X,'Precip.',10x,'Evap.',5x,'    Runoff',
      * 7x,'GW-Inflw',6x,'GW-Outflw',7x,'SW-Inflw',6x,'SW-Outflw',5x,
      * 'Withdrawal',5x,'Lake-Inflx',5x,'Total-Cond',4x,'Percent-Err "')
 Cdep 4/20/2009 revised format to include lake seepage to UZF
- 310  FORMAT (4X,'"DATA(1): Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
+ 310  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
      1 ,10x,'Evap.',5x,'LAK-Runoff',5x,'UZF-Runoff',7x,
      2 'GW-Inflw',6x,'GW-Outflw',5x,'LAK-to-UZF',7x,'SW-Inflw',6x,
      * 'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',4x,'Total-Cond.',
      + 4x,'Percent-Err "')
 Cdep 4/20/2009 revised format to include lake seepage to UZF
- 311  FORMAT (4X,'"DATA(3): Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
+ 311  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',8X,'Precip.'
      1 ,10x,'Evap.',5x,'LAK-Runoff',5x,'UZF-Runoff',7x,
      2 'GW-Inflw',6x,'GW-Outflw',5x,'LAK-to-UZF',7x,'SW-Inflw',6x,
      * 'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',4x,'Total-Cond.',7x,
      * 'Del-H-TS',7x,'Del-V-TS',6x,'Del-H-Cum',6x,'Del-V-Cum',2x,
      + 'Cum-Prcnt-Err "')
 Cdep 4/20/2009 revised format to include lake seepage to UZF
- 312  FORMAT (4X,'"DATA(4): Time',7X,'Stage(H)',9X,'Volume',5X,
+ 312  FORMAT (4X,'"DATA: Time',7X,'Stage(H)',9X,'Volume',5X,
      *'Vol.Change',8X,'Precip.',10x,'Evap.',5x,'LAK-Runoff',5x,
      * 'UZF-Runoff',7x,'GW-Inflw',6x,'GW-Outflw',5x,'LAK-to-UZF',7x,
      * 'SW-Inflw',6x,'SW-Outflw',5x,'Withdrawal',5x,'Lake-Inflx',4x,
      * 'Total-Cond.',4x,'Percent-Err "')
- 315  FORMAT ('(1X,''"DATA-0:__Time'',9X,''Stage(H)'',7X,''Volume'',2X,'
+ 315  FORMAT ('(1X,''"DATA: Time'',9X,''Stage(H)'',7X,''Volume'',2X,'
      *,I2,'A12, '' "'')')
- 316  FORMAT ('( 1X,''"DATA-1:__Time'',8X,''Stage(H)'',7X,''Volume'',3X,
+ 316  FORMAT ('( 1X,''"DATA: Time'',8X,''Stage(H)'',7X,''Volume'',3X,
      *',I2,'A12,6X,''   Precip'',10x,''Evap.'',9x,''Runoff'',7x,'
      *'GW-Inflw'',6x,''GW-Outflw'',7x,''SW-Inflw'',6x,''SW-Outflw'',6x,
      *''Withdrawal'',5x,''Lake-Inflx'',5x,''Total-Cond.',4x,
      *'Percent-Err  "'')')
- 317  FORMAT ('( 1X,''"DATA-2:__Time'',9X,''Stage(H)'',7X,''Volume'',3X,
+ 317  FORMAT ('( 1X,''"DATA: Time'',9X,''Stage(H)'',7X,''Volume'',3X,
      *',I2,'A12,7x,''Del-H-TS'',7x,''Del-V-TS     '', ',I2,'A12,5x,
      *''Del-H-Cum'',5x,'' Del-V-Cum    '', ',I2,'A12,3x,'
      *'Cum-Prcnt-Err  "'')')
- 318  FORMAT('( 1X,''"DATA-3:__Time'',9X,''Stage(H)'',7X,''Volume'',3X,'
+ 318  FORMAT('( 1X,''"DATA: Time'',9X,''Stage(H)'',7X,''Volume'',3X,'
      *,I2,'A12,8X,'' Precip'',10x,''Evap.'',9x,''Runoff'',7x,''GW-Inflw'
      *',6x,''GW-Outflw'',7x,''SW-Inflw'',6x,''SW-Outflw'',5x,
      *'' Withdrawal'',5x,''Lake-Inflx'',5x,''Total-Cond.'',5x,
      *''Del-H-TS'',7x,''Del-V-TS     '', ',I2,'A12,4x,''Del-H-Cum'',
      *4x,''  Del-V-Cum     '', ',I2,'A12,2x'' Cum-Prcnt-Err "'')')
 Cdep 4/20/2009 revised format to denote option 4    
- 319  FORMAT ('( 1X,''"DATA-4:__Time'',8X,''Stage(H)'',7X,''Volume'',3X,
+ 319  FORMAT ('( 1X,''"DATA: Time'',8X,''Stage(H)'',7X,''Volume'',3X,
      *',I2,'A12,5X,'' Vol.Change'',8X,''Precip'',10x,''Evap.'',9x,
      *''Runoff'',8x,''GW-Inflw'',6x,''GW-Outflw'',7x,''SW-Inflw'',6x,
      *''SW-Outflw'',5x,'' Withdrawal'',5x,''Lake-Inflx'',4x,

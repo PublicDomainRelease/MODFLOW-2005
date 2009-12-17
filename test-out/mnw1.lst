@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.7.00 9/23/2009
+                            VERSION 1.8.00 12/18/2009
 
  LIST FILE: mnw1.lst
                          UNIT    7
@@ -170,7 +170,7 @@
                             STEADY-STATE DAMPING PARAMETER =    0.10000E+01
                                TRANSIENT DAMPING PARAMETER =    0.10000E+01
 
- MNW7 -- MULTI-NODE WELL PACKAGE, VERSION 7, 11/07/2005.
+ MNW1 -- MULTI-NODE WELL 1 PACKAGE, VERSION 7, 11/07/2005.
     INPUT READ FROM UNIT  75
  MAXIMUM OF    120 WELLS
  CELL-BY-CELL FLOWS WILL BE PRINTED WHEN ICBCFL NOT 0
@@ -2128,6 +2128,6 @@ Well-B                          5     6 -130000.      143.222     -13.3190      
          TOTAL TIME 8.64839E+10 1.44140E+09 2.40233E+07 1.00097E+06  2740.5    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/09/21 10:52:27
- Elapsed run time:  0.265 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/12/22  9:38:25
+ Elapsed run time:  0.219 Seconds
 

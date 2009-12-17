@@ -653,7 +653,7 @@ C     (VKS) IN UZF TO EQUAL VERTICAL HYDRAULIC CONDUCTIVITY IN LAYER-
 C     PROPERTY FLOW PACKAGE
 C     VERSION 1.7:  SEPTEMBER 15, 2009
 C     ******************************************************************
-      USE GWFUZFMODULE, ONLY: VKS, IUZFBND, CLOSEZERO
+      USE GWFUZFMODULE, ONLY: VKS, IUZFBND, CLOSEZERO, NUZTOP
       USE GLOBAL,       ONLY: NCOL, NROW, NLAY, IOUT, IBOUND, BOTM
       USE GWFLPFMODULE, ONLY: LAYTYP, LAYVKA, VKA, HK
       USE GWFHUFMODULE, ONLY: HGUVANI, NHUF, HKHUF=>HK, VKAH
@@ -668,7 +668,7 @@ C    ------------------------------------------------------------------
 C    ------------------------------------------------------------------
 C    LOCAL VARIABLES
 C    ------------------------------------------------------------------
-      INTEGER krck, ncck, nrck, iflgbnd
+      INTEGER krck, ncck, nrck, iflgbnd, il, ill, land
       REAL celthick
 C    ******************************************************************
 C
@@ -677,7 +677,28 @@ C       SET VKS EQUAL TO VKALPF FOR CORRESPONDING MODEL CELL.
       krck = 1
       DO nrck = 1, NROW
         DO ncck = 1, NCOL
-          krck = IUZFBND(ncck, nrck)
+!   RGN 6/22/09. Add coded to find upper-most active layer
+          il = 0
+          IF ( NUZTOP.EQ.1 .OR. NUZTOP.EQ.2 ) THEN
+            il = IUZFBND(ncck, nrck)
+            IF ( il.GT.0 ) THEN
+              IF ( IBOUND(ncck, nrck, il).LT.1 ) il = 0
+            END IF
+          ELSE IF ( NUZTOP.EQ.3 ) THEN
+            ill = 1
+            il = 0
+            DO WHILE ( ill.LE.NLAY )
+              IF ( IBOUND(ncck, nrck, ill).GT.0 ) THEN
+                il = ill
+                EXIT
+              ELSE IF ( IBOUND(ncck, nrck, ill).LT.0 ) THEN
+                EXIT
+              END IF
+CRGN made il = 0 when all layers for column are inactive 2/21/08
+              ill = ill + 1
+            END DO
+          END IF
+          krck = il
           IF ( krck.NE.0 ) THEN
             IF ( IBOUND(ncck, nrck, krck).GT.0 ) THEN
               IF ( Iunitlpf.GT.0 ) THEN
@@ -752,7 +773,7 @@ C     -----------------------------------------------------------------
       REAL bottom, celtop, slen, width, etdpth, surfinf, surfpotet, top
       REAL thick
       INTEGER ic, iflginit, il, ilay, ill, ir, iss, jk, l, ncck,
-     +        nrck, nuzf, ll, uzlay
+     +        nrck, nuzf, ll, uzlay, land
       CHARACTER(LEN=24) aname(4)
       DATA aname(1)/' AREAL INFILTRATION RATE'/
       DATA aname(2)/'                 ET RATE'/
@@ -873,9 +894,10 @@ CRGN made il = 0 when all layers for column are inactive 2/21/08
                   ill = ill + 1
                 END DO
               END IF
+              land = abs(IUZFBND(ncck, nrck))
 !
               IF ( il.GT.0 ) THEN
-                thick = BOTM(ncck, nrck,LBOTM(il)-1)-
+                thick = BOTM(ncck, nrck,LBOTM(land)-1)-
      +                  BOTM(ncck, nrck,LBOTM(il))
                 IF ( ROOTDPTH(ncck, nrck).GT.0.9*thick ) THEN
                   ROOTDPTH(ncck, nrck) = 0.9*thick
@@ -1860,7 +1882,7 @@ C7------PRINT WARNING WHEN NUZTOP IS 3 AND ALL LAYERS ARE INACTIVE.
             celthick = BOTM(ic, ir, 0) - BOTM(ic, ir, 1)
           ELSE
             celtop = BOTM(ic, ir, land-1) - 0.5D0*SURFDEP
-            celthick = BOTM(ic, ir, land-1) - BOTM(ic, ir, land)
+            celthick = BOTM(ic, ir, land-1) - BOTM(ic, ir, il)
           END IF
           fks = VKS(ic, ir)
           etact = 0.0D0

@@ -972,27 +972,35 @@ C
 C
             B = DZERO
             BV = DZERO
-            IF (I.NE.1 .AND. IBOUND(NRL).GE.0) THEN
-              B = CC(NRB)
-              BV = B*VIN(NRL)
+            IF (I.NE.1) THEN
+              IF (IBOUND(NRL).GE.0) THEN
+                B = CC(NRB)
+                BV = B*VIN(NRL)
+              ENDIF
             ENDIF
             H = DZERO
             HV = DZERO
-            IF (I.NE.NROW .AND. IBOUND(NRN).GE.0) THEN
-              H = CC(NRH)
-              HV = H*VIN(NRN)
+            IF (I.NE.NROW) THEN
+              IF (IBOUND(NRN).GE.0) THEN
+                H = CC(NRH)
+                HV = H*VIN(NRN)
+              ENDIF
             ENDIF
             D = DZERO
             DV = DZERO
-            IF (J.NE.1 .AND. IBOUND(NCL).GE.0) THEN
-              D = CR(NCD)
-              DV = D*VIN(NCL)
+            IF (J.NE.1) THEN
+              IF (IBOUND(NCL).GE.0) THEN
+                D = CR(NCD)
+                DV = D*VIN(NCL)
+              ENDIF
             ENDIF
             F = DZERO
             FV = DZERO
-            IF (J.NE.NCOL .AND. IBOUND(NCN).GE.0) THEN
-              F = CR(NCF)
-              FV = F*VIN(NCN)
+            IF (J.NE.NCOL) THEN
+              IF (IBOUND(NCN).GE.0) THEN
+                F = CR(NCF)
+                FV = F*VIN(NCN)
+              ENDIF
             ENDIF
             Z = DZERO
             ZV = DZERO

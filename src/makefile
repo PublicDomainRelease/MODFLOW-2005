@@ -70,7 +70,9 @@ OBJECTS = \
         obs2chd7.o \
         obs2str7.o \
         parutl7.o \
-        gwf2mnw7.o \
+        gwf2mnw17.o \
+        gwf2mnw27.o \
+        gwf2mnw2i7.o \
         utl7.o \
         lmt7.o \
         gwf2hydmod7.o \

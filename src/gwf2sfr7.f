@@ -37,7 +37,7 @@ C     ------------------------------------------------------------------
       REAL epsslpe
 C     ------------------------------------------------------------------
       Version_sfr =
-     +'$Id: gwf2sfr7.f 1075 2009-08-07 18:50:15Z rsregan $'
+     +'$Id: gwf2sfr7.f 1128 2009-09-28 22:25:56Z rniswon $'
       iterp = 1
       idum(1) = 0
       ALLOCATE (NSS, NSTRM,TOTSPFLOW)
@@ -103,7 +103,7 @@ C4------READ UNSATURATED FLOW VARIABLES WHEN ISFROPT GREATER THAN 1.
         IF ( IRTFLG .GT. 0 ) THEN
           NUMTIM = 1
           WEIGHT = 1.0
-          FLWTOL = 0.0
+          FLWTOL = 1.0D-6
           CALL URWORD(line, lloc, istart, istop, 2, NUMTIM, r, IOUT, In)
           CALL URWORD(line, lloc, istart, istop, 3, i, WEIGHT, IOUT, In)
           CALL URWORD(line, lloc, istart, istop, 3, i, FLWTOL, IOUT, In)
@@ -2586,10 +2586,10 @@ C         THAN TOLERANCE.
      +                     flobot)
 !dep  August 26, 2009  added ELSE to recalculate flwmpt for ICALC=0 or 1
                 ELSE
-                  flowc = flowin + runof - etstr +
+                  flowc = flowin + runof + runoff - etstr +
      +                    precip
                   flwmpt = flowin +
-     +                     0.5D0*(runof+precip-etstr-flobot) 
+     +                     0.5D0*(runof+runoff+precip-etstr-flobot) 
                 END IF
               END IF
 C
@@ -2614,9 +2614,9 @@ C         AND SET DEPTH TO DEPTHP AND FLOBOT TO FLOBOTP.
      +                     flobot)
 !dep  August 26, 2009  added ELSE to recalculate flwmpt for ICALC=0 or 1
                 ELSE
-                  flowc = flowin + runof - etstr + precip
+                  flowc = flowin + runof + runoff - etstr + precip
                   flwmpt = flowin +
-     +                     0.5D0*(runof+precip-etstr-flobot) 
+     +                     0.5D0*(runof + runoff + precip-etstr-flobot)
                 END IF
               END IF
               errold = err
@@ -2914,7 +2914,7 @@ C77-----ADD TERMS TO RHS AND HCOF WHEN GROUND-WATER HEAD LESS THAN
 C         STREAMBED BOTTOM ELEVATION.
               IF ( h.LT.sbot ) THEN
 !               IF ( ii.EQ.1 ) THEN
-                 RHS(ic, ir, il) = RHS(ic, ir, il) - SUMRCH(l)
+                 RHS(ic, ir, il) = RHS(ic, ir, il) - SUMRCH(l)    
 !                 rhsh1 = - SUMRCH(l)
 !               ELSEIF ( ii.EQ.2 ) THEN
 !                 rhsh2 = - SUMRCH(l)
@@ -2937,7 +2937,6 @@ C78-----STREAM LEAKAGE IS NOT HEAD DEPENDENT.
 !      if( hstrave.lt.h)then
 !      fout=fout+cstr*(hstrave-h)
 !      fin=fin+sumrch(l)
-!      write(iout,*)l,cstr*(hstrave-h)+sumrch(l)
 !      end if
                 ELSE
 !                 IF ( ii.EQ.1 ) THEN
@@ -2949,7 +2948,6 @@ C78-----STREAM LEAKAGE IS NOT HEAD DEPENDENT.
 !                 END IF
  !     if (hstrave.gt.h)then
  !     fin=fin+cstr*(hstrave-h)
- !     write(iout,*)l,cstr*(hstrave-h)
  !     end if
  !     if (hstrave.ge.h)then
  !     fout=fout+cstr*(hstrave-h)
@@ -2975,7 +2973,6 @@ C         STREAMBED CONDUCTANCE IN REACH.
 !                   rhsh2 = - SUMLEAK(l)- SUMRCH(l)
 !                 END IF
 !      fin=fin+sumleak(l)+sumrch(l)
-!      write(iout,*)l,sumrch(l)
                 ELSE
 !                 IF ( ii.EQ.1 ) THEN
                     RHS(ic, ir, il) = RHS(ic, ir, il) - SUMLEAK(l)
@@ -2984,7 +2981,6 @@ C         STREAMBED CONDUCTANCE IN REACH.
 !                   rhsh2 = - SUMLEAK(l)
 !                 END IF
 !      fin=fin+sumleak(l)
-!      write(iout,*)l,sumleak(l)
                 END IF
 C
 C80-----ADD TERM ONLY TO RHS WHEN GROUND-WATER HEAD IS LESS THAN
@@ -2997,10 +2993,8 @@ C         STREAMBED BOTTOM ELEVATION.
 !             ELSEIF ( ii.EQ.2 )THEN
 !               rhsh2 = - SUMRCH(l)
 !             END IF
-              
 !      fin=fin+sumrch(l)
 !      write(iout,*)l,sumrch(l)
-!  119 format(i5,3(1x,e20.10))
             END IF
           END IF
 C64B----END NEWTON SOLVER LOOP (NWT PACKAGE)
@@ -3593,6 +3587,9 @@ C39-----ADD FLOBOT TO RATIN WHEN STREAM RECHARGES GROUND WATER.
               totflwt = 0.0
             END IF
           END IF
+!       write(iout,*)'bd',l,flobot
+!       write(iout,119)l,flowin,flowot,flobot
+!  119 format(i5,3(1x,e20.10))
 C
 C40-----PRINT STREAMFLOWS AND RATES FOR EACH REACH TO MAIN LIST IF
 C         REQUESTED (ISTCB1<0 and IBD<0)AND NO UNSATURATED FLOW.
@@ -7336,6 +7333,8 @@ C     ------------------------------------------------------------------
       w_1 = 1.0 - WEIGHT
       dq = FLWTOL/10.0
       tol = FLWTOL
+      IF ( dq.LT.NEARZERO ) dq = NEARZERO
+      IF ( tol.LT.NEARZERO ) tol = NEARZERO
       i = 1
       IF ( Flobot.GT.Qc+Qlat*Strlen ) THEN
         Flobot  = Qc+Qlat*Strlen
