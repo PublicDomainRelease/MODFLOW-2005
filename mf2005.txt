@@ -52,6 +52,11 @@ METHOD
 
 HISTORY
 
+      MODFLOW-2005 Version 1.9 03/30/2012 -- Added support for writing
+         MODPATH IFACE values in the MODFLOW budget file for STR, FHB, and
+         SFR Packages. Added the PCGN solver.  Many small changes
+         were also made, which are documented in the release.txt file.
+
       MODFLOW-2005 Version 1.8 12/18/2009 -- Added MNW2 Package and made
          minor changes.  All of the changes are documented in the
          release.txt file.
@@ -166,6 +171,8 @@ FUNTIONALITY
          SWT -- Subsidence and Aquifer-System Compaction Package
          LMT -- Link to the MT3DMS contaminant-transport model
          HYDMOD -- Hydrograph capability
+         PCGN -- Preconditioned Conjugate Gradient solver with
+                 improved nonlinear control
 
 Unlike MODFLOW-2000, MODFLOW-2005 does not support a parameter-estimation
 process. Users of MODFLOW-2005 are encouraged to take advantage of
@@ -323,6 +330,13 @@ Survey's modular three-dimensional finite-difference ground-water flow
 model: U.S. Geological Survey Open-File Report 98-564, 57 p.
 
 A separate file, hydmod7.pdf, documents the conversion for MODFLOW-2005.
+
+   The PCGN Package is documented in:
+
+Naff, Richard L.; Banta, Edward R., 2008, The U.S. Geological Survey Modular
+Ground-Water Model - PCGN: A Preconditioned Conjugate Gradient Solver with
+Improved Nonlinear Control: U.S. Geological Survey Open-File Report
+2008-1331, 35 p.
 
 
 CONTACTS

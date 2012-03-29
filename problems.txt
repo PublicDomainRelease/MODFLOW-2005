@@ -173,7 +173,7 @@ as a common filename base.
   Solver: SIP
   Types of parameters defined / package: none
 
-14. Test case l1b2k:
+14a. Test case l1b2k:
 
   This test case is the steady-state version of Test Simulation 1 in
   Merritt and Konikow (2000) converted to MODFLOW-2005
@@ -182,6 +182,21 @@ as a common filename base.
   Stress periods: 1 steady
   Flow package: BCF6
   Stress packages: EVT, RCH, LAK, FHB
+  Solver: SIP
+  Types of parameters defined / package: none
+
+14b. Test case l1b2k_bath:
+
+  This test case is the steady-state version of Test Simulation 1 in
+  Merritt and Konikow (2000) converted to MODFLOW-2005. This is a 
+  modified version of l1b2k to include reading lake bathymetry
+  information from an external text file.
+
+  Grid dimensions: 5 Layers, 17 Rows, 17 Columns
+  Stress periods: 1 steady
+  Flow package: BCF6
+  Stress packages: EVT, RCH, LAK, FHB
+  Lake bathymetry file: lak1b_bath.txt 
   Solver: SIP
   Types of parameters defined / package: none
 
@@ -209,10 +224,26 @@ as a common filename base.
   Solver: SIP
   Types of parameters defined / package: none
   
-17. Test case testsfr2:
+17a. Test case testsfr2:
 
   This test case is documented as the hypothetical test simulation
   in Niswonger and Prudic (2005).
+  
+  Grid dimensions: 1 Layer, 7 Rows, 100 Columns
+  Stress periods: 50 transient
+  Flow package: LPF
+  Stress packages: SFR, GHB
+  Solver: PCG2
+  Types of parameters defined / package: none
+  
+17b. Test case testsfr2_tab:
+  
+  This test case is documented as the hypothetical test simulation
+  in Niswonger and Prudic (2005). This is a modified version of
+  the SFR2 test case to include specified inflows through 
+  tabular input files and use of key-word options. This problem
+  was also modified to use the SFR2 ICALC=1 option to test
+  smoothing of the specified width.
   
   Grid dimensions: 1 Layer, 7 Rows, 100 Columns
   Stress periods: 50 transient

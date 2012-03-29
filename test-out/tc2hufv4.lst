@@ -1,11 +1,11 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.8.00 12/18/2009
+                            VERSION 1.9.00 3/30/2012
 
  LIST FILE: tc2hufv4.lst
                          UNIT    2
 
- OPENING ..\tc2hufv4.huf
+ OPENING tc2hufv4.huf
  FILE TYPE:HUF2   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
@@ -14,47 +14,51 @@
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 #Common files                                                                                                                                                                                                                                                                                               
 
- OPENING ..\tc2hufv4.bas
+ OPENING tc2hufv4.bas
  FILE TYPE:BAS6   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.dis
+ OPENING tc2hufv4.dis
  FILE TYPE:DIS   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.wel
+ OPENING tc2hufv4.wel
  FILE TYPE:WEL   UNIT   12   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.drn
+ OPENING tc2hufv4.drn
  FILE TYPE:DRN   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.evt
+ OPENING tc2hufv4.evt
  FILE TYPE:EVT   UNIT   15   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.ghb
+ OPENING tc2hufv4.ghb
  FILE TYPE:GHB   UNIT   17   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.rch
+ OPENING tc2hufv4.rch
  FILE TYPE:RCH   UNIT   18   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.oc
+ OPENING tc2hufv4.oc
  FILE TYPE:OC   UNIT   22   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.pcg
+ OPENING tc2hufv4.pcg
  FILE TYPE:PCG   UNIT   23   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\tc2hufv4.zon
+ OPENING tc2hufv4.zon
  FILE TYPE:ZONE   UNIT   39   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
  BAS -- BASIC PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT    8
+ 
+ MODFLOW was compiled using mixed precision
+ Precision of REAL variables:           6
+ Precision of DOUBLE PRECISION variables:          15
 
  DISCRETIZATION INPUT DATA READ FROM UNIT    9
  # DIS file for test case tc2hufv4
@@ -1108,7 +1112,7 @@ HGU5           0     0     0     0     0
     32 CALLS TO PCG ROUTINE FOR TIME STEP   1 IN STRESS PERIOD    1
    242 TOTAL ITERATIONS
 
- OUTPUT CONTROL FOR STRESS PERIOD    1   TIME STEP   1
+ OUTPUT CONTROL FOR STRESS PERIOD    1   TIME STEP    1
     PRINT HEAD FOR ALL LAYERS
     SAVE HEAD FOR ALL LAYERS
 1
@@ -1298,7 +1302,7 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP  1 IN STRESS PERIOD   1
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP    1, STRESS PERIOD   1
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -1337,7 +1341,7 @@ HGU5           0     0     0     0     0
 
 
 
-          TIME SUMMARY AT END OF TIME STEP   1 IN STRESS PERIOD    1
+         TIME SUMMARY AT END OF TIME STEP    1 IN STRESS PERIOD    1
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 7.46496E+09 1.24416E+08 2.07360E+06  86400.      236.55    
@@ -1662,6 +1666,6 @@ HGU5           0     0     0     0     0
         9999.       9999.       9999.       9999.       1244.       1242.    
         1236.       1227.       1216.       1207.       1200.       1196.    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/12/22  9:38:25
- Elapsed run time:  0.359 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/03/23 15:19:33
+ Elapsed run time:  0.281 Seconds
 

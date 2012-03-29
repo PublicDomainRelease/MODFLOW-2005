@@ -1,35 +1,39 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.8.00 12/18/2009
+                            VERSION 1.9.00 3/30/2012
 
  LIST FILE: ibs2k.lst
                          UNIT    1
 
- OPENING ..\ibs2k.ba6
+ OPENING ibs2k.ba6
  FILE TYPE:BAS6   UNIT    2   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\ibs2k.bc6
+ OPENING ibs2k.bc6
  FILE TYPE:BCF6   UNIT    7   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\ibs2k.dis
+ OPENING ibs2k.dis
  FILE TYPE:DIS   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\ibs2k.oc
+ OPENING ibs2k.oc
  FILE TYPE:OC   UNIT   11   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\ibs2k.ibs
+ OPENING ibs2k.ibs
  FILE TYPE:IBS   UNIT   13   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\ibs2k.sip
+ OPENING ibs2k.sip
  FILE TYPE:SIP   UNIT   19   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
  BAS -- BASIC PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT    2
+ 
+ MODFLOW was compiled using mixed precision
+ Precision of REAL variables:           6
+ Precision of DOUBLE PRECISION variables:          15
 
  DISCRETIZATION INPUT DATA READ FROM UNIT   10
     2 LAYERS        10 ROWS        12 COLUMNS
@@ -500,7 +504,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
    9    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
   10    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 10 IN STRESS PERIOD   1
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   10, STRESS PERIOD   1
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -531,7 +535,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  10 IN STRESS PERIOD    1
+         TIME SUMMARY AT END OF TIME STEP   10 IN STRESS PERIOD    1
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 2.93082E+07 4.88471E+05  8141.2      339.22     0.92872    
@@ -773,7 +777,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
    9    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
   10    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 10 IN STRESS PERIOD   2
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   10, STRESS PERIOD   2
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -804,7 +808,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  10 IN STRESS PERIOD    2
+         TIME SUMMARY AT END OF TIME STEP   10 IN STRESS PERIOD    2
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 2.93082E+07 4.88471E+05  8141.2      339.22     0.92872    
@@ -1046,7 +1050,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
    9    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
   10    0.000   1.000   2.000   3.000   4.000   5.000   6.000   7.000   8.000   9.000  10.000  11.000
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 10 IN STRESS PERIOD   3
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   10, STRESS PERIOD   3
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -1077,7 +1081,7 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  10 IN STRESS PERIOD    3
+         TIME SUMMARY AT END OF TIME STEP   10 IN STRESS PERIOD    3
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 2.93082E+07 4.88471E+05  8141.2      339.22     0.92872    
@@ -1112,6 +1116,6 @@ BEEN SUPERSEDED BY THE SUBSIDENCE AND AQUIFER-SYSTEM COMPACTION PACKAGE.
   10    0.000      5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03  5.5000E-03
        5.5000E-03   0.000    
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/12/22  9:38:24
- Elapsed run time:  0.047 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/03/23 15:19:31
+ Elapsed run time:  0.062 Seconds
 

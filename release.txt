@@ -11,6 +11,94 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
       
+o Version 1.9.0 03/30/2012
+    GWF2BAS7 -- Added an option, STOPERROR, to specify a budget criterion
+       that allows a simulation to continue running even if the solver
+       closure criteria are not met.  "STOPERROR" is an optional keyword
+       that can be specified in the options list (input item 1) of the Basic
+       (BAS) Package input file.  The real number, STOPER, must follow
+       the keyword.  STOPER is a percent discrepancy that is compared to the
+       budget percent discrepancy when the solver convergence criteria are
+       not met.  Execution will continue unless the budget percent
+       discrepancy is greater than STOPER. 
+       Added information in the listing file about the precision of
+       variables.  This shows whether the code was compiled used mixed
+       double and single precision or full double precision. Increased the
+       number of digits used for printing the number of time steps in
+       some format statements.
+       Increased the number of digits used for printing the time step from
+       3 to 5 in several places.
+    GWF2STR7 -- Added support for compact budget and auxiliary data.  For
+       example, this allows the specification of IFACE for use with
+       MODPATH.  The auxiliary data are defined as in the other packages,
+       such as the RIV Package, that allow auxiliary data.
+    GWF2FHB7 -- Added the functionality to write the FHB IAUX input variable
+       for flow boundaries into the budget file as the MODPATH IFACE
+       variable.  This happens automatically if COMPACT BUDGET AUXILIARY
+       is specified in the Output Control file.
+    GWF2LPF7 -- Added an option to turn off the checking that a value is 
+       defined for all cells when parameters are used to define layer data.
+       This option is implemented by specifying the keyword "NOPARCHECK" as
+       one of the options in input Item 1 of the LPF input file.
+    GWF2SFR7 --  A number of changes were made, including some new options.
+       The changes, including modified input instructions, are described 
+       in file LAK_SFR_UZF_updates_MF2005.txt. Input files for the prior
+       release 1.8 of MODFLOW-2005 continue to work.  Consolidated SFR
+       input instructions are included in file:
+                    Updated_SFR2_input_instructions_MF2005.pdf .
+    GWF2LAK7 -- A number of changes were made, including a new option to
+       specify lake bathymetry data through external files. The changes,
+       including modified input instructions, are described in file
+       LAK_SFR_UZF_updates_MF2005.txt. Input files for the prior release
+       1.8 of MODFLOW-2005 continue to work.
+    GWF2UZF7 -- A number of changes were made, including some new options.
+       The changes, including modified input instructions, are described
+       in file LAK_SFR_UZF_updates_MF2005.txt. Input files for the prior
+       release 1.8 of MODFLOW-2005 continue to work.
+    PCGN2 -- Added the PCGN solver.
+    GWF2MNW27 -- A bug was fixed that affected simulations when both MNW2
+       and the HUF Package were used in the same simulation in conjunction
+       with the partial penetration correction. The variable KY is now
+       declared as a Double Precision variable instead of being implicitly
+       assumed (incorrectly) to be an Integer variable.  A number of minor
+       changes were made in Format statements to produce a cleaner output
+       file.  In Subroutines GWF2MNW27BCF and GWF2MNW27HUF, corrections
+       were made to assure the correct check is made for steady-state or
+       transient conditions and to prevent a divide by zero error if a cell
+       is dry. A bug was fixed for the calculation of angles theta and omega
+       for slanted wells with an orientation into the southwest directional
+       quadrant.  Fixed a bug that caused erroneous values to be written to
+       the compact budget file (specifically, for inactive MNW wells),
+       although the numerical solution was accurate, as were the budget
+       numbers written in the main listing file.
+    LMT7 -- Updated the code to support MNW2. Data handling was updated to
+       support use in the Local Grid Refinement (LGR) version of MODFLOW.
+       The input file is unchanged
+    GWF2GHB7 -- Fixed bug that prevented NO PRINT option from working.
+    OBS2BAS7 -- Fixed a problem with multi-layer head observations.
+       Observations involving an interpolation to a single neighboring cell
+       were incorrectly eliminated.
+    GMG7 -- Fixed a problem that caused MODFLOW to abort in some rare
+       conditions.
+    SIP7 -- Modified SIP to avoid failure in the unusual situation that head
+       change is 0 at all cells for an iteration.
+    PCG7 -- Fixed a memory access error when the polnomial preconditioner
+       is used. Added IHCOFADD option. When an active cell is surrounded
+       by dry cells, the cell normally converts to dry.  The new option
+       causes the cell to convert to dry only if storage and head-dependent
+       boundary flow are also 0.  IHCOFADD is a 4th integer input item read
+       on the first input line.  A non-zero value activates the option.  An
+       unspecified or 0 value turns the option off.
+    DE47 -- Modified code to allow a solution to occur for a single-cell
+       model.
+    GWF2SUB7 -- Fixed an uninitialized variable that caused MODFLOW to abort
+       in some situations.
+    GWF2HUF7 -- Fixed a bug that caused flow across some cell faces to be
+       incorrectly saved in the budget file, which affected Modpath. Fixed
+       A bug that caused an array to go out of bounds in some situations.
+       Fixed a bug that caused excessive time to be spent substituting
+       parameter values for arrays.
+
 o Version 1.8.0 12/18/2009
     Added MNW2 Package.  This is an alternative to the original MNW
        Package, which is referred to as MNW1.  MNW1 remains in

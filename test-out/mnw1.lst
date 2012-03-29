@@ -1,44 +1,45 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.8.00 12/18/2009
+                            VERSION 1.9.00 3/30/2012
 
  LIST FILE: mnw1.lst
                          UNIT    7
 #                                                                                                                                                                                                                                                                                                           
+# Input files                                                                                                                                                                                                                                                                                               
 
- OPENING ..\mnw1.dis
+ OPENING mnw1.dis
  FILE TYPE:DIS   UNIT    8   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.bas
+ OPENING mnw1.bas
  FILE TYPE:BAS6   UNIT    9   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.bcf
+ OPENING mnw1.bcf
  FILE TYPE:BCF6   UNIT   10   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.mnw
+ OPENING mnw1.mnw
  FILE TYPE:MNW1   UNIT   75   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.drn
+ OPENING mnw1.drn
  FILE TYPE:DRN   UNIT   77   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.rch
+ OPENING mnw1.rch
  FILE TYPE:RCH   UNIT   72   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.pcg
+ OPENING mnw1.pcg
  FILE TYPE:PCG   UNIT   74   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.chd
+ OPENING mnw1.chd
  FILE TYPE:CHD   UNIT   76   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 
- OPENING ..\mnw1.oc
+ OPENING mnw1.oc
  FILE TYPE:OC   UNIT   71   STATUS:OLD    
  FORMAT:FORMATTED              ACCESS:SEQUENTIAL          
 #                                                                                                                                                                                                                                                                                                           
@@ -53,6 +54,10 @@
  FORMAT:BINARY                 ACCESS:SEQUENTIAL          
 
  BAS -- BASIC PACKAGE, VERSION 7, 5/2/2005 INPUT READ FROM UNIT    9
+ 
+ MODFLOW was compiled using mixed precision
+ Precision of REAL variables:           6
+ Precision of DOUBLE PRECISION variables:          15
 
  DISCRETIZATION INPUT DATA READ FROM UNIT    8
     2 LAYERS        21 ROWS        14 COLUMNS
@@ -503,9 +508,9 @@ Well-B                          5     6-0.241926E-09  157.326      57.3259      
   21    170.593       170.204       169.432       168.290       166.793       164.963       162.820       160.389       157.695    
         154.779       151.713       148.634       145.814       143.803    
 
- HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP  15, STRESS PERIOD    1
+ HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP   15, STRESS PERIOD    1
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 15 IN STRESS PERIOD   1
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   15, STRESS PERIOD   1
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -540,7 +545,7 @@ Well-B                          5     6-0.241926E-09  157.326      57.3259      
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  15 IN STRESS PERIOD    1
+         TIME SUMMARY AT END OF TIME STEP   15 IN STRESS PERIOD    1
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 1.01679E+10 1.69465E+08 2.82441E+06 1.17684E+05  322.20    
@@ -837,9 +842,9 @@ Well-B                          5     6 -96168.2      140.000     -16.5409      
   21    159.091       158.772       158.155       157.276       156.167       154.833       153.269       151.477       149.469    
         147.269       144.922       142.528       140.301       138.693    
 
- HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP  15, STRESS PERIOD    2
+ HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP   15, STRESS PERIOD    2
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 15 IN STRESS PERIOD   2
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   15, STRESS PERIOD   2
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -874,7 +879,7 @@ Well-B                          5     6 -96168.2      140.000     -16.5409      
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  15 IN STRESS PERIOD    2
+         TIME SUMMARY AT END OF TIME STEP   15 IN STRESS PERIOD    2
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 1.01679E+10 1.69465E+08 2.82441E+06 1.17684E+05  322.20    
@@ -1171,9 +1176,9 @@ Well-B                          5     6 -82906.7      140.000     -16.5409      
   21    157.772       157.456       156.843       155.971       154.873       153.553       152.007       150.239       148.262    
         146.101       143.805       141.475       139.327       137.796    
 
- HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP  15, STRESS PERIOD    3
+ HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP   15, STRESS PERIOD    3
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 15 IN STRESS PERIOD   3
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   15, STRESS PERIOD   3
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -1208,7 +1213,7 @@ Well-B                          5     6 -82906.7      140.000     -16.5409      
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  15 IN STRESS PERIOD    3
+         TIME SUMMARY AT END OF TIME STEP   15 IN STRESS PERIOD    3
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 1.22014E+06  20336.      338.93      14.122     3.86641E-02
@@ -1487,9 +1492,9 @@ Well-B                          5     6-0.282625E-09  143.885     -12.6555      
   21    152.554       152.256       151.682       150.870       149.855       148.642       147.232       145.630       143.856    
         141.938       139.929       137.923       136.105       134.834    
 
- HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP  15, STRESS PERIOD    4
+ HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP   15, STRESS PERIOD    4
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 15 IN STRESS PERIOD   4
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   15, STRESS PERIOD   4
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -1524,7 +1529,7 @@ Well-B                          5     6-0.282625E-09  143.885     -12.6555      
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  15 IN STRESS PERIOD    4
+         TIME SUMMARY AT END OF TIME STEP   15 IN STRESS PERIOD    4
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 3.66044E+06  61007.      1016.8      42.366     0.11599    
@@ -2083,9 +2088,9 @@ Well-B                          5     6 -130000.      143.222     -13.3190      
   21    168.931       168.566       167.856       166.834       165.531       163.946       162.075       159.914       157.471    
         154.767       151.853       148.848       146.021       143.948    
 
- HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP  50, STRESS PERIOD    5
+ HEAD WILL BE SAVED ON UNIT   89 AT END OF TIME STEP   50, STRESS PERIOD    5
 1
-  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP 50 IN STRESS PERIOD   5
+  VOLUMETRIC BUDGET FOR ENTIRE MODEL AT END OF TIME STEP   50, STRESS PERIOD   5
   ------------------------------------------------------------------------------
 
      CUMULATIVE VOLUMES      L**3       RATES FOR THIS TIME STEP      L**3/T
@@ -2120,7 +2125,7 @@ Well-B                          5     6 -130000.      143.222     -13.3190      
 
 
 
-          TIME SUMMARY AT END OF TIME STEP  50 IN STRESS PERIOD    5
+         TIME SUMMARY AT END OF TIME STEP   50 IN STRESS PERIOD    5
                     SECONDS     MINUTES      HOURS       DAYS        YEARS
                     -----------------------------------------------------------
    TIME STEP LENGTH 1.26161E+06  21027.      350.45      14.602     3.99781E-02
@@ -2128,6 +2133,6 @@ Well-B                          5     6 -130000.      143.222     -13.3190      
          TOTAL TIME 8.64839E+10 1.44140E+09 2.40233E+07 1.00097E+06  2740.5    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2009/12/22  9:38:25
- Elapsed run time:  0.219 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/03/23 15:19:32
+ Elapsed run time:  0.235 Seconds
 

@@ -572,6 +572,7 @@ C3B-----Order equations with even plane numbers.
       IEQPNT(J,I,K)=NEQ
   140 CONTINUE
       NLOW=NEQ-NUP
+      IF ( NLOW.LT.1 ) NLOW = 1  !JDH 20110814
       RETURN
 C
 C4------DIRECTION 2 NROW>NCOL>or=NLAY
@@ -851,7 +852,12 @@ C3B-----MODIFY D4B DUE TO ELIMINATION OF [AL].
   120 CONTINUE
 C
 C4------BACK SUBSTITUTE LOWER PART.
-      D4B(NEQ)=D4B(NEQ)/AL(1,NEQ-NUP)
+!      D4B(NEQ)=D4B(NEQ)/AL(1,NEQ-NUP)
+      IJDH = NEQ-NUP                  !JDH 20110814
+      IF ( IJDH.LT.1 ) THEN           !JDH 20110814
+        IJDH = 1                      !JDH 20110814
+      END IF                          !JDH 20110814
+      D4B(NEQ)=D4B(NEQ)/AL(1,IJDH)    !JDH 20110814
       DO 140 I=1,NLOWM1
       K=NEQ-I
       KL=K-NUP

@@ -37,9 +37,12 @@ OBJECTS = \
         sip7.o \
         gmg7.o \
         mhc7.o\
+        pcgn_solve2.o \
+        pcgn2.o \
         gwf2bcf7.o \
         gwf2lpf7.o \
         gwf2huf7.o \
+        gwf2rch7.o \
         gwfuzfmodule.o \
         gwfsfrmodule.o \
         gwf2lak7.o \
@@ -55,7 +58,6 @@ OBJECTS = \
         gwf2ghb7.o \
         gwf2hfb7.o \
         gwf2ibs7.o \
-        gwf2rch7.o \
         gwf2res7.o \
         gwf2riv7.o \
         gwf2str7.o \
@@ -91,6 +93,11 @@ mf2005: $(OBJECTS) $(GMG)
 
 .f.o:
 	$(F90) $(F90FLAGS) -c $<
+
+pcgn_solve2.o:
+	$(F90) $(F90FLAGS) -c pcgn_solve2.f90
+pcgn2.o:
+	$(F90) $(F90FLAGS) -c pcgn2.f90
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
