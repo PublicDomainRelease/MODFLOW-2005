@@ -10,6 +10,12 @@ For information and references related to these packages, see mf2005.txt
 
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
+
+o Version 1.9.01 05/01/2012
+    GWF2BAS7 -- Fixed bug that caused MODFLOW to incorrectly continue
+       execution when solver closure criteria are not met and the
+       percent budget error is negative.  The bug occurred even when the
+       new STOPERROR option was not being used.
       
 o Version 1.9.0 03/30/2012
     GWF2BAS7 -- Added an option, STOPERROR, to specify a budget criterion

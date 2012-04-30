@@ -52,6 +52,10 @@ METHOD
 
 HISTORY
 
+      MODFLOW-2005 Version 1.9.01 05/01/2012 -- Fixed bug that caused MODFLOW
+         to continue execution when solver closure criteria are not met and
+         the percent budget error is negative.
+
       MODFLOW-2005 Version 1.9 03/30/2012 -- Added support for writing
          MODPATH IFACE values in the MODFLOW budget file for STR, FHB, and
          SFR Packages. Added the PCGN solver.  Many small changes
