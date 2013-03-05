@@ -11,6 +11,27 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.10.0 03/06/2013
+    OBS2BAS7, OBS2CHD7, OBS2DRN7, OBS2GHB7, OBS2RIV7, OBS2STR7 -- Added 
+       NOPRINT option to turn off the output of data in the Listing File.
+       See the input instructions in OBS.pdf .
+    GWF2MNW27 -- a number of problems were fixed as described in
+       readme_MNW2.txt .
+    PCGN2 -- Corrected logic error that resulted in excessive inner
+       interations in the first outer iteration of a time step.  This
+       correction reduces execution time.
+    GWF2BAS7 -- In the Name File for DATA and DATA(BINARY) files, the
+       "OLD" option indicates that the file must already exist; however,
+       the file was previously opened with the READWRITE action specifier.
+       A modification has been made so that such files are opened with the
+       READ action specifier, which allows other programs to read the files
+       while MODFLOW is running.
+    GWF2DRT7 -- Modified the open statement for OPEN/CLOSE files to
+       specify that these files are opened for READ access rather than
+       the defult READWRITE access.
+    GWF2SFR7, GWF2LAK7, GWF2UZF1, GWF2GAG7 -- See file
+       LAK_SFR_UZF_updates_MF2005.txt for a description of changes.
+
 o Version 1.9.01 05/01/2012
     GWF2BAS7 -- Fixed bug that caused MODFLOW to incorrectly continue
        execution when solver closure criteria are not met and the

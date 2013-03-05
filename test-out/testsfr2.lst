@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.9.01 5/01/2012
+                            VERSION 1.10.00 3/6/2013
 
  LIST FILE: testsfr2.lst
                          UNIT   12
@@ -118,8 +118,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    2    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -128,8 +128,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    3    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -138,8 +138,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    4    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -148,8 +148,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    5    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -158,8 +158,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    6    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -168,8 +168,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    7    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -178,8 +178,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
 
    MODEL LAYER BOTTOM EL. =   0.00000     FOR LAYER   1
 
@@ -320,7 +320,7 @@
 
      0 GHB parameters
 
- SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 1.0.4, 2012-02-06
+ SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 1.0.7, 2013-01-15
          INPUT READ FROM UNIT  45
  # SFR2 Package input file for hypothetical test simulation
  # Test of SFR2 Package; revised May 20, 2006
@@ -337,7 +337,7 @@
 
  NUMBER OF STREAM PARAMETERS IS    0
 
- NUMBER OF STREAM SEGMENTS DEFINED USING PARAMETERS IS    0
+ NUMBER OF STREAM SEGMENTS DEFINED USING PARAMETERS IS              0
 
  MAXIMUM ERROR FOR STREAM LEAKAGE RATES IS  1.00E-05
 
@@ -846,7 +846,7 @@
 
              IN - OUT =            0.0000               IN - OUT =       -3.7253E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -962,7 +962,7 @@
 
             IN - OUT =          -6.1250              IN - OUT =      -9.8705E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
 
 
 
@@ -1629,7 +1629,7 @@
 
              IN - OUT =            0.3438               IN - OUT =       -1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -1976,7 +1976,7 @@
 
              IN - OUT =            0.8750               IN - OUT =       -1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -2007,7 +2007,7 @@
 
             IN - OUT =          -1.0000              IN - OUT =       7.2092E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.01
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.01
 
 
 
@@ -3145,7 +3145,7 @@
 
             IN - OUT =          -6.0000              IN - OUT =       3.8564E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -3492,7 +3492,7 @@
 
             IN - OUT =         -14.0000              IN - OUT =       5.1975E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -3839,7 +3839,7 @@
 
             IN - OUT =          -9.0000              IN - OUT =       3.8326E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -4155,7 +4155,7 @@
 
              IN - OUT =        -3087.0000               IN - OUT =       -7.0632E-06
 
-  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -5324,7 +5324,7 @@
 
             IN - OUT =         -90.0000              IN - OUT =      -3.2783E-07
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
 
 
 
@@ -5671,7 +5671,7 @@
 
             IN - OUT =         -54.0000              IN - OUT =       1.4907E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.05
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.05
 
 
 
@@ -6018,7 +6018,7 @@
 
             IN - OUT =         -36.0000              IN - OUT =       1.0246E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.04
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.04
 
 
 
@@ -6462,7 +6462,7 @@
 
             IN - OUT =         -38.0000              IN - OUT =       8.6457E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.03
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.03
 
 
 
@@ -6809,7 +6809,7 @@
 
             IN - OUT =         -38.0000              IN - OUT =       1.0836E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.02
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.02
 
 
 
@@ -7472,7 +7472,7 @@
 
              IN - OUT =        -4254.0000               IN - OUT =       -1.1921E-07
 
-  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -7819,7 +7819,7 @@
 
              IN - OUT =        -4270.0000               IN - OUT =       -1.5140E-05
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -8178,7 +8178,7 @@
 
              IN - OUT =        -4230.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -8610,7 +8610,7 @@
 
              IN - OUT =        -4712.0000               IN - OUT =        8.9407E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -8957,7 +8957,7 @@
 
              IN - OUT =        -4922.0000               IN - OUT =        8.9407E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -8988,7 +8988,7 @@
 
             IN - OUT =          -8.0000              IN - OUT =       1.4991E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -9304,7 +9304,7 @@
 
              IN - OUT =        -5064.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -9651,7 +9651,7 @@
 
              IN - OUT =        -4814.0000               IN - OUT =        1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -10010,7 +10010,7 @@
 
              IN - OUT =        -4744.0000               IN - OUT =        2.6077E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -10442,7 +10442,7 @@
 
              IN - OUT =        -4858.0000               IN - OUT =        1.8626E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -10789,7 +10789,7 @@
 
              IN - OUT =        -5066.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -11136,7 +11136,7 @@
 
              IN - OUT =        -5192.0000               IN - OUT =        1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -11167,7 +11167,7 @@
 
             IN - OUT =         -44.0000              IN - OUT =       2.9519E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.01
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.01
 
 
 
@@ -11483,7 +11483,7 @@
 
              IN - OUT =        -5168.0000               IN - OUT =       -1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -11514,7 +11514,7 @@
 
             IN - OUT =         -44.0000              IN - OUT =       2.1279E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.01
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.01
 
 
 
@@ -11842,7 +11842,7 @@
 
              IN - OUT =        -5244.0000               IN - OUT =       -5.9605E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -11958,7 +11958,7 @@
 
             IN - OUT =         -28.0000              IN - OUT =       2.2680E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.01
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.01
 
 
 
@@ -12274,7 +12274,7 @@
 
              IN - OUT =        -5428.0000               IN - OUT =        2.9653E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -12621,7 +12621,7 @@
 
              IN - OUT =        -5664.0000               IN - OUT =        7.4506E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -12968,7 +12968,7 @@
 
              IN - OUT =        -5624.0000               IN - OUT =       -7.4655E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -13315,7 +13315,7 @@
 
              IN - OUT =        -5548.0000               IN - OUT =        1.1176E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -13674,7 +13674,7 @@
 
              IN - OUT =        -5646.0000               IN - OUT =        1.9744E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -14106,7 +14106,7 @@
 
              IN - OUT =        -5554.0000               IN - OUT =        8.4750E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -14453,7 +14453,7 @@
 
              IN - OUT =        -5536.0000               IN - OUT =       -5.5879E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -14800,7 +14800,7 @@
 
              IN - OUT =        -5444.0000               IN - OUT =       -4.4703E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -15147,7 +15147,7 @@
 
              IN - OUT =        -5614.0000               IN - OUT =        2.2352E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -15506,7 +15506,7 @@
 
              IN - OUT =        -5308.0000               IN - OUT =        5.2154E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -15938,7 +15938,7 @@
 
              IN - OUT =        -5570.0000               IN - OUT =        1.1921E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -16285,7 +16285,7 @@
 
              IN - OUT =        -5896.0000               IN - OUT =       -2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -16632,7 +16632,7 @@
 
              IN - OUT =        -5796.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -16979,7 +16979,7 @@
 
              IN - OUT =        -5916.0000               IN - OUT =        2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -17338,7 +17338,7 @@
 
              IN - OUT =        -5724.0000               IN - OUT =       -1.5169E-05
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -17770,7 +17770,7 @@
 
              IN - OUT =        -5288.0000               IN - OUT =       -1.3448E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -18117,7 +18117,7 @@
 
              IN - OUT =        -5840.0000               IN - OUT =       -7.4506E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -18464,7 +18464,7 @@
 
              IN - OUT =        -6300.0000               IN - OUT =        1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -18811,7 +18811,7 @@
 
              IN - OUT =        -6556.0000               IN - OUT =       -1.8626E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -19170,7 +19170,7 @@
 
              IN - OUT =        -7088.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -19301,6 +19301,6 @@
          TOTAL TIME 1.29600E+08 2.16000E+06  36000.      1500.0      4.1068    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/04/30 14:53:08
- Elapsed run time: 35.859 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:53:40
+ Elapsed run time: 35.078 Seconds
 

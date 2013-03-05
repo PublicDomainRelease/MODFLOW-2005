@@ -1,5 +1,5 @@
 MODULE PCGN
-  ! ... LAST MODIFIED:  R.L. NAFF,  FEBURARY, 2010
+  ! ... LAST MODIFIED:  R.L. NAFF,  OCTOBER, 2012
   ! ... MODULE BASED ON DE45, PCG2 AND LMG1, BY 
   ! ... A.W. HARBAUGH, M.C. HILL AND S.W. MEH, RESPECTIVELY.
   ! ...
@@ -9,7 +9,7 @@ MODULE PCGN
   ! ...
   ! ... R.L. Naff 
   ! ...
-  ! ... VERSION 2.0.3 October, 2011
+  ! ... VERSION 2.0.4 October, 2012
   ! ... 
   ! ... 08/08: VERSION 2.0, FOR USE WITH MF2005
   ! ... 04/09: CORRECTED MINOR ERROR IN REPORTING NODAL LOCATION OF
@@ -18,6 +18,8 @@ MODULE PCGN
   ! ...        NONCONVERGENCE (KITER=MO_ITER), SUBROUTINE SECONDARY_CLOSE.
   ! ... 10/11: REPLACED WHOLE-ARRAY OPERATION IN SUBROUTINE NONLINEAR WITH
   ! ...        BLAS-LIKE SUBROUTINE CALL; SEE SUBROUTINE UPDATE_HEAD.
+  ! ... 10/12: CORRECTED LOGIC ERROR IN SUBROUTINE NONLINEAR; LOGIC ERROR
+  ! ...        RESULTED IN EXCESSIVE INNER INTERATIONS WHEN KITER=1, KSTP/=1.
   ! ... 
   USE GLOBAL, ONLY: IOUT, NCOL, NROW, NLAY, NODES
   ! ... MODULE GLOBAL DEFINED IN gwf2bas7.f
@@ -695,7 +697,9 @@ CONTAINS
          ELSE !CNVG_A=2
             CALL PROG2AD(KPER,KSTP,IPUNIT)
          ENDIF
-         IF (KSTP==1.AND.KPER==1) THEN
+      ENDIF
+      IF (KSTP==1.AND.KITER==1) THEN
+         IF (KPER==1) THEN
             ! ... INITIAL STRESS PERIOD/TIME STEP ASSUMED TO BE MOST DIFFICULT
             ! ... ABSOLUTE CONVERGENCE
             C_FLAG=1
@@ -718,31 +722,29 @@ CONTAINS
                DDAMP=MIN_DAMP
             END SELECT
          ELSE
+            ! ... NEW STRESS PERIOD; RESET DAMPING AND CONVERGENCE
             ! ... ASSUMES PRIOR INNER ITERATION AVAILABLE
             ! ... RELATIVE CONVERGENCE
             C_FLAG=2
             EPS_IP=EPS_I
-            IF (KSTP==1) THEN
-               ! ... NEW STRESS PERIOD; RESET DAMPING AND CONVERGENCE
-               SELECT CASE(CNVG_A)
-               CASE(0)
-                  EPS_I=SAV_CLOSE**2
-               CASE(1)
-                  EPS_I=SAV_CLOSE**2
-                  EPS_O=-ONE
-               CASE(2)
-                  IF (C_RATE>SMALL) THEN
-                     PCG_CLOSE=SQRT(MAG_CLOSE*SAV_CLOSE)
-                     EPS_I=PCG_CLOSE
-                  ENDIF
-               END SELECT
-               SELECT CASE(DAMP_A)
-               CASE(1)
-                  DDAMP=EXP((TWO*LOG(SAV_DAMP)+LOG(MIN_DAMP))/THREE)
-               CASE(2)
-                  DDAMP=SQRT(SAV_DAMP*MIN_DAMP)
-               END SELECT
-            ENDIF
+            SELECT CASE(CNVG_A)
+            CASE(0)
+               EPS_I=SAV_CLOSE**2
+            CASE(1)
+               EPS_I=SAV_CLOSE**2
+               EPS_O=-ONE
+            CASE(2)
+               IF (C_RATE>SMALL) THEN
+                  PCG_CLOSE=SQRT(MAG_CLOSE*SAV_CLOSE)
+                  EPS_I=PCG_CLOSE
+               ENDIF
+            END SELECT
+            SELECT CASE(DAMP_A)
+            CASE(1)
+               DDAMP=EXP((TWO*LOG(SAV_DAMP)+LOG(MIN_DAMP))/THREE)
+            CASE(2)
+               DDAMP=SQRT(SAV_DAMP*MIN_DAMP)
+            END SELECT
          ENDIF
          NO_ITER=MI_ITER
          PT%HCH=ZERO
@@ -785,7 +787,7 @@ CONTAINS
          ! ... CHECK MAXIMUM HEAD CHANGE NORM
          CALL SECONDARY_CLOSE(MXHCH,RCLOSE,HCLOSE,RTR,ICNVG,KITER,MO_ITER, &
               IPUNIT)
-      ELSE ! KITER>1
+      ELSE ! KSTP>1
          IF (CNVG_A==2) THEN
             ! ... RELAX CLOSURE CRITERION FOR PCG SOLVER
             ! ... PCG_CLOSE ALWAYS COMPARED TO STANDARD CONVERGENCE

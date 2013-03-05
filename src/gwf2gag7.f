@@ -160,9 +160,9 @@ C     ******************************************************************
 C     ------------------------------------------------------------------
 C     LOCAL VARIABLES
 C     ------------------------------------------------------------------
-      INTEGER*4 NSOL,IGRID,IUNITLAK,IOG,IG,IG2,IG3,IRCH,II,IUNITGWT
-      INTEGER*4  IUNITUZF,LK,DFLAG,ISOL
-      REAL*4 DUM,DUMMY
+      INTEGER NSOL,IGRID,IUNITLAK,IOG,IG,IG2,IG3,IRCH,II,IUNITGWT
+      INTEGER  IUNITUZF,LK,DFLAG,ISOL
+      REAL DUM,DUMMY
       CHARACTER*1 A
       CHARACTER*2 B
       CHARACTER*7 CONCNAME
@@ -499,7 +499,7 @@ Cdep---added option for printing unsaturated flow beneath streams
 Cdep---added option for printing water content in unsaturated zone
  269  FORMAT (5X,'"DATA: Time',11X,'Depth',7X,
      *           'Width-Ave.-Water-Content',5X,
-     *           'Cell-1-Water-Content"')
+     *           'Cell-Water-Content"')
 C     following formats modified by LFK, July 2006:
  270  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           '     Concentration"')
@@ -511,7 +511,7 @@ C     following formats modified by LFK, July 2006:
      *          'Precip.',12X,'ET',10X,'Runoff',
      *          '     Concentration"')
  277  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
-     *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X
+     *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X,
      *           'Precip.',12X,'ET',10X,'Runoff',
      *           '    Concentration ',
      *           'of ',I3,' Solutes "')
@@ -530,7 +530,7 @@ C     following formats modified by LFK, July 2006:
 C285  FORMAT (1X,'" DATA:   Time',8X,'Stage',9X,'Flow',
  285  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
      *           10X,'Depth',10X,'Width',6X,'Midpt-Flow',7X,
-     *           'Precip.',12X,'ET',10X,'Runoff',6X'Conductance',
+     *           'Precip.',12X,'ET',10X,'Runoff',6X,'Conductance',
      *           5X,'HeadDiff',7X,'Hyd.Grad.',
      *           '    Concentration      Load "')
  287  FORMAT (2X,'"DATA: Time',9X,'Stage',11X,'Flow',
@@ -661,7 +661,8 @@ C     ******************************************************************
       USE GWFBASMODULE, ONLY: DELT
       USE GWFLAKMODULE, ONLY:NLAKES,RNF,VOL,STGNEW,PRECIP,EVAP,
      1                       SURFIN,SURFOT,WITHDRW,SUMCNN,DELH,TDELH,
-     2                       VOLINIT,OVRLNDRNF,TSLAKERR,CMLAKERR,DELVOL
+     2                       VOLINIT,OVRLNDRNF,TSLAKERR,CMLAKERR,DELVOL,
+     3                       SEEPUZ     
 C     ------------------------------------------------------------------
       DIMENSION CLAKE(NLAKES,NSOL)
 cdep 4/20/2009 dimensioned SEEP array to nlakes
@@ -700,7 +701,7 @@ C         CONCENTRATION OF EACH SOLUTE.
             GWFOT = GWOUT(LK)*DELT
             UZFRNF = OVRLNDRNF(LK)*DELT
 !dep added 4/20/2009
-            SEEPUZF = SEEP(LK)*DELT
+            SEEPUZF = SEEPUZ(LK)*DELT
             VOLRATE = (VOL(LK)-VOLOLD(LK))/DELT 
 !dep  FLUXIN is a volumetric rate 4/20/2009
             FLUXIN = FLXINL(LK)/DELT
@@ -755,7 +756,7 @@ Cdep   4/20/2009 added lake seepage to unsaturated zone
                  ELSE
                    WRITE (IG3,407) GAGETM,STGNEW(LK),VOL(LK),VOLRATE,
      *              PRECIP(LK),EVAP(LK),RNF(LK),OVRLNDRNF(LK),GWIN(LK),
-     *              GWOUT(LK),SEEP(LK),SURFIN(LK),SURFOT(LK),
+     *              GWOUT(LK),SEEPUZ(LK),SURFIN(LK),SURFOT(LK),
      *              WITHDRW(LK),FLUXIN,SUMCNN(LK),TSLAKERR(LK)
                  END IF
                  END SELECT
@@ -1039,7 +1040,7 @@ C-------SUBROUTINE GWF2GAG7DA
       SUBROUTINE GWF2GAG7DA(IGRID)
 C  Deallocate GAG data for a grid.
       USE GWFGAGMODULE
-      INTEGER*4 IGRID
+      INTEGER IGRID
 C
       DEALLOCATE (GWFGAGDAT(IGRID)%NUMGAGE)
       DEALLOCATE (GWFGAGDAT(IGRID)%IGGLST)
@@ -1050,7 +1051,7 @@ C-------SUBROUTINE SGWF2GAG7PNT
       SUBROUTINE SGWF2GAG7PNT(IGRID)
 C  Change GAG data to a different grid.
       USE GWFGAGMODULE
-      INTEGER*4 IGRID
+      INTEGER IGRID
 C
       NUMGAGE=>GWFGAGDAT(IGRID)%NUMGAGE
       IGGLST=>GWFGAGDAT(IGRID)%IGGLST

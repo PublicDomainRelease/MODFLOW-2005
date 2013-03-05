@@ -24,7 +24,7 @@ C
 C-------ASSIGN VERSION NUMBER AND DATE
       CHARACTER*40 VERSION
       CHARACTER*10 MFVNAM
-      PARAMETER (VERSION='1.9.01 5/01/2012')
+      PARAMETER (VERSION='1.10.00 3/6/2013')
       PARAMETER (MFVNAM='-2005')
 C
       CHARACTER*80 HEADNG(2)
@@ -95,7 +95,8 @@ C6------ALLOCATE AND READ (AR) PROCEDURE
       IF(IUNIT(20).GT.0) CALL GWF2CHD7AR(IUNIT(20),IGRID)
       IF(IUNIT(21).GT.0) CALL GWF2HFB7AR(IUNIT(21),IGRID)
       IF(IUNIT(44).GT.0) CALL GWF2SFR7AR(IUNIT(44),IUNIT(1),IUNIT(23),
-     1                           IUNIT(37),IUNIT(15),NSOL,IOUTS,IGRID)
+     1                           IUNIT(37),IUNIT(15),NSOL,IOUTS,
+     2                           IUNIT(55),IGRID)
       IF(IUNIT(55).GT.0) CALL GWF2UZF1AR(IUNIT(55),IUNIT(1),
      1                                   IUNIT(23),IUNIT(37),IGRID)
       IF(IUNIT(22).GT.0 .OR. IUNIT(44).GT.0) CALL GWF2LAK7AR(
@@ -160,7 +161,7 @@ C----------READ USING PACKAGE READ AND PREPARE MODULES.
         IF(IUNIT(44).GT.0) CALL GWF2SFR7RP(IUNIT(44),IUNIT(15),
      1                                     IUNIT(22),KKPER,KKSTP,NSOL,
      2                                     IOUTS,IUNIT(1),IUNIT(23),
-     3                                     IUNIT(37),IGRID)
+     3                                     IUNIT(37),IUNIT(55),IGRID)
         IF(IUNIT(43).GT.0 .AND. IUNIT(44).GT.0)
      1                     CALL GWF2HYD7SFR7RP(IUNIT(43),KKPER,IGRID)
         IF(IUNIT(55).GT.0) CALL GWF2UZF1RP(IUNIT(55),KKPER,IUNIT(44),

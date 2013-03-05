@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.9.01 5/01/2012
+                            VERSION 1.10.00 3/6/2013
 
  LIST FILE: etsdrt.lst
                          UNIT   12
@@ -60,11 +60,11 @@
   Confining bed flag for each layer:
    0
 
-                     DELR =   100.000    
+                     DELR =  100.0000    
 
-                     DELC =   100.000    
+                     DELC =  100.0000    
 
- TOP ELEVATION OF LAYER 1 =   100.000    
+ TOP ELEVATION OF LAYER 1 =  100.0000    
 
    MODEL LAYER BOTTOM EL. =   0.00000     FOR LAYER   1
 
@@ -194,7 +194,7 @@
 
  DRAIN NO.  LAYER   ROW   COL     DRAIN EL.  STRESS FACTOR         
  ------------------------------------------------------------------
-      1      1      5      8       60.00           1.000    
+      1      1      5      8       60.00          1.0000    
 
            ----DRAIN CELL----  --RECIPIENT CELL--   RETURN
  DRAIN NO.  LAYER   ROW   COL   LAYER   ROW   COL    PROP.
@@ -239,7 +239,7 @@
 
                  RECHARGE =  1.000000E-03
 
-        ET SURFACE (ETSS) =   100.000    
+        ET SURFACE (ETSS) =  100.0000    
 
 
 
@@ -254,7 +254,7 @@
 
  EXTINCT. DEP. PROPORTION =  0.500000    
 
-       ET RATE PROPORTION =  0.100000    
+       ET RATE PROPORTION =  1.000000E-01
 
  Parameter:  DRT-Cond
  DRAIN NO.  LAYER   ROW   COL     DRAIN EL.  CONDUCTANCE           
@@ -359,7 +359,7 @@
 
             IN - OUT =           0.0000              IN - OUT =      -1.2207E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =          -0.00
 
 
 
@@ -374,6 +374,6 @@
          TOTAL TIME  0.0000      0.0000      0.0000      0.0000      0.0000    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/04/30 14:52:26
- Elapsed run time:  0.031 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:52:59
+ Elapsed run time:  0.094 Seconds
 

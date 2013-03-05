@@ -1,6 +1,45 @@
+Changes to SFR2, LAK7, UZF, and GAG Packages for MODFLOW-2005, version 1.10.0
 
-The following text describes changes that were made to the SFR2, LAK7, and UZF1 Packages since
-the release of MODFLOW-2005, version 1.8.
+SFR2:
+Modifications were made to check for streambed altitudes set below the cell
+bottom to which the reach is connected.  Some code was commented out that
+supports options not documented. The package specific version of LAYTYP was
+replaced with the global variable LAYHDT. Some variable initialization was
+moved outside IF blocks to be sure of initialization in the read and prepare
+subroutine.  Some redundant code was removed in formulate subroutine. A
+calculation for stream reach seepage was added to formulate and budget
+subroutines for certain cases when seepage was not set. Some variables
+were set for zero inflow in the subroutine trans_route.
+
+UZF2:
+The package specific version of LAYTYP was replaced with the global variable
+LAYHDT. Some work arrays were allocated as single dimension instead of a
+double dimension. Previously, when the extinction depth (EXTDP) for ET was
+set to zero it was reset to 1. Now, it is left as zero and ET for these cells
+is set to inactive. Some of the unsaturated flow budget information that is
+printed to UZF1 GAGE files was modified to correct some inconsistencies in
+budget items.
+
+LAK:
+A bug was found that affects simulations that use the Hydrologic-Unit Flow
+(HUF) Package (Anderman and Hill, 2000). The Lake Package has been modified
+to compute effective lake-aquifer conductance solely on the basis of the
+user-specified value of lakebed leakance; aquifer hydraulic conductivities
+are not used in this calculation.  An appropriate informational message is
+now printed after the lakebed conductances are written to the main output
+file.  There have also been several minor changes to format statements to
+improve the information content of the output file.
+
+SEE FILE Lake3_Input_Modified.pdf for the revised input instructions.
+
+GAG:
+The variable that stores lake seepage into the unsaturated zone was changed
+to correctly reflect this value.
+____________________________________________________________________________
+
+
+The following text describes changes that were made to the SFR2, LAK7, and
+UZF1 Packages for the release of MODFLOW-2005, version 1.9.
 
 Unsaturated-Zone Flow Package
 

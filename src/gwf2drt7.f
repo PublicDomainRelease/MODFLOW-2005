@@ -451,6 +451,7 @@ C     ******************************************************************
       DIMENSION DRTF(NDRTVL,MXDRT)
       CHARACTER*200 LINE,FNAME
       DATA NUNOPN/99/
+      INCLUDE 'openspec.inc'
 C     ------------------------------------------------------------------
 C
       IERR = 0
@@ -479,7 +480,7 @@ C  Check for and decode EXTERNAL and SFAC records.
         IN=NUNOPN
         WRITE(IOUT,520) IN,FNAME
   520   FORMAT(1X,/1X,'OPENING FILE ON UNIT ',I4,':',/1X,A)
-        OPEN(UNIT=IN,FILE=FNAME)
+        OPEN(UNIT=IN,FILE=FNAME,ACTION=ACTION(1))
         ICLOSE=1
         READ(IN,'(A)') LINE
       ENDIF

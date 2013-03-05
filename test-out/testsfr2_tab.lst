@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.9.00 3/30/2012
+                            VERSION 1.10.00 3/6/2013
 
  LIST FILE: testsfr2_tab.lst
                          UNIT   12
@@ -123,8 +123,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    2    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -133,8 +133,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    3    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -143,8 +143,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    4    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -153,8 +153,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    5    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -163,8 +163,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    6    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -173,8 +173,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
    7    125.       124.       124.       124.       124.       123.       123.       123.       123.       122.       122.    
         122.       122.       121.       121.       121.       121.       120.       120.       120.       120.       119.    
         119.       119.       119.       118.       118.       118.       118.       117.       117.       117.       117.    
@@ -183,8 +183,8 @@
         111.       111.       110.       110.       110.       110.       109.       109.       109.       109.       108.    
         108.       108.       108.       107.       107.       107.       107.       106.       106.       106.       106.    
         105.       105.       105.       105.       104.       104.       104.       104.       103.       103.       103.    
-        103.       102.       102.       102.       102.       101.       101.       101.       101.       100.       100.    
-        100.    
+        103.       102.       102.       102.       102.       101.       101.       101.       101.      100.0      100.0    
+       100.0    
 
    MODEL LAYER BOTTOM EL. =   0.00000     FOR LAYER   1
 
@@ -325,7 +325,7 @@
 
      0 GHB parameters
 
- SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 1.0.4, 2012-02-06
+ SFR7 -- STREAMFLOW ROUTING PACKAGE, VERSION 1.0.7, 2013-01-15
          INPUT READ FROM UNIT  45
  # SFR2 Package input file for hypothetical test simulation
  # Test of SFR2 Package; revised October 1, 2011
@@ -343,7 +343,7 @@
 
  NUMBER OF STREAM PARAMETERS IS    0
 
- NUMBER OF STREAM SEGMENTS DEFINED USING PARAMETERS IS    0
+ NUMBER OF STREAM SEGMENTS DEFINED USING PARAMETERS IS              0
 
  MAXIMUM ERROR FOR STREAM LEAKAGE RATES IS  1.00E-05
 
@@ -906,7 +906,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =            0.0000               IN - OUT =       -3.7253E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -1022,7 +1022,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =          -6.1250              IN - OUT =      -9.8705E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =          -0.00
 
 
 
@@ -1956,7 +1956,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =            1.2500               IN - OUT =       -5.9605E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -1987,7 +1987,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =          -2.0000              IN - OUT =       7.4446E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.02
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.02
 
 
 
@@ -2974,7 +2974,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -2918.5000               IN - OUT =       -5.9605E-08
 
-  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -3312,7 +3312,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =          -2.0000              IN - OUT =       4.8637E-05
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -3895,7 +3895,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -2903.0000               IN - OUT =       -3.5763E-07
 
-  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.01      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -4944,7 +4944,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =         -74.0000              IN - OUT =       1.5795E-06
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.00
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.00
 
 
 
@@ -5251,7 +5251,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =         -32.0000              IN - OUT =       1.4892E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.05
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.05
 
 
 
@@ -5558,7 +5558,7 @@ FROM FILE UNIT NUMBER     55
 
             IN - OUT =          -6.0000              IN - OUT =       1.1450E-04
 
- PERCENT DISCREPANCY =           0.00     PERCENT DISCREPANCY =           0.04
+ PERCENT DISCREPANCY =          -0.00     PERCENT DISCREPANCY =           0.04
 
 
 
@@ -6852,7 +6852,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3648.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -7159,7 +7159,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3626.0000               IN - OUT =        1.1921E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -7478,7 +7478,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3574.0000               IN - OUT =        1.1921E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -7870,7 +7870,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3636.0000               IN - OUT =        3.2783E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -8177,7 +8177,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3798.0000               IN - OUT =       -2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -8484,7 +8484,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3902.0000               IN - OUT =        2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -8791,7 +8791,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3740.0000               IN - OUT =        2.2352E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -9110,7 +9110,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3516.0000               IN - OUT =        1.8626E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -9502,7 +9502,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3782.0000               IN - OUT =        2.6077E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -9809,7 +9809,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3914.0000               IN - OUT =        1.1176E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -10116,7 +10116,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3982.0000               IN - OUT =       -3.7253E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -10423,7 +10423,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3782.0000               IN - OUT =       -4.4703E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -10742,7 +10742,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3810.0000               IN - OUT =        2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -11134,7 +11134,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3902.0000               IN - OUT =        1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -11441,7 +11441,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4140.0000               IN - OUT =        2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -11748,7 +11748,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4144.0000               IN - OUT =       -1.1399E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -12055,7 +12055,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4146.0000               IN - OUT =        1.8626E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -12374,7 +12374,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4208.0000               IN - OUT =        1.3597E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -12766,7 +12766,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4136.0000               IN - OUT =        5.4017E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -13073,7 +13073,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4098.0000               IN - OUT =        5.5879E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -13380,7 +13380,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4056.0000               IN - OUT =       -1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -13687,7 +13687,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4116.0000               IN - OUT =        7.4506E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -14006,7 +14006,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -3810.0000               IN - OUT =        4.4703E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -14398,7 +14398,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4158.0000               IN - OUT =        1.1921E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -14705,7 +14705,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4276.0000               IN - OUT =        2.9802E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -15012,7 +15012,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4340.0000               IN - OUT =        8.9407E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -15319,7 +15319,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4696.0000               IN - OUT =            0.0000
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -15638,7 +15638,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4440.0000               IN - OUT =       -2.0564E-06
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -16030,7 +16030,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4000.0000               IN - OUT =       -1.7509E-07
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -16337,7 +16337,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4292.0000               IN - OUT =       -7.4506E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -16644,7 +16644,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -4704.0000               IN - OUT =       -1.4901E-08
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -16951,7 +16951,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -5064.0000               IN - OUT =       -5.5879E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =            -0.00
 
 
 
@@ -17270,7 +17270,7 @@ FROM FILE UNIT NUMBER     55
 
              IN - OUT =        -5268.0000               IN - OUT =        3.7253E-09
 
-  PERCENT DISCREPANCY =            0.00      PERCENT DISCREPANCY =             0.00
+  PERCENT DISCREPANCY =           -0.00      PERCENT DISCREPANCY =             0.00
 
 
 
@@ -17401,6 +17401,6 @@ FROM FILE UNIT NUMBER     55
          TOTAL TIME 1.29600E+08 2.16000E+06  36000.      1500.0      4.1068    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2012/03/29 12:45:06
- Elapsed run time: 37.093 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:54:16
+ Elapsed run time: 35.751 Seconds
 

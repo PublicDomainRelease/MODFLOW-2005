@@ -683,7 +683,7 @@ C----------------FORMAT 25I2
 C
 C----------------FORMAT 15I4
   508 WRITE(IOUT,558) I,(IA(J,I),J=1,JJ)
-  558 FORMAT(1X,I3,1X,15(1X,I4):/(5X,10(1X,I4)))
+  558 FORMAT(1X,I3,1X,15(1X,I4):/(5X,15(1X,I4)))
       GO TO 510
 C
 C----------------FORMAT 10I6

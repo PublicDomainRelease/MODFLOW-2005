@@ -4,11 +4,12 @@
         DOUBLE PRECISION,SAVE :: THETAB, FLUXB, FLUXHLD2
         REAL,PARAMETER :: CLOSEZERO=1.0E-15
         INTEGER, SAVE :: Nfoldflbt, NUMTAB, MAXVAL
-        INTEGER,SAVE,  DIMENSION(:),  POINTER:: DVRCH   !(diverted recharge flag; then reharge cell count)
-        INTEGER,SAVE,  DIMENSION(:,:,:),POINTER:: DVRCELL !(store cells to apply diverted recharge)
+!        INTEGER,SAVE,                 POINTER:: IDVFLG   !diverison recharge is active flag
+!        INTEGER,SAVE,  DIMENSION(:),  POINTER:: DVRCH   !(diverted recharge flag; then reharge cell count)
+!        INTEGER,SAVE,  DIMENSION(:,:,:),POINTER:: DVRCELL !(store cells to apply diverted recharge)
         REAL,   SAVE,  DIMENSION(:,:),POINTER:: RECHSAVE  !(store original recharge values)
-        REAL,   SAVE,  DIMENSION(:,:),POINTER:: DVRPERC  !(Percentage of diversion applied to each cell)
-        REAL,   SAVE,  DIMENSION(:),POINTER:: DVEFF  !(store efficiency factor)
+!        REAL,   SAVE,  DIMENSION(:,:),POINTER:: DVRPERC  !(Percentage of diversion applied to each cell)
+!        REAL,   SAVE,  DIMENSION(:),POINTER:: DVEFF  !(store efficiency factor)
         INTEGER,SAVE,POINTER:: NSS, NSTRM, NSFRPAR, ISTCB1, ISTCB2
         INTEGER,SAVE,POINTER:: IUZT, MAXPTS, IRTFLG, NUMTIM, NSEGDIM
         INTEGER,SAVE,POINTER:: ISFROPT, NSTRAIL, ISUZN, NSFRSETS
@@ -48,11 +49,12 @@
         DOUBLE PRECISION,SAVE,DIMENSION(:,:),POINTER:: QSTRM, SLKOTFLW
         DOUBLE PRECISION,SAVE,DIMENSION(:,:),POINTER:: DLKOTFLW,DLKSTAGE
       TYPE GWFSFRTYPE
-        INTEGER,       DIMENSION(:),  POINTER:: DVRCH      !Diversions to recharge
-        INTEGER,       DIMENSION(:,:,:),  POINTER:: DVRCELL  !Diversions to recharge
+!        INTEGER,                      POINTER:: IDVFLG   !diverison recharge is active flag
+!        INTEGER,       DIMENSION(:),  POINTER:: DVRCH      !Diversions to recharge
+!        INTEGER,       DIMENSION(:,:,:),  POINTER:: DVRCELL  !Diversions to recharge
         REAL,          DIMENSION(:,:),POINTER:: RECHSAVE  !Diversions to recharge
-        REAL,          DIMENSION(:,:),POINTER:: DVRPERC  !Diversions to recharge
-        REAL,          DIMENSION(:),POINTER:: DVEFF  !Diversions to recharge
+!        REAL,          DIMENSION(:,:),POINTER:: DVRPERC  !Diversions to recharge
+!        REAL,          DIMENSION(:),POINTER:: DVEFF  !Diversions to recharge
         INTEGER,     POINTER:: NSS, NSTRM, NSFRPAR, ISTCB1, ISTCB2
         INTEGER,     POINTER:: IUZT, MAXPTS, IRTFLG, NUMTIM, NSEGDIM
         INTEGER,     POINTER:: ISFROPT, NSTRAIL, ISUZN, NSFRSETS

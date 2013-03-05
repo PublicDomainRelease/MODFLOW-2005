@@ -1,3 +1,12 @@
+Changes to the PCG7 Package for MODFLOW-2005 version 1.9:
+
+Added the IHCOFADD option. When an active cell is surrounded by dry cells,
+the cell normally converts to dry.  The new option causes the cell to
+convert to dry only if storage and head-dependent boundary flow are also 0.
+IHCOFADD is a 4th integer input item read on the first input line.  A
+non-zero value activates the option.  An unspecified or 0 value turns the
+option off.
+
 Changes to the PCG7 Package for MODFLOW-2005 version 1.5:
 
 The option was added to the PCG7 Package to have separate damping factors
@@ -13,6 +22,9 @@ value before being used, and this values is used for steady-state stress
 periods. The two damping factors are included in Item 2 of the PCG7 input
 file.  The complete input instructions for PCG follow.
 
+
+                REVISED PCG INPUT INSTRUCTIONS
+
 Input to the Preconditioned Conjugate-Gradient (PCG) Package is read from
 the file that is type "PCG" in the Name File. All numeric variables are free
 format if the option "FREE" is specified in the Basic Package input file;
@@ -23,7 +35,7 @@ FOR EACH SIMULATION
      Item 0 is optional -- "#" must be in column 1.  Item 0 can be repeated
      multiple times.
 
-  1. MXITER    ITER1    NPCOND
+  1. MXITER    ITER1    NPCOND   [IHCOFADD]
 
   2. HCLOSE    RCLOSE   RELAX   NBPOL   IPRPCG  MUTPCG   DAMPPCG [DAMPPCGT]
 
@@ -47,6 +59,13 @@ NPCOND-- is the flag used to select the matrix conditioning method:
   1-- is for Modified Incomplete Cholesky (for use on scalar computers)
   2-- is for Polynomial (for use on vector computers or to conserve computer
       memory)
+
+IHCOFADD-- is a flag that determines what happens to an active cell that is
+surrounded by dry cells:
+  0-- cell converts to dry regardless of HCOF value. This is the default,
+      which is the way PCG2 worked prior to the addition of this option.
+  Not 0-- cell converts to dry only if HCOF is 0 (no head-dependent stresses
+      or storage terms).
 
 HCLOSE-- is the head change criterion for convergence, in units of length.
 When the maximum absolute value of head change from all nodes during an
