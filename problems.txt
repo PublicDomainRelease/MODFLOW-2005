@@ -74,7 +74,7 @@ as a common filename base.
   Stress periods: 1 steady, 4 transient
   Flow package: BCF
   Stress packages: MNW, DRN, RCH, CHD
-  Solver: PCG2
+  Solver: PCG
   Types of parameters defined / package: none
   
 7. Test case tc2hufv4:
@@ -233,7 +233,7 @@ as a common filename base.
   Stress periods: 50 transient
   Flow package: LPF
   Stress packages: SFR, GHB
-  Solver: PCG2
+  Solver: PCG
   Types of parameters defined / package: none
   
 17b. Test case testsfr2_tab:
@@ -249,13 +249,13 @@ as a common filename base.
   Stress periods: 50 transient
   Flow package: LPF
   Stress packages: SFR, GHB
-  Solver: PCG2
+  Solver: PCG
   Types of parameters defined / package: none
   
 18.  Test case UZFtest2:
 
-  This test case is Test Simulation 2 documented in Niswonger, Prudic,
-  and Regan (2006).
+  This is Test Simulation 2 documented in Niswonger, Prudic, and
+  Regan (2006).
   
   Grid dimensions: 1 Layer, 15 Rows, 10 Columns
   Stress periods: 12 transient
@@ -282,8 +282,20 @@ as a common filename base.
   Stress Periods: 1 steady and 2 transient
   Flow Package: LPF
   Stress packages: RCH, MNW2, WEL
-  Solver: PCG2
+  Solver: PCG
   Types of parameters defined / package: none
+
+21.  Test case swi2ex4sww:
+
+  This is Example 4 documented in Bakker and others (2013)
+
+  Grid dimensions: 2 layers, 61 rows, 61 columns
+  Stress Periods: 3 steady state
+  Flow Package: BCF
+  Stress packages: GHB, WEL, SWI2
+  Solver: PCG
+  Types of parameters defined / package: none
+
 
 REFERENCES
 
@@ -291,6 +303,10 @@ Anderman, E.R., and Hill, M.C., 2000, MODFLOW-2000, the U.S. Geological
 Survey modular ground-water model -- Documentation of the
 Hydrogeologic-Unit Flow (HUF) Package: U.S. Geological Survey Open-File
 Report 00-342, 89 p.
+
+Bakker, M., Schaars, F., Hughes, J.D., Langevin, C.D., Dausman, A.M., 2013, 
+Documentation of the seawater intrusion (SWI2) package for MODFLOW: 
+U.S. Geological Survey Techniques and Methods, book 6, chap. A46, 47 p.
 
 Banta, E.R., 2000, MODFLOW-2000, the U.S. Geological Survey modular
 ground-water model -- Documentation of packages for simulating

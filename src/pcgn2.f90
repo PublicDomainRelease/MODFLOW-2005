@@ -28,25 +28,25 @@ MODULE PCGN
   TYPE PCGNTYPE
      INTEGER, POINTER  :: FILL, MO_ITER, MI_ITER, PRGUNIT, PC_UNIT, &
           TS_UNIT, CNVG_A, DAMP_A
-     REAL(KIND=8), POINTER :: SAV_DAMP, DRELAX, MAG_CLOSE, SAV_CLOSE, &
+     DOUBLE PRECISION, POINTER :: SAV_DAMP, DRELAX, MAG_CLOSE, SAV_CLOSE, &
           C_RATE, D_RATE, RCLOSE, HCLOSE, LIMHDCHG, MIN_DAMP, MIN_CLOSE
-     REAL(KIND=8), DIMENSION(:), POINTER :: DD, DX, DY, DZ, RES, HCH
+     DOUBLE PRECISION, DIMENSION(:), POINTER :: DD, DX, DY, DZ, RES, HCH
   END TYPE PCGNTYPE
   TYPE(PCGNTYPE), DIMENSION(1:10), TARGET ::PCGNDAT
   TYPE(PCGNTYPE), POINTER ::PT
   ! ...
   INTEGER, SAVE :: MGRID=0, KITER, KSTP, KPER
   REAL :: HCLOSEPCGN
-  REAL(KIND=8), PARAMETER :: ZERO=0.D0, ONE=1.D0, TWO=2.D0, &     
+  DOUBLE PRECISION, PARAMETER :: ZERO=0.D0, ONE=1.D0, TWO=2.D0, &     
        THREE=3.D0, FOUR=4.D0, FIVE=5.D0, SEVEN=7.D0, EIGHT=8.D0, &
        TEN=1.D1, HUNDRED=1.D2, SQRTEN=3.16227766017, &     
        HALF=0.5D0, QUARTER=0.25D0, TENTH=0.1D0, HUNDRETH=.01D0
-  REAL(KIND=8), PARAMETER :: MZ=TINY(ZERO), LARGE=HUGE(1.0_8)
-  REAL(KIND=8), PARAMETER :: SMALL=EPSILON(1.0_8)*HUNDRED
+  DOUBLE PRECISION, PARAMETER :: MZ=TINY(ZERO), LARGE=HUGE(1.0_8)
+  DOUBLE PRECISION, PARAMETER :: SMALL=EPSILON(1.0_8)*HUNDRED
   ! ... POINTERS
   INTEGER, DIMENSION(:), POINTER :: IBOUND
   REAL, DIMENSION(:), POINTER :: CR, CC, CV, HCOF, RHS
-  REAL(KIND=8), DIMENSION(:), POINTER :: HNEW
+  DOUBLE PRECISION, DIMENSION(:), POINTER :: HNEW
   PRIVATE; PUBLIC :: PCGN2AR, PCGN2AP, PCGN2DA, HCLOSEPCGN
   ! ... HCLOSEPCGN NEEDED IN gwf2mnw7.f
 CONTAINS
@@ -486,7 +486,7 @@ CONTAINS
     INTEGER, DIMENSION(*), TARGET, INTENT(INOUT) :: IBDAP
     REAL, DIMENSION(*), TARGET, INTENT(IN) :: CRAP, CCAP, CVAP, HCOFAP
     REAL, DIMENSION(*), TARGET, INTENT(INOUT)  :: RHSAP
-    REAL(KIND=8), DIMENSION(*), TARGET, INTENT(INOUT) :: HNEWAP
+    DOUBLE PRECISION, DIMENSION(*), TARGET, INTENT(INOUT) :: HNEWAP
     ! ... 
     ! ... CRAP, CCAP, CVAP, HCOFAP, RHSAP, HNEWAP, IBDAP: 
     ! ...   SURROGATES FOR CR, CC, CV, HCOF, RHS, HNEW, IBOUND
@@ -499,7 +499,7 @@ CONTAINS
     LOGICAL, SAVE :: INIT=.TRUE.
     INTEGER, DIMENSION(1:10), SAVE :: NITER=0
     INTEGER, SAVE :: X_FLAG, PREV_IGRID=0
-    REAL(KIND=8) :: RTR
+    DOUBLE PRECISION :: RTR
     INTEGER, DIMENSION(1:3) :: MRKR
     INTEGER, DIMENSION(1:2) :: ERR_STAT
     CHARACTER(LEN=32), DIMENSION(1:3), SAVE :: MRKR_NAM
@@ -600,14 +600,14 @@ CONTAINS
       ! ...    ARGUMENT LIST
       ! ... -------------------------------------------------------------
       INTEGER, INTENT(IN) :: MI_ITER
-      REAL(KIND=8), INTENT(IN) :: RCLOSE
+      DOUBLE PRECISION, INTENT(IN) :: RCLOSE
       INTEGER, DIMENSION(1:3), INTENT(IN) :: MRKR
       INTEGER, INTENT(INOUT) :: NITER, ICNVG
       INTEGER, DIMENSION(1:2), INTENT(INOUT) :: ERR_STAT
       ! ... -------------------------------------------------------------
       ! ...    LOCAL VARIABLES: 
       ! ... -------------------------------------------------------------
-      REAL(KIND=8) :: DRCLOSE
+      DOUBLE PRECISION :: DRCLOSE
       ! ... =============================================================
       NITER=MI_ITER; DRCLOSE=RCLOSE
       ! ... CALL PCG SOLVER WITH ABSOLUTE CONVERGENCE
@@ -648,7 +648,7 @@ CONTAINS
       ! ... -------------------------------------------------------------
       INTEGER, INTENT(IN) :: MO_ITER, MI_ITER, CNVG_A, DAMP_A, IPUNIT, &
            IGRID
-      REAL(KIND=8), INTENT(IN) :: RCLOSE, HCLOSE, SAV_DAMP, MAG_CLOSE, &
+      DOUBLE PRECISION, INTENT(IN) :: RCLOSE, HCLOSE, SAV_DAMP, MAG_CLOSE, &
            SAV_CLOSE, C_RATE, D_RATE, LIMHDCHG, MIN_DAMP, MIN_CLOSE, RTR
       INTEGER, DIMENSION(1:3), INTENT(IN) :: MRKR
       INTEGER, INTENT(INOUT) :: NITER, ICNVG
@@ -659,8 +659,8 @@ CONTAINS
       INTEGER :: I, NO_ITER, MHC_NODE, C_FLAG
       INTEGER, SAVE :: NET_CHANGE, IB0_COUNT
       INTEGER, SAVE :: IB0_BASE(10), NC_BASE(10), TOT_CELLS(10)=0
-      REAL(KIND=8) :: EPS_O, EPS_IP, HTH, L2HR, RATIO_L, HLAST, HTHIS
-      REAL(KIND=8), SAVE :: EPS_I, MXHCH, DDAMP, RTRP=ZERO, PCG_CLOSE
+      DOUBLE PRECISION :: EPS_O, EPS_IP, HTH, L2HR, RATIO_L, HLAST, HTHIS
+      DOUBLE PRECISION, SAVE :: EPS_I, MXHCH, DDAMP, RTRP=ZERO, PCG_CLOSE
       ! ... =============================================================
       ! ...                         ***NOTES***
       ! ... IN SUBSEQUENT CALLS TO SUBROUTINE PCG, THE ARGUMENT LIST VARIABLES 
@@ -872,14 +872,14 @@ CONTAINS
     ! ... ------------------------------------------------------------------
     INTEGER :: IPUNIT
     REAL, INTENT(IN) :: HNOFLO
-    REAL(KIND=8), INTENT(OUT) :: RTR
-    REAL(KIND=8), DIMENSION(:), INTENT(OUT) :: DD, DX, DY, DZ, RES
+    DOUBLE PRECISION, INTENT(OUT) :: RTR
+    DOUBLE PRECISION, DIMENSION(:), INTENT(OUT) :: DD, DX, DY, DZ, RES
     ! ... ------------------------------------------------------------------
     ! ...    LOCAL VARIABLES
     ! ... ------------------------------------------------------------------
     INTEGER :: I, J, K, N, LEVEL_CT, ROW_CT, NRN, NRL, NCN, NCL, &     
          NLN, NLL, NRC
-    REAL(KIND=8) :: RR, EE, COND
+    DOUBLE PRECISION :: RR, EE, COND
     ! ... ==================================================================
     NRC=NROW*NCOL; RTR=ZERO
     DO K=1,NLAY
@@ -1007,14 +1007,14 @@ CONTAINS
     ! ... ---------------------------------------------------------
     ! ...    ARGUMENT LIST
     ! ... ---------------------------------------------------------
-    REAL(KIND=8), INTENT(IN) :: RTR
-    REAL(KIND=8), INTENT(OUT) :: MXHCH, L2HR
+    DOUBLE PRECISION, INTENT(IN) :: RTR
+    DOUBLE PRECISION, INTENT(OUT) :: MXHCH, L2HR
     INTEGER, INTENT(OUT) :: MHC_NODE, IB0_COUNT
     ! ... --------------------------------------------------------------
     ! ...    LOCAL VARIABLES
     ! ... --------------------------------------------------------------
     INTEGER :: I, J, K, N, NODE_SAVE
-    REAL(KIND=8) :: HTH, HS
+    DOUBLE PRECISION :: HTH, HS
     ! ... ==============================================================
     MXHCH=ZERO; HTH=ZERO; IB0_COUNT=0
     DO N=1,NODES
@@ -1053,7 +1053,7 @@ CONTAINS
     ! ... ---------------------------------------------------------
     INTEGER, INTENT(IN) :: KITER, MO_ITER,IPUNIT
     INTEGER, INTENT(INOUT) :: ICNVG
-    REAL(KIND=8), INTENT(IN) :: MXHCH, RCLOSE, HCLOSE, RTR
+    DOUBLE PRECISION, INTENT(IN) :: MXHCH, RCLOSE, HCLOSE, RTR
     ! ... ---------------------------------------------------------
     ! ...    LOCAL VARIABLES
     ! ... ---------------------------------------------------------
@@ -1135,15 +1135,15 @@ CONTAINS
     ! ...    ARGUMENT LIST
     ! ... ---------------------------------------------------------
     INTEGER, INTENT(IN) :: DAMP_A,KITER, KSTP
-    REAL(KIND=8), INTENT(IN) :: MIN_DAMP, SAV_DAMP, EPS, MXHCH, D_RATE, &
+    DOUBLE PRECISION, INTENT(IN) :: MIN_DAMP, SAV_DAMP, EPS, MXHCH, D_RATE, &
          CHGLIMIT
-    REAL(KIND=8), INTENT(INOUT) :: DAMP
+    DOUBLE PRECISION, INTENT(INOUT) :: DAMP
     ! ... ---------------------------------------------------------
     ! ...    LOCAL VARIABLES
     ! ... ---------------------------------------------------------
     INTEGER :: COUNT=0
-    REAL(KIND=8) :: RATIO_E, RATIO_H, LRATIO_E, LRATIO_R, RATIO_L
-    REAL(KIND=8), SAVE ::  EPS_P, MXHCHP, DAMPP
+    DOUBLE PRECISION :: RATIO_E, RATIO_H, LRATIO_E, LRATIO_R, RATIO_L
+    DOUBLE PRECISION, SAVE ::  EPS_P, MXHCHP, DAMPP
     ! ... ---------------------------------------------------------
     SELECT CASE(DAMP_A)
     CASE(0)
@@ -1550,7 +1550,7 @@ CONTAINS
     !   PRINT CONVERGENCE PROGRESS
     IMPLICIT NONE
     INTEGER, INTENT(IN) :: KITER, IB0_COUNT, MHC_NODE, IUNIT, NCOL, NROW
-    REAL(KIND=8), INTENT(IN) :: RATIO_L, L2HR, HEADCHGMAX, DAMPMHC, HLAST, &
+    DOUBLE PRECISION, INTENT(IN) :: RATIO_L, L2HR, HEADCHGMAX, DAMPMHC, HLAST, &
          HTHIS
     ! ... ------------------------------------------------------------------
     ! ...    LOCAL VARIABLES
@@ -1573,7 +1573,7 @@ CONTAINS
     !   PRINT CONVERGENCE PROGRESS
     IMPLICIT NONE
     INTEGER, INTENT(IN) :: KITER, IB0_COUNT, MHC_NODE, IUNIT, NCOL, NROW
-    REAL(KIND=8), INTENT(IN) :: L2HR, HEADCHGMAX, DAMPMHC, HLAST, &
+    DOUBLE PRECISION, INTENT(IN) :: L2HR, HEADCHGMAX, DAMPMHC, HLAST, &
          HTHIS
     ! ... ------------------------------------------------------------------
     ! ...    LOCAL VARIABLES
@@ -1594,9 +1594,9 @@ CONTAINS
     ! ... MODEL: Y=Y+R*X
     ! ... Y, X: ARRAYS
     ! ... R: SCALAR
-    REAL(KIND=8), DIMENSION(:), INTENT(INOUT) :: Y
-    REAL(KIND=8), DIMENSION(:), INTENT(IN) :: X
-    REAL(KIND=8), INTENT(IN) :: R
+    DOUBLE PRECISION, DIMENSION(:), INTENT(INOUT) :: Y
+    DOUBLE PRECISION, DIMENSION(:), INTENT(IN) :: X
+    DOUBLE PRECISION, INTENT(IN) :: R
     INTEGER, SAVE :: MOD_NO=8
     INTEGER :: II, M, ASIZE
     ASIZE=SIZE(Y)

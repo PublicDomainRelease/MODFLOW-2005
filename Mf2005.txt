@@ -52,6 +52,12 @@ METHOD
 
 HISTORY
 
+      MODFLOW-2005 Version 1.11.00 08/08/2013 -- Added Seawater Intrusion
+         (SWI2) Package. Added free format input option to STR Package.
+         The ULSTRD list reading utility subroutine was modified to allow
+         lists to be read from binary files. See release.txt for a full
+         description of changes.
+
       MODFLOW-2005 Version 1.10.00 03/06/2013 -- Added a NOPRINT option for
          observations. Fixed several problems in MNW2, SFR, LAK, and UZF.
          See release.txt for a full description of changes.
@@ -181,6 +187,7 @@ FUNTIONALITY
          HYDMOD -- Hydrograph capability
          PCGN -- Preconditioned Conjugate Gradient solver with
                  improved nonlinear control
+         SWI2 -- Seawater Intrusion Package
 
 Unlike MODFLOW-2000, MODFLOW-2005 does not support a parameter-estimation
 process. Users of MODFLOW-2005 are encouraged to take advantage of
@@ -345,6 +352,12 @@ Naff, Richard L.; Banta, Edward R., 2008, The U.S. Geological Survey Modular
 Ground-Water Model - PCGN: A Preconditioned Conjugate Gradient Solver with
 Improved Nonlinear Control: U.S. Geological Survey Open-File Report
 2008-1331, 35 p.
+
+   The SWI2 Package is documented in:
+
+Bakker, M., Schaars, F., Hughes, J.D., Langevin, C.D., Dausman, A.M., 2013, 
+Documentation of the seawater intrusion (SWI2) package for MODFLOW: 
+U.S. Geological Survey Techniques and Methods, book 6, chap. A46, 47 p.
 
 
 CONTACTS

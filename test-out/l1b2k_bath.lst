@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.10.00 3/6/2013
+                            VERSION 1.11.00 8/8/2013
 
  LIST FILE: l1b2k_bath.lst
                          UNIT    1
@@ -1571,6 +1571,6 @@
          TOTAL TIME  86400.      1440.0      24.000     1.00000     2.73785E-03
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:53:01
- Elapsed run time:  0.266 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/07/31 13:33:55
+ Elapsed run time:  0.162 Seconds
 

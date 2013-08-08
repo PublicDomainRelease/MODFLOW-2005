@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.10.00 3/6/2013
+                            VERSION 1.11.00 8/8/2013
 
  LIST FILE: UZFtest2.lst
                          UNIT    9
@@ -10099,6 +10099,6 @@ UNSATURATED ZONE PACKAGE VOLUMETRIC BUDGET FOR  TIME STEP   15 STRESS PERIOD   1
          TOTAL TIME 3.15360E+07 5.25600E+05  8760.0      365.00     0.99932    
 1
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:54:23
- Elapsed run time:  5.922 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/07/31 13:35:44
+ Elapsed run time: 11.389 Seconds
 

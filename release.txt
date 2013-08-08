@@ -11,6 +11,18 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.11.0 08/08/2013
+    GEF2SWI27 -- This is the Seawater Intrusion (SWI2) Package, which has
+       been added.
+    GWF2STR7 -- Added free format input option, which is used when the BAS
+       Package FREE option is specified.
+    UTL7 -- The ULSTRD list reading utility subroutine was modified to
+         allow lists to be read from binary files.  See file the revised
+         ULSTRD input instructions in file RevisedMF2005Input.pdf .
+    GWF2WEL7 -- WEL Package is no longer deactivated when there are 0
+       wells.
+    PCGN -- Removed non-standard KIND statements.
+
 o Version 1.10.0 03/06/2013
     OBS2BAS7, OBS2CHD7, OBS2DRN7, OBS2GHB7, OBS2RIV7, OBS2STR7 -- Added 
        NOPRINT option to turn off the output of data in the Listing File.

@@ -12,8 +12,10 @@
 
 module common_parameters
   implicit none
+  double precision  ::DBLKIND
   ! ... kv: precision of variables used in assembly
-  integer, parameter :: kv=selected_real_kind(p=10)
+!  integer, parameter :: kv=selected_real_kind(p=10)
+  integer, parameter :: kv=kind(DBLKIND)
   ! ... common numbers
   real(kind=kv), parameter :: n0=0.0_kv, n1=1.0_kv, n2=2.0_kv, n3=3.0_kv, &
        n4=4.0_kv, n5=5.0_kv, n6=6.0_kv, n7=7.0_kv, n8=8.0_kv, n9=9.0_kv, &

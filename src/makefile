@@ -75,6 +75,7 @@ OBJECTS = \
         gwf2mnw17.o \
         gwf2mnw27.o \
         gwf2mnw2i7.o \
+        gwf2swi27.o \
         utl7.o \
         lmt7.o \
         gwf2hydmod7.o \

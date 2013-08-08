@@ -1,6 +1,6 @@
                                   MODFLOW-2005     
       U.S. GEOLOGICAL SURVEY MODULAR FINITE-DIFFERENCE GROUND-WATER FLOW MODEL
-                            VERSION 1.10.00 3/6/2013
+                            VERSION 1.11.00 8/8/2013
 
  LIST FILE: swtex4.lst
                          UNIT   92
@@ -6468,6 +6468,6 @@ CHNGE IN GEOSTATIC STRS PRINT FORMAT IS NUMBER   4
   19   0.00  0.00  0.00  0.00  0.00  0.00  3.86  2.75  2.74  3.85  0.00  0.00  0.00  0.00  0.00
   20   0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
 
- Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/02/20 13:54:24
- Elapsed run time:  0.766 Seconds
+ Run end date and time (yyyy/mm/dd hh:mm:ss): 2013/07/31 13:35:45
+ Elapsed run time:  0.868 Seconds
 
