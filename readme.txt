@@ -20,17 +20,11 @@ which describes changes that have been introduced into MODFLOW-2005 with each
 official release; these changes may substantially affect users.
 
 
-The following tar file is provided for Unix computers:
+The following file is provided for Unix computers:
 
-         mf2005v1_11_00.tar.Z
+         mf2005v1_11_00_unix.zip
 
-The distribution file can be used through the following commands:
-
-    uncompress mf2005v1_11_00.tar
-    tar -xvf mf2005v1_11_00.tar
-
-The gunzip program can be used in place of uncompress if desired.
-The tar command will create numerous individual files.  Source files will
+The zipped file contains numerous individual files.  Source files will
 be in subdirectory src, and documentation files will be in subdirectory doc.
 Some of the documentation files are Portable Document Format (PDF) files.
 The PDF files are readable and printable on various computer platforms
