@@ -1,3 +1,54 @@
+Changes to the MNW2 Package for MODFLOW-2005 version 1.12   (May 2015-Nov. 2016)
+
+A bug was fixed that affected the calculation of intraborehole flow (initiated 
+when PUMPLOC is not = 0) for output purposes only and only for certain conditions. 
+These values are written to the MNWOBS file if QBHflag>0. Additional print 
+statements were also added so that data on the location of the pump intake 
+will always be written to the main listing file.
+
+The program will not calculate corrections for partial penetration of a MNW2 well
+if the losstype=SPECIFYcwc, in part because the required well radius is not 
+specified in the input data for this losstype. If the input for a particular MNW2 
+well specifies losstype=SPECIFYcwc and PPFLAG>0, the code will reset PPFLAG to a 
+value of 0, and print a related warning message.
+
+Code was added to check if the water table drops below the bottom of the open 
+interval in a MNW2 node. If it did, that node is deactivated.
+
+Problems related to the partial penetration correction calculation have been 
+reported for MNW2 nodes in convertible cells. To minimize these, the PPFLAG is 
+reset to 0 if the head in the well (hwell) declines to a level that only leaves 
+less than 10% of the open interval saturated or if either hwell or the water table 
+drops below the bottom of the open interval (in which case the node is also 
+deactivated). 
+
+A bug in the code for the case of a horizontal or slanted well and LOSSTYPE=GENERAL 
+caused the code to ignore the specified value of "B" (the linear well-loss 
+coefficient) and instead assumed that it was zero. This has been fixed. Note that 
+the algorithm assumes that there is no directional dependence of B and that the 
+specified value applies equally in all directions. This bug would have had only 
+a very small effect on results in most cases.
+
+Write statements were modified to help assure that elevations of well screens 
+(open intervals) were printed correctly. Penetration fractions values will be 
+printed as "N/A" for cases where partial penetration calculations are not made.
+
+As described on p. 53 of the MNW2 documentation report (specifically, the last 
+sentence describing both "QNDflag" and "QBHflag"), additional data will not be 
+written if the well contains only one node. That is, both of these flags should 
+be equal to 0 if the MNW well only includes a single node. If not, code added to 
+the MNWI routines will detect this inconsistency and reset these flags to zero 
+and also write an information message in the main output file when this triggering 
+condition is found.
+
+Several coding changes were made based on suggestions from Scott Boyce (CA WSC) 
+and are labeled with his initials (seb).
+
+Other minor format changes were made for the output files. 
+
+
+
+
 Changes to the MNW2 Package for MODFLOW-2005 version 1.10.0   (Nov.-Dec. 2012)
 
 A bug was fixed that affected simulations in which a composite well screen was 

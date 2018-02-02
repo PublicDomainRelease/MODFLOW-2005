@@ -106,7 +106,7 @@ int PCG_eval(r_vector* d2_ptr, r_vector* d1_ptr, void* A_ptr);
  *
  *  An MG_matrix contains mg_vector's, pointers to MG_GEN_operator's,
  *  and iteration parameters.  The MG_GEN_operators are defined
- *  outside the contex of the generic MG operator and depend on the
+ *  outside the context of the generic MG operator and depend on the
  *  multigrid method being used shuch as cell-centered finite-difference.
  *
  *  The generic MG structures allow for recursive definitions
@@ -170,7 +170,7 @@ typedef struct MG_operator
 
 int MG_allocate(GEN_operator* MG_ptr, int ow, MG_r_data* mgrdp);
 
-void MG_free(void* MG_free);
+void MG_free(void* A_ptr);
 
 int MG_assemble(GEN_operator* MG_GEN_ptr,
                 MG_GEN_operator* A_ptr,

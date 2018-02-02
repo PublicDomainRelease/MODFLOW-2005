@@ -11,8 +11,52 @@ For information and references related to these packages, see mf2005.txt
 NOTE: Any use of trade, product or firm names is for descriptive purposes 
       only and does not imply endorsement by the U.S. Government.
 
+o Version 1.12.0 02/03/2017
+    GWF2SWR -- This is the Surface Water Routing (SWR) Process, which 
+       has been added.
+    GWF2SWI27 -- Added FIXEDZETA option, which fixes the zeta surfaces
+       during the simulation and does not allow them to move.  Added
+       statements that allow SWI code to be incorporated into 
+       MODFLOW-NWT.  These statements are commented out.  Fixed a bug
+       that prevented the SWI budget terms from being written when the
+       COMPACT BUDGET was used.
+    GWF2MNW27 -- a number of problems were fixed as described in
+       readme_MNW2.txt.
+    GWF2LAK -- Corrected a bug in which an incorrect cell number was
+       calculated and written for the COMPACT BUDGET option. Fixed array 
+       allocation error.
+    GWF2DRT7 -- When a return cell went dry, the program failed to write
+       a budget record for the COMPACT BUDGET option.  This resulted in
+       an incorrect number of records.  Program was modified so that a
+       zero value is written to the budget file for a return cell if it 
+       is inactive.
+    GWF2SFR7, GWF2LAK7, GWF2UZF1 -- See file
+       LAK_SFR_UZF_updates_MF2005.txt for a description of changes.
+    LMT8 -- Updated the LMT package from 7 to 8.  LMT8 writes the flow
+       file required by MT3D-USGS.  
+    GMG -- The GMG solver was not designed to be compiled for 64-bit
+       computers.  The solver would work when compiled for 64-bit 
+       machines, but encountered errors for large problems.  The GMG
+       code was modified to work for large problems on 64-bit computers.
+    UTL7 -- Corrected a programming error for logical value comparison.
+       ULSTRD will now accept upper and lowercase (BINARY) for FMTIN.
+       Added new capability to use an auxiliary variable as a multiplier
+       for ULSTRD.  If an auxiliary variable with the name AUXSFAC is
+       detected, then ULSTRD will multiply the conductance column (or 
+       other column that is scaled with SFAC) by the values in the
+       AUXSFAC column.  If SFAC is also specified, then the conductance
+       column will be multiplied by SFAC and the values in the AUXSFAC
+       column.
+    Removed the mnw1to2 source and run files.
+    Minor spelling errors were corrected in many of the source files.
+       Most of the errors are within code comments, but some pertain to
+       text strings written to the listing file.  Many of these errors
+       have been present since the first release.
+    MODFLOW-2005 runtime executables included in this distribution are 
+       released for the 64-bit version of the Windows operating system.
+
 o Version 1.11.0 08/08/2013
-    GEF2SWI27 -- This is the Seawater Intrusion (SWI2) Package, which has
+    GWF2SWI27 -- This is the Seawater Intrusion (SWI2) Package, which has
        been added.
     GWF2STR7 -- Added free format input option, which is used when the BAS
        Package FREE option is specified.
@@ -121,7 +165,7 @@ o Version 1.9.0 03/30/2012
        conditions.
     SIP7 -- Modified SIP to avoid failure in the unusual situation that head
        change is 0 at all cells for an iteration.
-    PCG7 -- Fixed a memory access error when the polnomial preconditioner
+    PCG7 -- Fixed a memory access error when the polynomial preconditioner
        is used. Added IHCOFADD option. When an active cell is surrounded
        by dry cells, the cell normally converts to dry.  The new option
        causes the cell to convert to dry only if storage and head-dependent
@@ -340,7 +384,7 @@ o Version 1.3
        and now all of the values at later times will be dry.
 
 o Version 1.2.01  10/24/2006
-   GWF2SFR7 -- A bug was discovered in SFR7 when NSTRM is postive or when
+   GWF2SFR7 -- A bug was discovered in SFR7 when NSTRM is positive or when
        NSTRM is negative and ISFROPT is 0. The error  occurs because record
        6 is not read after the first stress period. This causes the read
        sequence following stress period 2 to be incorrect. Many different

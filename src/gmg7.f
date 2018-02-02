@@ -1,8 +1,12 @@
+C--------------------------------------------------------------------
+C Requires the Fortran 2003 ISO_C_BINDING Intrinsic Module
+C--------------------------------------------------------------------
       MODULE GMGMODULE
+        USE ISO_C_BINDING
         INTEGER,SAVE,POINTER  ::IITER,IADAMPGMG,ISM,ISC,IOUTGMG
         INTEGER,SAVE,POINTER  ::ISIZ,IPREC,IIOUT
         INTEGER,SAVE,POINTER  ::SITER,TSITER
-        INTEGER,SAVE,POINTER  ::GMGID
+        TYPE ( C_PTR ),SAVE   ::GMGID
         INTEGER,SAVE,POINTER  ::IUNITMHC
         REAL   ,SAVE,POINTER  ::HCLOSEGMG,RCLOSEGMG,DAMPGMG
         REAL   ,SAVE,POINTER  ::DUP,DLOW,CHGLIMIT
@@ -13,7 +17,7 @@
         INTEGER,POINTER  ::IITER,IADAMPGMG,ISM,ISC,IOUTGMG
         INTEGER,POINTER  ::ISIZ,IPREC,IIOUT
         INTEGER,POINTER  ::SITER,TSITER
-        INTEGER,POINTER  ::GMGID
+        TYPE ( C_PTR )   ::GMGID
         INTEGER,POINTER  ::IUNITMHC
         REAL   ,POINTER  ::HCLOSEGMG,RCLOSEGMG,DAMPGMG
         REAL   ,POINTER  ::DUP,DLOW,CHGLIMIT
@@ -22,13 +26,41 @@
         DOUBLE PRECISION,POINTER  :: RELAXGMG
       END TYPE
       TYPE(GMGTYPE), SAVE ::GMGDAT(10)
+      
+      INTERFACE 
+        SUBROUTINE GMG7AP(HNEW,RHS,CR,CC,CV,HCOF,HNOFLO,IBOUND,
+     &                    IITER,MXITER,RCLOSE,HCLOSE,
+     &                    KITER,KSTP,KPER,NCOL,NROW,NLAY,
+     &                    ICNVG,SITER,TSITER,DAMP,IADAMP,
+     &                    IOUTGMG,IOUT,GMGID,
+     &                    IUNITMHC,DUP,DLOW,CHGLIMIT,BIGHEADCHG,
+     &                    HNEWLAST)  
+          USE ISO_C_BINDING
+          USE GMG_C_INTERFACE
+          IMPLICIT NONE
+          REAL RHS(*),CR(*),CC(*),CV(*),HCOF(*),HNEWLAST(*)
+          TARGET RHS, CR, CC, CV, HCOF
+          REAL HNOFLO,RCLOSE,HCLOSE,DAMP
+          TARGET HNOFLO
+          REAL DUP,DLOW,CHGLIMIT
+          DOUBLE PRECISION BIGHEADCHG
+          DOUBLE PRECISION HNEW(*)
+          INTEGER IBOUND(*)
+          INTEGER MXITER,IITER,KITER,KSTP,KPER,NCOL,NROW,NLAY,ICNVG,
+     1            IOUTGMG,IOUT
+          TYPE ( C_PTR ) :: GMGID
+          INTEGER SITER,TSITER
+          INTEGER IADAMP,IUNITMHC
+        END SUBROUTINE GMG7AP
+      END INTERFACE
+      
       END MODULE GMGMODULE
 C
       SUBROUTINE GMG7AR(IN,MXITER,IGRID)
 C--------------------------------------------------------------------
 C     READS INPUT FROM FILE TYPE GMG SPECIFIED IN NAME FILE
 C     ALLOCATES GMG SOLVER
-C     EXPLICIT DECLERATIONS
+C     EXPLICIT DECLARATIONS
 C--------------------------------------------------------------------
       USE GLOBAL,   ONLY:IOUT,NCOL,NROW,NLAY
       USE GMGMODULE,ONLY:IITER,IADAMPGMG,ISM,ISC,IOUTGMG,ISIZ,
@@ -36,16 +68,17 @@ C--------------------------------------------------------------------
      2                   RCLOSEGMG,DAMPGMG,RELAXGMG,
      3                   IUNITMHC,DUP,DLOW,CHGLIMIT,HNEWLAST,
      4                   BIGHEADCHG
+      USE GMG_C_INTERFACE
       IMPLICIT NONE
       CHARACTER*200 LINE
       INTEGER IN,MXITER,IGRID,IERR,ICOL,NDUM,ISTOP,ISTART
       REAL    RDUM
 C
 C--------------------------------------------------------------------
-C     ALLOCATE POINTERS 
+C     ALLOCATE POINTERS
 C--------------------------------------------------------------------
       ALLOCATE(IITER,IADAMPGMG,ISM,ISC,IOUTGMG,ISIZ,IPREC,IIOUT,
-     1         SITER,TSITER,GMGID,IUNITMHC)
+     1         SITER,TSITER,IUNITMHC)
       ALLOCATE(HCLOSEGMG,RCLOSEGMG,DAMPGMG,RELAXGMG)
       ALLOCATE(DUP,DLOW,CHGLIMIT)
       ALLOCATE(BIGHEADCHG)
@@ -122,7 +155,7 @@ C
       IF(IADAMPGMG==2) THEN
         WRITE(IIOUT,512)
         WRITE(IIOUT,513)DUP,DLOW,CHGLIMIT
-      ENDIF   
+      ENDIF
       IF(ISM .EQ. 0) WRITE(IIOUT,520)
       IF(ISM .EQ. 1) WRITE(IIOUT,525)
       IF(ISC .EQ. 0) WRITE(IIOUT,530)
@@ -180,7 +213,8 @@ C***********************************************************************
      &                  KITER,KSTP,KPER,NCOL,NROW,NLAY,
      &                  ICNVG,SITER,TSITER,DAMP,IADAMP,
      &                  IOUTGMG,IOUT,GMGID,
-     &        IUNITMHC,DUP,DLOW,CHGLIMIT,BIGHEADCHG,HNEWLAST)
+     &                  IUNITMHC,DUP,DLOW,CHGLIMIT,BIGHEADCHG,
+     &                  HNEWLAST)
 C***********************************************************************
 C     GMG7AP CALLS THE FOLLOWING FUNCTIONS FROM THE GMG LIBRARY:
 C
@@ -202,19 +236,24 @@ C
 C    MF2KMG_UPDATE:
 C      -- ADDS THE CORRECTION TO THE HEADS HNEW=HNEW+DAMP*E.
 C--------------------------------------------------------------------
+      USE ISO_C_BINDING
+      USE GMG_C_INTERFACE
       IMPLICIT NONE
       REAL RHS(*),CR(*),CC(*),CV(*),HCOF(*),HNEWLAST(*)
+      TARGET RHS, CR, CC, CV, HCOF
       REAL HNOFLO,RCLOSE,HCLOSE,DAMP
+      TARGET HNOFLO
       REAL DUP,DLOW,CHGLIMIT
       DOUBLE PRECISION BIGHEADCHG
       DOUBLE PRECISION HNEW(*)
       INTEGER IBOUND(*)
       INTEGER MXITER,IITER,KITER,KSTP,KPER,NCOL,NROW,NLAY,ICNVG,
-     1        IOUTGMG,IOUT 
+     1        IOUTGMG,IOUT
+      TYPE ( C_PTR ) :: GMGID
       INTEGER SITER,TSITER
       INTEGER IADAMP,IUNITMHC
 C
-      INTEGER IIOUT,GMGID
+      INTEGER IIOUT
       DOUBLE PRECISION DRCLOSE
 C
       INTEGER ITER,IERR
@@ -226,6 +265,7 @@ C
       DOUBLE PRECISION, SAVE ::DDAMP
       DOUBLE PRECISION       ::RSQ
       REAL                   ::DAMPA,BIGHA
+      
 C--------------------------------------------------------------------
 C
 C--------------------------------------------------------------------
@@ -245,8 +285,9 @@ C
 C--------------------------------------------------------------------
 C     ASSEMBLE SOLVER
 C--------------------------------------------------------------------
-      CALL MF2KGMG_ASSEMBLE(GMGID,BIGR0,CR,CC,CV,HCOF,HNEW,RHS,HNOFLO,
-     &                      IBOUND,IERR)
+      CALL MF2KGMG_ASSEMBLE(GMGID,BIGR0,C_LOC(CR),C_LOC(CC),
+     &                      C_LOC(CV),C_LOC(HCOF),HNEW,C_LOC(RHS),
+     &                      C_LOC(HNOFLO),IBOUND,IERR)
       IF(IERR .NE. 0) THEN
         CALL USTOP('GMG ASSEMBLY ERROR IN SUBROUTINE GMG1AP')
       END IF
@@ -311,7 +352,7 @@ C  Relative Reduced Residual Method
       END IF
 C
 C--------------------------------------------------------------------
-C     ADD CORECTION
+C     ADD CORRECTION
 C--------------------------------------------------------------------
   100 CONTINUE
       CALL MF2KGMG_UPDATE(GMGID,HNEW,DDAMP)
@@ -368,10 +409,12 @@ C
 C     THE ITERATION (I), THE RESIDUAL (RES), AND THE
 C     CONVERGENCE FACTOR (CFAC) ARE PRINTED.
 C***********************************************************************
-      SUBROUTINE RESPRINT(IOUT,I,RES,CFAC)
-      IMPLICIT NONE
-      INTEGER IOUT,I
-      DOUBLEPRECISION RES,CFAC
+      SUBROUTINE RESPRINT(IOUT,I,RES,CFAC) BIND ( C, NAME='RESPRINT' )
+      USE ISO_C_BINDING
+      INTEGER ( C_INT    ), INTENT ( IN    ) :: IOUT
+      INTEGER ( C_INT    ), INTENT ( IN    ) :: I
+      REAL    ( C_DOUBLE ), INTENT ( IN    ) :: RES
+      REAL    ( C_DOUBLE ), INTENT ( IN    ) :: CFAC
 C
 C---- PRINT RESIDUALS
 C
@@ -475,7 +518,7 @@ C2B-----THE RELATIVE REDUCTION IS LESS THAN 50%, INDICATING THE
 C2B-----SOLUTION IS NOT PROGRESSING ADEQUATELY.  BASED ON HOW FAR FROM
 C2B-----"RRED" IS FROM 50%, THE DAMPING IS MORE OR LESS AGGRESSIVE.
 C2B-----NOTE: FOR THIS CASE, THE MAXIMUM VALUE OF DAMP WILL BE 0.3 + DLOW
-C2B-----SO SETTING DLOW=0.2 IS APPROPIATE SO DAMP WON'T EXCEED 0.5
+C2B-----SO SETTING DLOW=0.2 IS APPROPRIATE SO DAMP WON'T EXCEED 0.5
           DDAMP=0.075/(0.75-RRED) + DLOW
         ENDIF
 C3
@@ -488,7 +531,7 @@ C3-----IF THE SOLUTION IS OSCILLATING, AND WE ARE APPLYING A SIMILAR
 C3-----VALUE OF DAMP (W/ IN 1%) THAT WE APPLIED PREVIOUSLY, THEN WE ARE
 C3-----CAUGHT IN SOME TYPE OF ATTRACTOR. SO GENERATE A RANDOM VALUE OF
 C3-----DDAMP AND HOPE TO GET OUT OF THE BASIN OF THIS ATTRACTOR.
-C3-----NOTE THAT THIS IS VERY MUCH A DESPARATION EFFORT!
+C3-----NOTE THAT THIS IS VERY MUCH A DESPERATION EFFORT!
 C
 !       First determine if head-change signs are oscillating
         IF (BIGH1*BIGH2<0.0D0 .OR. BIGH2*BIGH3<0.0D0) THEN
@@ -599,12 +642,13 @@ C5
       END
 C
       SUBROUTINE GMG7DA(IGRID)
-C  Deallocate GMG data 
+C  Deallocate GMG data
       USE GMGMODULE
+      USE GMG_C_INTERFACE
       CALL GMG7PNT(IGRID)
       CALL MF2KGMG_FREE(GMGID)
       DEALLOCATE(IITER,IADAMPGMG,ISM,ISC,IOUTGMG,ISIZ,IPREC,IIOUT,
-     1           SITER,TSITER,GMGID)
+     1           SITER,TSITER)
       DEALLOCATE(HCLOSEGMG,RCLOSEGMG,DAMPGMG,RELAXGMG)
       DEALLOCATE(IUNITMHC,DUP,DLOW,CHGLIMIT,HNEWLAST,BIGHEADCHG)
 C
@@ -625,7 +669,8 @@ C
       IIOUT=>GMGDAT(IGRID)%IIOUT
       SITER=>GMGDAT(IGRID)%SITER
       TSITER=>GMGDAT(IGRID)%TSITER
-      GMGID=>GMGDAT(IGRID)%GMGID
+C Note: GMGID is a C_PTR; use = not =>
+      GMGID=GMGDAT(IGRID)%GMGID
       HCLOSEGMG=>GMGDAT(IGRID)%HCLOSEGMG
       RCLOSEGMG=>GMGDAT(IGRID)%RCLOSEGMG
       DAMPGMG=>GMGDAT(IGRID)%DAMPGMG
@@ -654,7 +699,8 @@ C
       GMGDAT(IGRID)%IIOUT=>IIOUT
       GMGDAT(IGRID)%SITER=>SITER
       GMGDAT(IGRID)%TSITER=>TSITER
-      GMGDAT(IGRID)%GMGID=>GMGID
+C Note: GMGID is a C_PTR; use = not =>
+      GMGDAT(IGRID)%GMGID=GMGID
       GMGDAT(IGRID)%HCLOSEGMG=>HCLOSEGMG
       GMGDAT(IGRID)%RCLOSEGMG=>RCLOSEGMG
       GMGDAT(IGRID)%DAMPGMG=>DAMPGMG
